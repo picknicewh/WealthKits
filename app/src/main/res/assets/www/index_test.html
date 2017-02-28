@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Capture Photo</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <script type="text/javascript" charset="utf-8" src="cordova.js"></script>
+        <script type="text/javascript" charset="utf-8">
+            
+            var pictureSource;		//图片来源
+            var destinationType;		//设置返回值的格式
+            
+            // 等待PhoneGap连接设备
+            document.addEventListener("deviceready",onDeviceReady,false);
+            
+            // PhoneGap准备就绪，可以使用！
+            function onDeviceReady() {
+                pictureSource=navigator.camera.PictureSourceType;
+                destinationType=navigator.camera.DestinationType;
+            }
+        
+        // 当成功获得一张照片的Base64编码数据后被调用
+        function onPhotoDataSuccess(imageData) {
+            
+            // 取消注释以查看Base64编码的图像数据
+            // console.log(imageData);
+            // 获取图像句柄
+            var smallImage = document.getElementById('smallImage');
+            
+            // 取消隐藏的图像元素
+            smallImage.style.display = 'block';
+            
+            // 显示拍摄的照片
+            // 使用内嵌CSS规则来缩放图片
+            smallImage.src = "data:image/jpeg;base64," + imageData;
+        }
+        
+        // 当成功得到一张照片的URI后被调用
+        function onPhotoURISuccess(imageURI) {
+            
+            // 取消注释以查看图片文件的URI
+            // console.log(imageURI);
+            // 获取图片句柄
+            var largeImage = document.getElementById('largeImage');
+            
+            // 取消隐藏的图像元素
+            largeImage.style.display = 'block';
+            
+            // 显示拍摄的照片
+            // 使用内嵌CSS规则来缩放图片
+            largeImage.src = imageURI;
+        }
+        //关闭当前窗口
+        function closeWindow() {
+            Messenger.send('close');
+        }
+        //查询当前壳资源的版本号
+        function requestShellVersion() {
+            Messenger.request('shellVersion', onShellVersion, null);
+        }
+        //查询当前手机设备信息
+        function requestDeviceExt() {
+            Messenger.request('deviceExt', onDeviceExt, null);
+        }
+        // “Capture Photo”按钮点击事件触发函数
+        function capturePhoto() {
+            
+            // 使用设备上的摄像头拍照，并获得Base64编码字符串格式的图像
+//            navigator.camera.getPicture(onPhotoDataSuccess, onFail, { quality: 50 });
+            // 使用设备上的摄像头拍照，并获得URI地址的图像
+<!--            navigator.camera.getPicture(onPhotoURISuccess, onFail, { quality: 50,                                      destinationType: Camera.DestinationType.FILE_URI });-->
+
+        navigator.camera.getPicture(onPhotoURISuccess, onFail, { quality: 50,targetWidth: 500, targetHeight: 500,
+                            destinationType:1,sourceType:1});
+        }
+        
+        // “Capture Editable Photo”按钮点击事件触发函数
+        function capturePhotoEdit() {
+            
+            // 使用设备上的摄像头拍照，并获得Base64编码字符串格式的可编辑图像
+            navigator.camera.getPicture(onPhotoURISuccess, onFail, { quality: 50,targetWidth: 500, targetHeight: 500,
+                                        destinationType:1,sourceType:1, allowEdit: true});
+                                        
+<!--            navigator.camera.getPicture(onPhotoDataSuccess, onFail, { quality: 20, allowEdit: true });-->
+        }
+        
+        //“From Photo Library”/“From Photo Album”按钮点击事件触发函数
+        function getPhoto(source) {
+            
+            // 从设定的来源处获取图像文件URI
+            navigator.camera.getPicture(onPhotoURISuccess, onFail, { quality: 50,
+                                        destinationType: destinationType.FILE_URI,sourceType: source });
+        }
+        
+        // 当有错误发生时触发此函数
+        function onFail(mesage) {
+            alert('Failed because: ' + message);
+        }
+        
+            </script>
+        
+        
+        <script>
+            var xml = '<?xml version="1.0" encoding="UTF-8" ?><CpPay application="LunchPay.Req"><env>TEST</env><appSysId>90000</appSysId><cardNo>6226620607792207</cardNo><cerType>01</cerType><cerNo>231002198903302089</cerNo><cerName>刘琳驰</cerName><cardMobile>15523450981</cardMobile><sign>7C2DFF2EA5B915CAF213C7E4C30E4C24</sign></CpPay>';
+            
+            var json = {"environment":"test","appSysId":"90000","cardNo":"6226620607792207","cerType":"01","cerNo":"231002198903302089","cerName":"刘琳驰","cardMobile":"15523450981","sign":"7C2DFF2EA5B915CAF213C7E4C30E4C24"};
+            
+            var userstr = "TEST,90000,6226620607792207,01,231002198903302089,刘琳驰,15523450981,7C2DFF2EA5B915CAF213C7E4C30E4C24";
+            
+            function getXml()
+            {
+                return xml;
+            }
+        
+        function getJson()
+        {
+            alert("json");
+            return json;
+        }
+        
+        function getUserstr()
+        {
+            return userstr;
+        }
+        
+        function bankcardAuth()
+        {
+            var cp = new ChinaPay();
+            cp.auth([getJson()], authOK, function(error) {
+                    alert("Error: \r\n" + error);
+                    });
+        }
+        
+        function authOK(result){
+            //1成功 0 识别
+            alert(result.code + "," + result.msg +
+                  "," + result.cardNo + "," + result.cardMobile +
+                  "," + result.cerNo + "," + result.cerType +
+                  "," + result.cerName);
+        }
+        // Messenger APIs are available
+        //
+        function onShellVersion(info) {
+            alert(info.version);
+            var element = document.getElementById('shellVersion');
+            element.innerHTML = 'Shell version: '  + info.version  + '<br />' +
+            'Shell build NO: ' + info.buildNo + '<br />' ;
+        }
+        function onDeviceExt(device) {
+            var element = document.getElementById('deviceProperties');
+            element.innerHTML = 'Device mac: '  + device.mac  + '<br />' +
+            'Device Platform: ' + device.platform + '<br />' +
+            'Device UUID: '     + device.uuid     + '<br />' +
+            'Device Version: '  + device.version  + '<br />';
+        }
+        </script>
+    </head>
+    <body>
+        <button onclick="closeWindow();">Close Windows</button> <br>
+        <button onclick="capturePhoto();">Capture Photo</button> <br>
+        <button onclick="capturePhotoEdit();">Capture Editable Photo</button> <br>
+        <button onclick="getPhoto(pictureSource.PHOTOLIBRARY);">From Photo Library</button><br>
+        <button onclick="getPhoto(pictureSource.SAVEDPHOTOALBUM);">From Photo Album</button><br>
+        <button onclick="requestShellVersion();">Shell Version</button> <br>
+        <button onclick="requestDeviceExt();">Device Ext Info</button> <br>
+        <p id="shellVersion">Loading shell info...</p>
+        <p id="deviceProperties">Loading device properties...</p>
+        <img style="display:none;width:60px;height:60px;" id="smallImage" src="" />
+        <img style="display:none;" id="largeImage" src="" />
+        <button onclick="bankcardAuth();">银行卡认证</button> <br>
+        
+    </body>
+</html>

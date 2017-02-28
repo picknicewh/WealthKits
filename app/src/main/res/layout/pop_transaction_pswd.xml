@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:background="@color/black_x">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_alignParentBottom="true"
+        android:background="@color/gray_x0.8">
+
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:padding="@dimen/dimens_x1dp">
+
+            <ImageButton
+                android:id="@+id/image_close"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/ic_close_p"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="密码验证"
+                android:layout_centerInParent="true"
+                android:textSize="@dimen/dimens_x2sp"/>
+
+        </RelativeLayout>
+
+        <EditText
+            android:id="@+id/ed_password"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/dimens_x1dp"
+            android:hint="请输入基金交易密码"
+            android:padding="@dimen/dimens_x1dp"
+            android:layout_above="@+id/queren_password"
+            android:password="true"
+            android:background="@drawable/ed_password">
+            <requestFocus/>
+        </EditText>
+
+        <Button
+            android:id="@+id/queren_password"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/dimens_x1dp"
+            android:text="确认"
+            android:textColor="@color/white"
+            android:textSize="@dimen/dimens_x2dp"
+            android:background="@drawable/bg_dialog_button_"/>
+    </LinearLayout>
+</RelativeLayout>

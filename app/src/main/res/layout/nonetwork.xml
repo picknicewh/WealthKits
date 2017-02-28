@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/ll_notNetwork"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center"
+    android:visibility="gone"
+    android:layout_alignParentBottom="true"
+    android:layout_marginTop="180dp"
+    android:orientation="vertical">
+        <ImageView
+            android:layout_above="@+id/tv_notNetwork"
+            android:layout_centerInParent="true"
+            android:id="@+id/img_notNetwork"
+            android:src="@drawable/ic_failed"
+            android:layout_gravity="center"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:scaleType="fitXY">
+        </ImageView>
+
+        <TextView
+            android:id="@+id/tv_notNetwork"
+            android:layout_marginTop="@dimen/dimens_x2dp"
+            android:layout_centerInParent="true"
+            android:gravity="center"
+            android:textColor="@color/gray_x0.5"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/dimens_x1.6sp"
+            android:text="加载失败，点击屏幕重试！"/>
+</RelativeLayout>

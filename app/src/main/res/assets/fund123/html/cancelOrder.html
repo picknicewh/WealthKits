@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html class="ui-mobile">
+    <head>
+        <meta charset="utf-8">
+            <meta name="viewport" content="width=device-width, initial-scale=1">
+                <title>撤单</title>
+                <!--CSS代码-->
+                <link rel="stylesheet" href="../css/jquery.mobile-1.3.1.css" />
+                <link rel="stylesheet" href="../css/shumi-mobile.css" />
+                <link rel="stylesheet" href="../css/shumi-mobile2013.css" />
+                </head>
+    <body class="ui-mobile-viewport ui-overlay-c">
+    	<!--头部2013_start-->
+        <header class="shumi-m-head">
+            <h2 class="t">撤单</h2>
+            <div class="gotop" id="quit">取消</div>
+            <div class="backto" id="back">返回</div>
+        </header>
+        <!--头部2013_end-->
+        <div class="ui-page ui-body-c ui-page-active" tabindex="0">
+            <div class="ui-content">
+                <div class="allcontent">
+                    <div data-cid="text3" class="codiqa-control">
+                        <h5>基金交易系统由<br>
+                            杭州数米基金销售有限公司 提供<a href="tel:4000766123"><span class="service-tel">4000-766-123</span></a></h5>
+                    </div>
+                    <div class="ui-info"> <div data-cid="text1" class="ui-info-title">撤销赎回</div>
+                        
+                        <div class="ui-grid-a">
+                            <label class="leftlabel">申请编号:</label>
+                            <label class="rightlabel" id="ApplySerial"></label></div>
+                        <div class="ui-grid-a">
+                            <label class="leftlabel">基金:</label>
+                            <label class="rightlabel" id="Fund"></label></div>
+                        <div class="ui-grid-a">
+                            <label class="leftlabel">涉及金额:</label>
+                            <label class="rightlabel" id="Amount"></label></div>
+                        <div class="ui-grid-a">
+                            <label class="leftlabel">涉及份额:</label>
+                            <label class="rightlabel" id="Shares"></label></div>
+                        <div class="ui-grid-a">
+                            <label class="leftlabel">关联银行卡:</label>
+                            <label class="rightlabel" id="BankInfo"></label></div>
+			<div class="ui-grid-a">
+                            <label class="leftlabel">申请状态:</label>
+                            <label class="rightlabel" id="ApplyStatus"></label></div>
+			<div class="ui-grid-a">
+                            <label class="leftlabel">申请时间:</label>
+                            <label class="rightlabel" id="ApplyDateTime"></label></div>
+                    </div>
+                    <div class="space10"></div>
+                    <div class="ui-grid-a">
+                    	<label class="ui-input-text" for="tradepassword">基金交易密码:</label>
+                    	<input name="tradepassword" id="tradepassword" placeholder="请输入交易密码" value="" class="ui-input-text ui-body-c ui-corner-all ui-shadow-inset" type="password"></div>
+                    <div class="space10"></div>
+                    <div><p>温馨提示：撤单资金将在第二个工作日进行确认，下一工作日资金会返回原卡。注：15:00后撤单会顺延1个工作日确认。双休日及节假日将不进行撤单确认。</p></div>
+                    <div class="space10"></div>
+                    <div id="div_submit" aria-disabled="false" class="ui-btn ui-shadow ui-btn-corner-all ui-fullsize ui-btn-block ui-submit ui-btn-up-c ui-btn-dianxin" name="btn">
+                    	<div class="ui-btn-dianxinceng">
+                        <span class="ui-btn-inner ui-btn-corner-all"><span class="ui-btn-text">确定</span></span>
+                        <button aria-disabled="false" class="ui-btn-hidden" type="submit" id="btn_submit" ></button>
+                        </div></div>
+                </div>
+            </div>
+            
+        </div>
+    </body>
+    <!--引入jquery代码-->
+    <script type="text/javascript" src="../js/jquery-1.8.2.min.js"></script>
+    <script type="text/javascript" src="../js/shumi-mobile.js"></script>
+    <script type="text/javascript">
+	$(document).ready(function(){
+	    initPage();
+	    initEvent();
+	});
+	
+	function initPage() {
+	    restoreSubmitBut();
+	    if(sessionStorage.getItem("cancleOrder.FundCode") && sessionStorage.getItem("cancleOrder.FundName")){
+		var fundCode = sessionStorage.getItem("cancleOrder.FundCode");
+		var fundName = sessionStorage.getItem("cancleOrder.FundName");
+		$("#Fund").text(fundCode+" "+fundName);
+	    }
+	    if(sessionStorage.getItem("cancleOrder.BankAccount") && sessionStorage.getItem("cancleOrder.BankName")){
+		var bankAcco = sessionStorage.getItem("cancleOrder.BankAccount");
+		var bankName = sessionStorage.getItem("cancleOrder.BankName");
+		$("#BankInfo").text(bankName+"("+showLost4Num(bankAcco)+")");
+	    }
+	    if(sessionStorage.getItem("cancleOrder.Amount")){
+		var amount = sessionStorage.getItem("cancleOrder.Amount");
+		$("#Amount").text(amount);
+	    }
+	    if(sessionStorage.getItem("cancleOrder.Shares")){
+		var shares = sessionStorage.getItem("cancleOrder.Shares");
+		$("#Shares").text(shares);
+	    }
+	    if(sessionStorage.getItem("cancleOrder.Status")){
+		var status = sessionStorage.getItem("cancleOrder.Status");
+		$("#ApplyStatus").text(getTradeStatus(status));
+ 	    }
+	    if(sessionStorage.getItem("cancleOrder.ApplyDateTime")){
+		var applyDateTime = sessionStorage.getItem("cancleOrder.ApplyDateTime");
+		$("#ApplyDateTime").text(applyDateTime);
+	    }
+	    if(sessionStorage.getItem("cancleOrder.ApplySerial")){
+		var applySerial = sessionStorage.getItem("cancleOrder.ApplySerial");
+		$("#ApplySerial").text(applySerial);
+	    }
+	    if(sessionStorage.getItem("cancleOrder.ApplySerial")){
+		showLoading();
+		forbiddenSubmitBut();
+		requestOpenApi('trade_account.getaccount','get','json',undefined,
+		    function(json){
+		        hideLoading();
+		        if(json.TempTradePassword){
+		            // 使用临时密码交易,跳转设置交易密码
+			    sessionStorage.setItem("setTradePassword.nextPage",'cancelOrder.html');
+			    loadURL('http://smbclient.localpage/setTradePassword.html');
+			}else{
+			    restoreSubmitBut();
+			}
+		    },
+		    function(jqXHR, textStatus, errorThrown){
+		        hideLoading();
+		        if (!navigator.onLine) {
+		            alert('网络连接中断,请检查你的网络连接');
+		        }else{
+			    var errorResponse = eval("("+jqXHR.responseText+")");
+			    if (errorResponse.Code == 99999){
+			       loadURL('http://smbclient.localpage/maintain.html');
+			       return;
+			    }
+			    if (errorResponse.Code) {
+			        //记录错误反馈
+			        sessionStorage.setItem("error_message",errorResponse.Message);
+			        //跳转到失败页面
+			        loadURL('http://smbclient.localpage/fail.html');
+			    }
+			}
+		    }
+		);
+	    }
+	}
+	
+	function initEvent() {
+	    $("#btn_submit").click(function(){
+		if(checkInputs()){
+		    showLoading();
+		    forbiddenSubmitBut();
+		    cancleOrder();
+		}
+	    }); 
+	}
+	
+	function setNecessaryData(json){
+            var data = toObject(json);
+	    //保存数据
+	    sessionStorage.setItem("cancleOrder.FundCode",data.FundCode);
+	    sessionStorage.setItem("cancleOrder.FundName",data.FundName);
+	    sessionStorage.setItem("cancleOrder.Amount",data.Amount);
+	    sessionStorage.setItem("cancleOrder.Shares",data.Shares);
+	    sessionStorage.setItem("cancleOrder.BankName",data.BankName);
+	    sessionStorage.setItem("cancleOrder.BankAccount",data.BankAccount);
+	    sessionStorage.setItem("cancleOrder.ApplySerial",data.ApplySerial);
+	    sessionStorage.setItem("cancleOrder.TradeAccount",data.TradeAccount);
+	    sessionStorage.setItem("cancleOrder.Status",data.Status);
+	    sessionStorage.setItem("cancleOrder.ApplyDateTime",data.ApplyDateTime);
+	    initPage();
+	}
+	
+	function cancleOrder(){
+	    var tradeAccount = sessionStorage.getItem("cancleOrder.TradeAccount");
+	    var applyserial = sessionStorage.getItem("cancleOrder.ApplySerial");
+	    var tradePassword = $("#tradepassword").val();
+	    var params = {
+		tradeAccount:tradeAccount,
+		applyserial:applyserial,
+		tradePassword:tradePassword
+	    };
+	    requestOpenApi('trade_foundation.undoapply','get','json',params,
+		function(json){
+		    hideLoading();
+		    if(json.Result) {
+			//撤单成功
+			//触发撤单成功事件
+                        var params = {
+                            applySerial:applyserial,
+			    fundCode:sessionStorage.getItem("cancleOrder.FundCode"),
+			    fundName:sessionStorage.getItem("cancleOrder.FundName"),
+			    amount:sessionStorage.getItem("cancleOrder.Amount"),
+			    shares:sessionStorage.getItem("cancleOrder.Shares"),
+			    bankName:sessionStorage.getItem("cancleOrder.BankName"),
+			    bankCard:showLost4Num(sessionStorage.getItem("cancleOrder.BankAccount"))
+                        };
+                        // 通知Native
+                        smbEvent('cancelOperSuccess',params,function(){});
+			loadURL('http://smbclient.localpage/cancleOrderSuccess.html');
+		    }
+		},
+		function(jqXHR, textStatus, errorThrown){
+                    hideLoading();
+                    restoreSubmitBut();
+                    if (!navigator.onLine) {
+                        alert('网络连接中断,请检查你的网络连接');
+                    }else{
+                        var errorResponse = eval("("+jqXHR.responseText+")");
+                       if (errorResponse.Code == 99999){
+                       loadURL('http://smbclient.localpage/maintain.html');
+                       return;
+                       }
+                        if (errorResponse.Code) {
+                            //记录错误反馈
+                            sessionStorage.setItem("error_message",errorResponse.Message);
+                            //跳转到失败页面
+                            loadURL('http://smbclient.localpage/fail.html');
+                        }
+                    }
+                }
+	    );
+	}
+	
+	function getTradeStatus(sign) {
+	    //状态种类 0:确认失败 1:确认成功 2:部分确认 3:实时确认成功 4:已撤销交易 5:行为确认 9:待处理
+	    if(sign == 0){
+		return '确认失败';
+	    }
+	    if(sign == 1){
+		return '确认成功';
+	    }
+	    if(sign == 2){
+		return '部分确认';
+	    }
+	    if(sign == 3){
+		return '实时确认成功';
+	    }
+	    if(sign == 4){
+		return '已撤销交易';
+	    }
+	    if(sign == 5){
+		return '行为确认';
+	    }
+	    if(sign == 9){
+		return '待处理';
+	    }
+	    return '未命名状态';
+	}
+	
+	function showLost4Num(num) {
+            var newNumber = "***";
+            if (num.length >= 4) {
+                newNumber = newNumber+num.substr(num.length-4,4);
+            }else{
+                newNumber = newNumber+num;
+            }
+            return newNumber;
+        }
+	
+	function checkInputs() {
+	    var in1 = $("#tradepassword").val();
+	    if (in1.length == 0) {
+	        alert("请输入交易密码。");
+	        return false;
+	    }
+	    return true;
+	}
+	
+	function showLoading(){
+            $("#loading").show();
+        }
+            
+        function hideLoading(){
+            $("#loading").hide();
+        }
+        
+        //禁用提交按钮
+        function forbiddenSubmitBut() {
+            disable_inputs("btn_submit",true);
+            $("#div_submit").addClass("ui-disabled");
+        }
+        
+        //恢复提交按钮
+        function restoreSubmitBut() {
+            disable_inputs("btn_submit",false);
+            $("#div_submit").removeClass("ui-disabled");
+        }
+    </script>     
+</html>

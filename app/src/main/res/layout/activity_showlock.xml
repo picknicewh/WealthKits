@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:background="@drawable/ic_loading"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ImageView
+        android:id="@+id/lv_loading"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_red_loading"
+        android:layout_centerInParent="true"
+        />
+
+    <TextView
+        android:layout_marginTop="@dimen/dimens_x1dp"
+        android:layout_centerInParent="true"
+        android:layout_below="@id/lv_loading"
+        android:id="@+id/tv_prompt"
+        android:text="正在检查配置..."
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/gray_x0.5"
+        android:textSize="@dimen/dimens_x1.6sp" />
+
+    <!--<LinearLayout-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:orientation="horizontal"-->
+        <!--android:gravity="center_horizontal"-->
+        <!--android:layout_marginTop="10dp"-->
+        <!--android:layout_centerInParent="true"-->
+        <!--android:id="@+id/linearLayout">-->
+
+        <!--<TextView-->
+            <!--android:id="@+id/tv_lockactivity"-->
+            <!--android:text="正在检查配置"-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:textColor="@android:color/primary_text_light"-->
+            <!--android:textSize="@dimen/dimens_x1.6sp" />-->
+
+        <!--<pl.tajchert.sample.DotsTextView-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:id="@+id/dots"-->
+            <!--android:textSize="@dimen/dimens_x1.6sp"-->
+            <!--android:textColor="@android:color/primary_text_light"-->
+            <!--dots:autoplay="false"-->
+            <!--dots:period="1000"/>-->
+    <!--</LinearLayout>-->
+
+
+</RelativeLayout>

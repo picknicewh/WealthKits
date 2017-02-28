@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no"/>
+    <title>更换银行卡</title>
+    <link rel="stylesheet" href="../css/main.css"/>
+    <link rel="stylesheet" href="../css/alert.css"/>
+    <script type="text/javascript" src="../js/jquery.min.js"></script>
+    <script type="text/javascript" src="../js/jquery.md5.js"></script>
+    <script type="text/javascript" src="../js/check.js"></script>
+    <script type="text/javascript" src="../js/bank_card_info.js"></script>
+    <script type="text/javascript" src="../js/yanzhengma.js"></script>
+</head>
+<body>
+<div class="neck">
+    <span>基金交易服务由松果互联网金融提供</span>
+    <span>
+        <div class="neck_img"><img src="images/tel.png" /></div>
+        400-6677-333
+    </span>
+</div>
+<div class="inner">
+
+    <div class="info_title2">银行卡预留手机号短信确认</div>
+    <form action="set_password.html" method="post">
+        <div class="info">
+            <div class="info_2 has_line">
+                <input type="text" placeholder="请输入银行卡预留手机号" name="bank_tel_phone" id="tel_phone" value="159****1552">
+                <div class="info_2_2">
+                    <img src="images/details.png" id='info_2_2'/>
+                </div>
+            </div>
+            <div class="info_2">
+                <input type="text" placeholder="请输入验证码" id="validate_num_in" disabled="disabled" style="background: #ffffff">
+                <div class="info_2_2">
+                    <button class="btn1" disabled="disabled" id="validate_num" type="button" onclick="validate_num_click()">获取验证码</button>
+                </div>
+            </div>
+
+        </div>
+        <div class="no_validate"><span id='no_validatein'>收不到验证码？</span></div>
+        <button class="s_top_btn" disabled="disabled" onclick="loadpage('bank_card_info')" type="button">下一步</button>
+    </form>
+</div>
+<div class="alert_validate_num" style="display: none;">
+    <div class="alert_validate_num_head">收不到验证码</div>
+    <div class="alert_validate_num_body">
+        <div>验证码发送至你的银行预留手机号</div>
+        <div>
+            1.&nbsp;请确认当前是否使用银行预留的手机号码<br/>
+            <div class="no"></div>
+            2.&nbsp;请检查短信是否被手机安全软件拦截<br/>
+            <div class="no"></div>
+            3.&nbsp;若预留号码已停用，请联系银行客服咨询<br/>
+            <div class="no"></div>
+            4.&nbsp;获取更多帮助，请拨打客服电话：0755-86010333<br/>
+        </div>
+    </div>
+    <div class="x"><img src="images/guanbi.png" /> </div>
+</div>
+<div id="phone_num_info" class="phone_num_info" style="display: none">
+    <div class="phone_num_info_head">
+        手机号说明
+    </div>
+    <div class="phone_num_info_body">
+        此手机号为当前使用的银行卡预留手机号。如需修改，请到银行卡管理中心更换银行卡或前往银行柜台修改预留手机号码。获取更多帮助，请致电财富锦囊客服：
+        400-688-3506
+    </div>
+    <div class="phone_num_info_footer">
+        知道了
+    </div>
+</div>
+</body>
+</html>

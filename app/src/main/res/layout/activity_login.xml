@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="@color/red">
+
+        <ImageButton
+            android:id="@+id/ib_back"
+            android:layout_width="50dp"
+            android:layout_height="match_parent"
+            android:layout_centerVertical="true"
+            android:background="@color/transparent"
+            android:src="@drawable/ic_goback" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:text="手机快速登录"
+            android:textColor="@color/white"
+            android:textSize="@dimen/dimens_x2sp" />
+    </RelativeLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+       android:layout_margin="@dimen/space">
+
+        <LinearLayout
+            android:layout_marginTop="@dimen/space_x1.5"
+            android:padding="@dimen/space_x0.5"
+            android:background="@drawable/myattexpandadpter_type"
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:orientation="horizontal"
+            android:visibility="visible">
+
+            <ImageView
+                android:layout_marginLeft="@dimen/dimens_x1dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:src="@drawable/ic_phonenum" />
+
+            <EditText
+                android:layout_marginLeft="@dimen/dimens_x1dp"
+                android:id="@+id/et_phone_number"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:ems="10"
+                android:background="@null"
+                android:hint="请输入您的手机号"
+                android:inputType="phone" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/space_x1.5"
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="45dp"
+                android:orientation="horizontal"
+                android:padding="@dimen/space_x0.5"
+                android:background="@drawable/myattexpandadpter_type">
+
+                <ImageView
+                    android:layout_marginLeft="@dimen/dimens_x1dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:src="@drawable/ic_pastcode" />
+
+                <EditText
+                    android:layout_marginLeft="@dimen/dimens_x1dp"
+                    android:id="@+id/et_message_code"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:ems="10"
+                    android:background="@null"
+                    android:hint="短信验证码"
+                    android:inputType="phone" />
+            </LinearLayout>
+
+            <Button
+                android:id="@+id/b_message_code"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:background="@drawable/rounded_rectangle_gray"
+                android:text="获取验证码"
+                android:paddingLeft="@dimen/dimens_x1dp"
+                android:paddingRight="@dimen/dimens_x1dp"
+                android:layout_marginLeft="@dimen/dimens_x1dp"
+                android:textColor="#ffffff" />
+        </LinearLayout>
+        <LinearLayout
+            android:layout_marginTop="@dimen/dimens_x1.5dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <ImageView
+                android:layout_gravity="center"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_remind"
+                />
+            <TextView
+                android:layout_marginLeft="@dimen/dimens_x1dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/dimens_x1.4sp"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:text="未注册过的手机将自动创建为财富锦囊账户"/>
+        </LinearLayout>
+        <Button
+            android:id="@+id/b_next"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dimens_x2dp"
+            android:background="@drawable/personal_out_login"
+            android:enabled="false"
+            android:padding="5dp"
+            android:text="登录"
+            android:textColor="@color/white"
+            android:textSize="@dimen/ts_xx_large" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/space"
+            android:orientation="horizontal">
+
+            <CheckBox
+                android:id="@+id/cb_user_agreement"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:checked="true"
+                android:button="@drawable/bg_checkbox"
+                android:textColor="@color/black"
+                android:text=" 我同意" />
+
+            <TextView
+                android:id="@+id/tv_user_agreement"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="《财富锦囊用户使用协议》"
+                android:textColor="@color/red" />
+        </LinearLayout>
+
+    </LinearLayout>
+
+</LinearLayout>

@@ -1,0 +1,233 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:orientation="vertical" >
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="@color/red">
+
+        <ImageButton
+            android:id="@+id/ib_back"
+            android:layout_width="50dp"
+            android:layout_height="match_parent"
+            android:layout_centerVertical="true"
+            android:background="@color/transparent"
+            android:src="@drawable/ic_goback" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:text="关于财富锦囊"
+            android:textColor="@color/white"
+            android:textSize="@dimen/dimens_x2sp" />
+    </RelativeLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="0.5"
+        android:layout_marginLeft="@dimen/dimens_x3dp"
+        android:layout_marginRight="@dimen/dimens_x3dp"
+        android:orientation="horizontal" >
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_app_logo" />
+
+        <TextView
+            android:id="@+id/tv_app_version"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_marginLeft="@dimen/dimens_x2dp"
+            android:gravity="center_vertical"
+            android:singleLine="true"
+            android:text="版本号：V4.0"
+            android:textColor="@color/red"
+            android:textSize="@dimen/dimens_x1.8sp" />
+    </LinearLayout>
+
+    <TableLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="2"
+        android:layout_marginLeft="@dimen/dimens_x3dp"
+        android:layout_marginRight="@dimen/dimens_x3dp"
+        android:stretchColumns="1" >
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:text="财富锦囊  大众理财利器"
+            android:textColor="@color/black"
+            android:textSize="@dimen/dimens_x2sp"/>
+
+        <TableRow android:layout_marginTop="10dp" >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="超利，"
+                android:textColor="@color/black"
+                android:textSize="@dimen/ts_large"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="跑赢银行活期利息10倍。"
+                android:textColor="@color/dark_gray"
+                android:textSize="@dimen/ts_medium" />
+        </TableRow>
+
+        <TableRow>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="放心，"
+                android:textColor="@color/black"
+                android:textSize="@dimen/ts_large"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="银行证监全程监管安全有保障。"
+                android:textColor="@color/dark_gray"
+                android:textSize="@dimen/ts_medium" />
+        </TableRow>
+
+        <TableRow>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="便捷，"
+                android:textColor="@color/black"
+                android:textSize="@dimen/ts_large"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="手机APP随时随地赚钱取现。"
+                android:textColor="@color/dark_gray"
+                android:textSize="@dimen/ts_medium" />
+        </TableRow>
+
+        <TableRow>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="增值，"
+                android:textColor="@color/black"
+                android:textSize="@dimen/ts_large"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="投资咨询顾问专业服务。"
+                android:textColor="@color/dark_gray"
+                android:textSize="@dimen/ts_medium" />
+        </TableRow>
+
+        <TableRow>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="贴心，"
+                android:textColor="@color/black"
+                android:textSize="@dimen/ts_large"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="语音记账免费使用边理财边记账。"
+                android:textColor="@color/dark_gray"
+                android:textSize="@dimen/ts_medium" />
+        </TableRow>
+
+        <TextView
+            android:layout_marginTop="@dimen/dimens_x2dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="如果您在使用的过程中遇到任何问题和建议，请与我们联系，再次感谢您对我们的支持，财富锦囊将为您做到最好。"
+            android:textColor="@color/dark_gray"
+            android:textSize="@dimen/ts_medium" />
+
+        <TableRow
+            android:layout_marginTop="@dimen/dimens_x2dp">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="客服热线："
+                android:textStyle="bold"
+                android:textColor="@color/red"
+                android:textSize="@dimen/ts_medium" />
+
+            <TextView
+                android:id="@+id/tv_phoneNumber"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/red"
+                android:textStyle="bold"
+                android:text="400-688-3506"
+                android:textSize="@dimen/ts_medium" />
+        </TableRow>
+
+        <TableRow>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="公司网站："
+                android:textStyle="bold"
+                android:textColor="@color/red"
+                android:textSize="@dimen/ts_medium" />
+
+            <TextView
+                android:id="@+id/tv_web_site"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/red"
+                android:textStyle="bold"
+                android:text="www.hunme.net"
+                android:textSize="@dimen/ts_medium" />
+        </TableRow>
+
+    </TableLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="30dp"
+        android:layout_marginBottom="20dp"
+        android:orientation="vertical">
+        <TextView
+            android:layout_gravity="center"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="恒镁电子科技有限公司"
+            android:textSize="@dimen/ts_medium" />
+
+        <TextView
+            android:layout_gravity="center"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="copyright © 2014 Hunme Inc."
+            android:textSize="@dimen/ts_small" />
+    </LinearLayout>
+
+</LinearLayout>

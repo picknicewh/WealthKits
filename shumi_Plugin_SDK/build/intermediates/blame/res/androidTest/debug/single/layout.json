@@ -1,0 +1,50 @@
+[
+    {
+        "merged": "E:\\android-stdio-workspace\\WealthKits\\shumi_Plugin_SDK\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\chinapay_sustainbanklist.xml",
+        "source": "E:\\android-stdio-workspace\\WealthKits\\shumi_Plugin_SDK\\build\\intermediates\\bundles\\debug\\res\\layout\\chinapay_sustainbanklist.xml"
+    },
+    {
+        "merged": "E:\\android-stdio-workspace\\WealthKits\\shumi_Plugin_SDK\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\chinapay_bank_item.xml",
+        "source": "E:\\android-stdio-workspace\\WealthKits\\shumi_Plugin_SDK\\build\\intermediates\\bundles\\debug\\res\\layout\\chinapay_bank_item.xml"
+    },
+    {
+        "merged": "E:\\android-stdio-workspace\\WealthKits\\shumi_Plugin_SDK\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\chinapay_main.xml",
+        "source": "E:\\android-stdio-workspace\\WealthKits\\shumi_Plugin_SDK\\build\\intermediates\\bundles\\debug\\res\\layout\\chinapay_main.xml"
+    },
+    {
+        "merged": "E:\\android-stdio-workspace\\WealthKits\\shumi_Plugin_SDK\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\chinapay_sujestion_info.xml",
+        "source": "E:\\android-stdio-workspace\\WealthKits\\shumi_Plugin_SDK\\build\\intermediates\\bundles\\debug\\res\\layout\\chinapay_sujestion_info.xml"
+    },
+    {
+        "merged": "E:\\android-stdio-workspace\\WealthKits\\shumi_Plugin_SDK\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\chinapay_keyboard_dialog.xml",
+        "source": "E:\\android-stdio-workspace\\WealthKits\\shumi_Plugin_SDK\\build\\intermediates\\bundles\\debug\\res\\layout\\chinapay_keyboard_dialog.xml"
+    },
+    {
+        "merged": "E:\\android-stdio-workspace\\WealthKits\\shumi_Plugin_SDK\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\chinapay_keyboard_symbol.xml",
+        "source": "E:\\android-stdio-workspace\\WealthKits\\shumi_Plugin_SDK\\build\\intermediates\\bundles\\debug\\res\\layout\\chinapay_keyboard_symbol.xml"
+    },
+    {
+        "merged": "E:\\android-stdio-workspace\\WealthKits\\shumi_Plugin_SDK\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\chinapay_info_main.xml",
+        "source": "E:\\android-stdio-workspace\\WealthKits\\shumi_Plugin_SDK\\build\\intermediates\\bundles\\debug\\res\\layout\\chinapay_info_main.xml"
+    },
+    {
+        "merged": "E:\\android-stdio-workspace\\WealthKits\\shumi_Plugin_SDK\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\chinapay_help_main.xml",
+        "source": "E:\\android-stdio-workspace\\WealthKits\\shumi_Plugin_SDK\\build\\intermediates\\bundles\\debug\\res\\layout\\chinapay_help_main.xml"
+    },
+    {
+        "merged": "E:\\android-stdio-workspace\\WealthKits\\shumi_Plugin_SDK\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\chinapay_keyboard_letter.xml",
+        "source": "E:\\android-stdio-workspace\\WealthKits\\shumi_Plugin_SDK\\build\\intermediates\\bundles\\debug\\res\\layout\\chinapay_keyboard_letter.xml"
+    },
+    {
+        "merged": "E:\\android-stdio-workspace\\WealthKits\\shumi_Plugin_SDK\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\shumi_sdk_bg.xml",
+        "source": "E:\\android-stdio-workspace\\WealthKits\\shumi_Plugin_SDK\\build\\intermediates\\bundles\\debug\\res\\layout\\shumi_sdk_bg.xml"
+    },
+    {
+        "merged": "E:\\android-stdio-workspace\\WealthKits\\shumi_Plugin_SDK\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\chinapay_keyboard_num.xml",
+        "source": "E:\\android-stdio-workspace\\WealthKits\\shumi_Plugin_SDK\\build\\intermediates\\bundles\\debug\\res\\layout\\chinapay_keyboard_num.xml"
+    },
+    {
+        "merged": "E:\\android-stdio-workspace\\WealthKits\\shumi_Plugin_SDK\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\chinapay_result_info.xml",
+        "source": "E:\\android-stdio-workspace\\WealthKits\\shumi_Plugin_SDK\\build\\intermediates\\bundles\\debug\\res\\layout\\chinapay_result_info.xml"
+    }
+]

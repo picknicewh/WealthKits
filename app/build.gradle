@@ -1,0 +1,82 @@
+apply plugin: 'com.android.application'
+
+android {
+    compileSdkVersion 23
+    buildToolsVersion '23.0.2'
+    useLibrary 'org.apache.http.legacy'
+    sourceSets {
+        main {
+            jniLibs.srcDirs = ['libs']
+        }
+    }
+    defaultConfig {
+        applicationId "com.cfjn.javacf"
+        minSdkVersion 15
+        targetSdkVersion 23
+        versionCode 27
+        versionName "4.1.5"
+    }
+    buildTypes {
+        debug {
+            minifyEnabled false
+//            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+//            resValue("string" , "model_update_url","http://zhu.hunme.net:8080/wealthKits/auxiliary/resourcePackDownload")
+        }
+        release {
+            minifyEnabled false
+//            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+//            resValue("string" , "model_update_url","http://zhu.hunme.net:8080/wealthKits/auxiliary/resourcePackDownload")
+        }
+    }
+
+    repositories {
+        jcenter()
+    }
+
+}
+
+dependencies {
+    compile fileTree(include: ['*.jar'], dir: 'libs')
+    testCompile 'junit:junit:4.12'
+    //gson解析
+    compile files('libs/gson-2.2.1.jar')
+    //v7jar包
+    compile 'com.android.support:appcompat-v7:23.1.1'
+    //androidMD控件
+    compile 'com.android.support:design:23.1.1'
+    //v4jar包
+//    compile 'com.android.support:support-v4:23.3.0'
+    //viewpager
+    compile 'com.astuetz:pagerslidingtabstrip:1.0.1'
+    //    compile 'com.github.blackfizz:eazegraph:1.2.2@aar'//图表
+    //    compile 'com.nineoldandroids:library:2.4.0'//动画
+    //listview侧滑删除
+    compile 'com.baoyz.swipemenulistview:library:1.3.0'
+    //图表库
+    compile files('libs/xcl-charts.jar')
+    //解析xml工具
+    compile files('libs/xstream-1.3.1.jar')
+    //银联插件
+    compile files('libs/cpauth_android_1.0.0_lib.jar')
+    //cordova
+    compile project(':CordovaLib')
+    //    compile 'com.akexorcist:RoundCornerProgressBar:2.0.3'//进度条
+    //语音助手
+    compile files('libs/VoiceRecognition-1.6.2.jar')
+    //百度定位
+    compile files('libs/BaiduLBS_Android.jar')
+    //    compile 'com.ms-square:expandableTextView:0.1.4'//上下展开textview文字
+    //图片缓存加载
+    compile files('libs/universal-image-loader-1.9.3.jar')
+    //网络机制
+//    compile files('libs/okhttp-2.5.0.jar')
+    //结合scrollablelayoutlib下拉刷新
+    compile 'in.srain.cube:cube-sdk:1.0.44@aar'
+    compile 'in.srain.cube:ultra-ptr:1.0.11'
+    //快速找到控件不在findviewByid
+    compile 'com.jakewharton:butterknife:7.0.1'
+    //数米sdk
+    compile project(':shumi_Plugin_SDK')
+    compile files('libs/jpush-android-2.1.6.jar')
+    compile 'com.lzy.net:okhttputils:1.6.0'  //可以单独使用，不需要依赖下方的扩展包
+}

@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+     <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no"/>
+    <title>银行卡确认</title>
+    <link rel="stylesheet" href="../css/main.css"/>
+    <link rel="stylesheet" href="../css/alert.css"/>
+    <script src="../../lib/cordova/cordova.js"></script>
+    <script type="text/javascript" src="../js/jquery-1.8.3.min.js"></script>
+    <script type="text/javascript" src="../js/check.js"></script>
+    <script type="text/javascript" src="../js/bank_card_validate.js"></script>
+</head>
+<body>
+
+<div class="top">
+    <span class="go_back_home" onclick="gohistory()">
+        <img src="../images/back.png"/>
+    </span>
+    <span class="top_title">银行卡确认</span>
+    <span class="close" onclick="CloseWebPage()">取消</span>
+</div>
+<div class="neck">
+    <span>基金交易服务由松果互联网金融提供</span>
+    <span>
+        <div class="neck_img"><img src="../images/tel.png" /></div>
+        400-6677-333
+    </span>
+</div>
+<div class="inner">
+    <div class="plan_bar">
+        <div class="plan_line">
+            <div>
+                <div class="plan_num now">1
+                    <div>身份验证</div>
+                </div>
+                <div class="plan_s_line now"></div>
+                <div class="plan_num now">2
+                    <div>银行卡确认</div>
+                </div>
+                <div class="plan_s_line"></div>
+                <div class="plan_num">3
+                    <div class="long">设置交易密码</div>
+                </div>
+                <div class="plan_s_line"></div>
+                <div class="plan_num">4
+                    <div>开户成功</div>
+                </div>
+            </div>
+        </div>
+        <div class="plan_text">
+            <!--<div>身份验证</div>
+            <div class="not_fl">银行卡确认</div>
+            <div class="not_fl">设置交易密码</div>
+            <div>开户成功</div>-->
+        </div>
+    </div>
+    <div class="info_title">请绑定持卡人本人的银行储蓄卡</div>
+    <form action="bank_card_info.html" method="post">
+    <div class="info">
+        <div class="info_1 has_line">
+            <label for="has_card_people">持卡人</label>
+            <input type="text" value="" id="has_card_people" name="has_card_people">
+            <div class="info_1_2">
+                <img src="../images/details.png" />
+            </div>
+        </div>
+        <!--<div class="info_1 has_line">
+            <label for="bank">银行名称</label>
+            <input type="text" placeholder="请选择银行" id="bank">
+            <div class="info_1_3">
+                <img src="images/ic_arrowrow.png" />
+            </div> <input type="text" placeholder="请输入持卡人银行卡号" id="bank_id">
+        </div>-->
+        <div class="info_1">
+            <label for="bank_id">银行卡号</label>
+            <input type="hidden" name='bankType' value='' />
+            <input type="hidden" name='bankName' value='' />
+            <input type="text" style="width: 75%;" name="bank_id" placeholder="请输入持卡人银行卡号" value="" size="25" onkeyup="formatBankNo(this)" onkeydown="formatBankNo(this)"  id="bank_id"/>
+        </div>
+    </div>
+    <button class="btn" disabled onclick="loadpage('bankType')" type="button">下一步</button>
+    </form>
+</div>
+<div id="alert" class="alert" style="display: none">
+
+</div>
+<div class="inner_alert" style="display: none" id="inner_alert">
+    <div>持卡人说明</div>
+    <div class="alert_content">为了你的资金账户安全，只能绑定持卡人本人的银行卡。<br/>
+        获取更多帮助，请致电财富锦囊客服：<br/>
+        400-688-4506
+    </div>
+    <div id="know">知道了</div>
+</div>
+</body>
+</html>

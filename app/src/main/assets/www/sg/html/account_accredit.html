@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+     <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no"/>
+    <title>账号授权</title>
+    <link rel="stylesheet" href="../css/main.css"/>
+    <script type="text/javascript" src="../js/jquery.min.js"></script>
+    <script type="text/javascript" src="../js/check.js"></script>
+    <script type="text/javascript" src="../js/account_accredit.js"></script>
+</head>
+<body>
+<!-- 
+
+<div class="top">
+    <span class="go_back_home">
+        <img src="WEB-INF/images/back.png"/>
+    </span>
+    <span class="top_title">账号授权</span>
+    <span class="close">取消</span>
+</div> -->
+<div class="neck">
+    <span>基金交易服务由松果互联网金融提供</span>
+    <span>
+        <div class="neck_img"><img src="WEB-INF/images/tel.png" /></div>
+        400-6677-333
+    </span>
+</div>
+<div class="inner">
+    <div class="account_info">
+        <div class="account_info_head">检测到你的松果基金账号</div>
+        <div class="account_info_body">
+          <!--  <span class="account_info_body_s">
+               <span>客户号</span><span class='customer_id'>2016897</span>
+               <div class="clear"></div>
+           </span> -->
+            <span  class="account_info_body_s">
+                <span>姓名</span><span class='customer_name'>郭德纲</span>
+                <div class="clear"></div>
+            </span>
+            <span  class="account_info_body_s">
+                <span>身份证</span><span class='customer_peopleid'>33090909080909989</span>
+                <div class="clear"></div>
+            </span>
+            <div class="clear"></div>
+        </div>
+    </div>
+
+    <div class="info_title2">输入此账号的基金交易密码授权</div>
+    <div class="info">
+        <div class="info_1">
+            <label for="password">交易密码</label>
+            <input type="password" placeholder="请输入交易密码" id="password" onKeypress="javascript:if(event.keyCode == 32)event.returnValue = false;">
+        </div>
+    </div>
+    <div class="agree">
+        <div class="agree_btn default_agree">
+            ✔
+        </div>
+        <span style="color:#898989;">同意</span><span style="color: #FF3B2F;">《用户协议》</span>
+    </div>
+    <button class="btn" disabled="disabled">同意授权</button>
+</div>
+
+
+</body>
+</html>

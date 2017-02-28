@@ -1,0 +1,288 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/rl_fund_details"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:id="@+id/rl_title"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="@color/red"
+        android:orientation="horizontal">
+
+        <ImageButton
+            android:id="@+id/ib_back"
+            android:layout_width="50dp"
+            android:layout_height="match_parent"
+            android:layout_centerVertical="true"
+            android:background="@color/transparent"
+            android:src="@drawable/ic_goback" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/tv_fund_name"
+                android:layout_width="200dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:textColor="@color/white"
+                android:textSize="@dimen/dimens_x2sp"
+                android:text=""
+                android:gravity="center"
+                android:singleLine="true"/>
+
+            <TextView
+                android:id="@+id/tv_fund_code"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:textColor="@color/white"
+                android:textSize="@dimen/dimens_x1.4sp" />
+        </LinearLayout>
+
+    </RelativeLayout>
+
+    <LinearLayout
+        android:id="@+id/ll_button"
+        android:layout_alignParentBottom="true"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp"
+            android:background="@color/gray_x0.3">
+        </View>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:padding="@dimen/space"
+                android:id="@+id/ll_attention"
+                android:layout_width="60dp"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:id="@+id/iv_atten_showtype"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:src="@drawable/ic_attention_off" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:text="关注" />
+
+            </LinearLayout>
+
+            <View
+                android:layout_width="@dimen/line_gray"
+                android:layout_height="match_parent"
+                android:background="@color/line_gray">
+            </View>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+
+                <Button
+                    android:id="@+id/b_vote"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:background="@color/gray_x0.8"
+                    android:text="测算收益"
+                    android:textColor="@color/red"
+                    android:textSize="@dimen/dimens_x1.8sp" />
+
+                <Button
+                    android:id="@+id/b_purchase"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:background="@color/red"
+                    android:text="购买"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/dimens_x1.8sp" />
+            </LinearLayout>
+        </LinearLayout>
+    </LinearLayout>
+
+    <com.cfjn.javacf.widget.VerticalScrollView
+        android:id="@+id/vsv_fund_details"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/rl_title"
+        android:layout_above="@id/ll_button"
+        android:scrollbars="none">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white"
+                android:orientation="horizontal"
+                android:paddingTop="@dimen/dimens_x2dp"
+                android:paddingLeft="@dimen/dimens_x1dp"
+                android:paddingRight="@dimen/dimens_x1dp">
+
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/tv_profit_name"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal"
+                        android:text="七日年化收益率" />
+
+                    <TextView
+                        android:id="@+id/tv_profit_value"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal"
+                        android:text="0.000"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/dimens_x2.5sp" />
+
+                </LinearLayout>
+                <View
+                    android:layout_width="0.5dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginBottom="2dp"
+                    android:layout_marginTop="2dp"
+                    android:background="@color/gray_x0.3">
+                </View>
+
+                <RelativeLayout
+                    android:layout_gravity="center"
+                    android:gravity="center"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1">
+                    <TextView
+                        android:id="@+id/tv_rose_name"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+
+                        android:text="万份收益（06-15）" />
+
+                    <TextView
+                        android:id="@+id/tv_rose_value"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+
+                        android:text="00.00%"
+                        android:layout_below="@id/tv_rose_name"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/dimens_x2.5sp" />
+                    <TextView
+                        android:id="@+id/tv_rose_valueutil"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+
+                        android:layout_below="@id/tv_rose_name"
+                        android:layout_alignParentBottom="true"
+                        android:paddingBottom="@dimen/dimens_x0.2dp"
+                        android:layout_toRightOf="@id/tv_rose_value"
+                        android:textSize="@dimen/dimens_x1.8sp"
+                        android:text="元"
+                        />
+                </RelativeLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white"
+                android:orientation="vertical"
+                android:padding="@dimen/dimens_x1dp">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:background="@color/white"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/tv_fund_type"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="股票基金"
+                        android:textSize="@dimen/dimens_x1.2sp"/>
+
+                    <TextView
+                        android:id="@+id/tv_fund_warning"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/dimens_x1.5dp"
+                        android:text="高风险理财"
+                        android:textSize="@dimen/dimens_x1.2sp"/>
+
+                    <TextView
+                        android:id="@+id/tv_purchase_money"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/dimens_x1.5dp"
+                        android:background="@drawable/bg_product"
+                        android:padding="@dimen/dimens_x0.2dp"
+                        android:text="100元起购"
+                        android:textSize="@dimen/dimens_x1.2sp"
+                        android:textColor="@color/red" />
+
+                </LinearLayout>
+            </LinearLayout>
+
+            <com.cfjn.javacf.widget.PagerSlidingTabStrip
+                android:id="@+id/psts_tabstrip"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginLeft="@dimen/dimens_x4dp"
+                android:layout_marginRight="@dimen/dimens_x4dp"
+                app:selectedTabTextColor="@color/red"
+                app:pstsDividerColor="@color/gray_x0.3"
+                app:pstsIndicatorColor="@color/red"
+                app:pstsDividerPadding="10dp"
+                app:pstsIndicatorHeight="2dp"
+                app:pstsShouldExpand="true"
+                app:pstsUnderlineHeight="0dp" />
+
+            <com.cfjn.javacf.widget.CustomViewPager
+                android:id="@+id/vp_exchange"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white"
+                android:flipInterval="5000"
+                android:inAnimation="@anim/page_left_in"
+                android:outAnimation="@anim/page_left_out"
+                android:persistentDrawingCache="animation" />
+        </LinearLayout>
+    </com.cfjn.javacf.widget.VerticalScrollView>
+
+
+</RelativeLayout>

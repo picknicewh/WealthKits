@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+     <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no"/>
+    <title>银行卡信息</title>
+    <link rel="stylesheet" href="../css/main.css"/>
+     <link rel="stylesheet" href="../css/alert.css"/>
+     <link rel="stylesheet" href="../css/new_alert.css"/>
+    <script src="../../lib/cordova/cordova.js"></script>
+    <script type="text/javascript" src="../js/jquery.min.js"></script>
+    <script type="text/javascript" src="../js/jquery.md5.js"></script>
+    <script type="text/javascript" src="../js/check.js"></script>
+    <script type="text/javascript" src="../js/bank_card_info.js"></script>
+    <script type="text/javascript" src="../js/yanzhengma.js"></script>
+</head>
+<body>
+
+<div class="top">
+    <span class="go_back_home" onclick="gohistory()">
+        <img src="../images/back.png"/>
+    </span>
+    <span class="top_title">银行卡信息</span>
+    <span class="close" onclick="CloseWebPage()">取消</span>
+</div>
+<div id='box1'>
+<div class="neck">
+    <span>基金交易服务由松果互联网金融提供</span>
+    <span>
+        <div class="neck_img"><img src="../images/tel.png" /></div>
+        400-6677-333
+    </span>
+</div>
+<div class="inner">
+    <div class="plan_bar">
+        <div class="plan_line">
+            <div>
+                <div class="plan_num now">1
+                    <div>身份验证</div>
+                </div>
+                <div class="plan_s_line now"></div>
+                <div class="plan_num now">2
+                    <div>银行卡确认</div>
+                </div>
+                <div class="plan_s_line"></div>
+                <div class="plan_num">3
+                    <div class="long">设置交易密码</div>
+                </div>
+                <div class="plan_s_line"></div>
+                <div class="plan_num">4
+                    <div>开户成功</div>
+                </div>
+            </div>
+        </div>
+        <div class="plan_text">
+            <!--<div>身份验证</div>
+            <div class="not_fl">银行卡确认</div>
+            <div class="not_fl">设置交易密码</div>
+            <div>开户成功</div>-->
+        </div>
+    </div>
+     <form action="set_password.html" method="post">
+    <div class="info_title2">请选择银行卡类型</div>
+    <div class="info_1"  style="background: #ffffff;width: 97%;margin: 0;padding-left: 3%" onclick="loadpage('select_bank')">
+        <label for="bankName">卡类型</label>
+        <input type="text" value="" placeholder="请选择银行卡类型" id="bankName" style="width:75%;float:left;margin-left:3%;color: #4C4C94;font-size: 16px;" name='bankName' />
+    </div>
+    <div class="info_title2">银行卡预留手机号短信确认</div>
+   
+    <div class="info">
+        <div class="info_2 has_line">
+            <input type="text" placeholder="请输入银行卡预留手机号" name="bank_tel_phone" id="tel_phone" value="" >
+            <div class="info_2_2" id='info_2_2'>
+                <img src="../images/details.png" />
+            </div>
+        </div>
+        <div class="info_2">
+            <input type="text" placeholder="请输入验证码" id="validate_num_in" disabled="disabled" style="background: #ffffff">
+            <div class="info_2_2">
+                <button class="btn1" disabled="disabled" id="validate_num" type="button" onclick="validate_num_click()">获取验证码</button>
+            </div>
+        </div>
+
+    </div>
+    <div class="no_validate"><span id='no_validatein'>收不到验证码？</span></div>
+    <button class="s_top_btn" disabled="disabled" onclick="loadpage('bank_card_info')" type="button">下一步</button>
+    </form>
+</div>
+
+</div>
+
+
+<div id='box2' style='display:none;'><!--
+<div class="top">
+    <span class="go_back_home">
+        <img src="images/back.png"/>
+    </span>
+    <span class="top_title">选择银行</span>
+    <span class="ic_close">取消</span>
+</div> -->
+<div class="neck">
+    <span>基金交易服务由松果互联网金融提供</span>
+    <span>
+        <div class="neck_img"><img src="../images/tel.png" /></div>
+        400-6677-333
+    </span>
+</div>
+<div class="inner">
+
+    <div class="info_title">目前支持以下快捷支付银行</div>
+    <ul class="bank_info">
+    
+        <li>
+            <span><img src="../images/bank_logo/gongshang.png" /></span>
+            <span class='selectBank'>工行银行<form action="bank_card_info.html" method="post"><input name='bankType' value='0001' type="hidden" /></form> </span>
+        </li>
+        <li>
+            <span><img src="../images/bank_logo/nongye.png" /></span>
+            <span class='selectBank'>农业银行<form action="bank_card_info.html" method="post"> <input name='bankType' value='0002' type="hidden" /></form></span>
+            
+        </li>
+        <li>
+            <span><img src="../images/bank_logo/jianshe.png" /></span>
+            <span class='selectBank'>建设银行<form action="bank_card_info.html" method="post"> <input name='bankType' value='0003' type="hidden" /></form></span>
+            
+        </li>
+        <li>
+            <span><img src="../images/bank_logo/zhongguo.png" /></span>
+            <span class='selectBank'>中国银行<form action="bank_card_info.html" method="post"> <input name='bankType' value='0004' type="hidden" /></form> </span>
+       
+        </li>
+        <li>
+            <span><img src="../images/bank_logo/zhaoshang.png" /></span>
+            <span class='selectBank'>招商银行 <form action="bank_card_info.html" method="post"><input name='bankType' value='0005' type="hidden" /></form> </span>
+           
+        </li>
+     
+        <li>
+            <span><img src="../images/bank_logo/xingye.png" /></span>
+            <span class='selectBank'>兴业银行 <form action="bank_card_info.html" method="post"> <input name='bankType' value='0006' type="hidden" /></form></span>
+           
+        </li>
+        <li>
+            <span><img src="../images/bank_logo/guangda.png" /></span>
+            <span class='selectBank'>光大银行 <form action="bank_card_info.html" method="post"><input name='bankType' value='0007' type="hidden" /></form></span>
+            
+        </li>
+        <li>
+            <span><img src="../images/bank_logo/zhongxing.png" /></span>
+            <span class='selectBank'>中信银行<form action="bank_card_info.html" method="post"><input name='bankType' value='0008' type="hidden" /></form> </span>
+            
+        </li>
+        <li>
+            <span><img src="../images/bank_logo/pufa.png" /></span>
+            <span class='selectBank'>浦发银行<form action="bank_card_info.html" method="post"> <input name='bankType' value='0009' type="hidden" /></form></span>
+           
+        </li>
+        <li>
+            <span><img src="../images/bank_logo/jiaotong.png" /></span>
+            <span class='selectBank'>交通银行<form action="bank_card_info.html" method="post"><input name='bankType' value='0010' type="hidden" /></form> </span>
+            
+        </li>
+        
+        
+            
+        <li>
+            <span><img src="../images/bank_logo/youchu.png" /></span>
+            <span class='selectBank'>邮储储蓄银行 <form action="bank_card_info.html" method="post"> <input name='bankType' value='0011' type="hidden" /></form></span>
+           
+        </li>
+        <li>
+            <span><img src="../images/bank_logo/pingan.png" /></span>
+            <span class='selectBank'>平安银行  <form action="bank_card_info.html" method="post"><input name='bankType' value='0012' type="hidden" /></form></span>
+           
+        </li>
+        <li>
+            <span><img src="../images/bank_logo/shanghai.png" /></span>
+            <span class='selectBank'>上海银行<form action="bank_card_info.html" method="post"><input name='bankType' value='0013' type="hidden" /> </form></span>
+            
+        </li>
+        <li>
+            <span><img src="../images/bank_logo/beijing.png" /></span>
+            <span class='selectBank'>北京银行  <form action="bank_card_info.html" method="post"><input name='bankType' value='0014' type="hidden" /></form></span>
+           
+        </li>
+        <li>
+            <span><img src="../images/bank_logo/guangfa.png" /></span>
+            <span class='selectBank'>广发银行 <form action="bank_card_info.html" method="post"><input name='bankType' value='0015' type="hidden" /></form></span>
+            
+        </li>
+        <li>
+            <span><img src="../images/bank_logo/minsheng.png" /></span>
+            <span class='selectBank'>民生银行 <form action="bank_card_info.html" method="post"><input name='bankType' value='0016' type="hidden" /></form></span>
+
+        </li>
+        <li class="clear"></li>
+    </ul>
+</div>
+
+</div>
+<div class="alert_validate_num" style="display: none;">
+    <div class="alert_validate_num_head">收不到验证码</div>
+    <div class="alert_validate_num_body">
+        <div>验证码发送至你的银行预留手机号</div>
+        <div>
+            1.&nbsp;请确认当前是否使用银行预留的手机号码<br/>
+            <div class="no"></div>
+            2.&nbsp;请检查短信是否被手机安全软件拦截<br/>
+            <div class="no"></div>
+            3.&nbsp;若预留号码已停用，请联系银行客服咨询<br/>
+            <div class="no"></div>
+            4.&nbsp;获取更多帮助，请拨打客服电话：0755-86010333<br/>
+        </div>
+    </div>
+    <div class="x"><img src="../images/guanbi.png" /> </div>
+</div>
+<div id="phone_num_info" class="phone_num_info" style="display: none">
+    <div class="phone_num_info_head">
+        手机号说明
+    </div>
+    <div class="phone_num_info_body">
+        此手机号为当前使用的银行卡预留手机号。如需修改，请到银行卡管理中心更换银行卡或前往银行柜台修改预留手机号码。获取更多帮助，请致电财富锦囊客服：
+        400-688-3506
+    </div>
+    <div class="phone_num_info_footer">
+        知道了
+    </div>
+</div>
+</body>
+</html>

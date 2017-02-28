@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:orientation="vertical"
+    tools:context=".activity.MainActivity">
+
+    <com.cfjn.javacf.widget.NavigationBar
+        android:id="@+id/nb_bar"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:padding="10dp" />
+
+    <RelativeLayout
+        android:id="@+id/d_rl"
+        android:layout_below="@+id/nb_bar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="10dp">
+
+        <ImageButton
+            android:padding="@dimen/space"
+            android:id="@+id/ib_up"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_toLeftOf="@+id/tv_date"
+            android:src="@drawable/ic_arrow_left_p"
+            android:background="@color/translucence" />
+
+        <TextView
+            android:id="@+id/tv_date"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:text="2015年7月"
+            android:textColor="@color/black"
+            android:textSize="20sp" />
+
+        <ImageButton
+            android:id="@+id/ib_down"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_toRightOf="@+id/tv_date"
+            android:src="@drawable/ic_arrow_right_p"
+            android:padding="@dimen/space"
+            android:background="@color/translucence" />
+    </RelativeLayout>
+
+    <LinearLayout
+        android:id="@+id/d_ll"
+        android:layout_below="@+id/d_rl"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="10dp">
+
+        <TextView
+            android:id="@+id/tv_total"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="总收入"
+            android:textColor="@color/black"
+            android:textSize="18sp" />
+
+        <TextView
+            android:id="@+id/tv_money"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="right"
+            android:text="0.00元"
+            android:textColor="@color/red"
+            android:textSize="18sp" />
+    </LinearLayout>
+    <ImageView
+        android:id="@+id/iv_loading"
+        android:layout_gravity="center"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:scaleType="fitXY"
+        android:src="@drawable/ic_red_loading"
+        android:layout_centerVertical="true"
+        android:layout_centerHorizontal="true" />
+    <TextView
+        android:gravity="center"
+        android:id="@+id/tv_nodata"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:textSize="18sp"
+        android:visibility="gone"
+        android:text="当月没有记录哦!"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true" />
+    <ScrollView
+        android:layout_below="@+id/d_ll"
+        android:id="@+id/scrollView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:scrollbars="none">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+            <TextView
+                android:id="@+id/detail_groupposition"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:visibility="gone"/>
+            <TextView
+                android:id="@+id/detail_childposition"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:visibility="gone"/>
+
+            <com.cfjn.javacf.widget.NoScrollExpandableList
+                android:id="@+id/expendList"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:childDivider="@color/transparent"
+                android:divider="@color/transparent"
+                android:dividerHeight="0dp" />
+        </LinearLayout>
+    </ScrollView>
+
+    <include layout="@layout/nonetwork"
+        android:id="@+id/rl_notNet" />
+    <RelativeLayout
+        android:id="@+id/rl_voice"
+        android:layout_width="65dp"
+        android:layout_height="65dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginBottom="40dp"
+        android:layout_marginTop="30dp"
+        android:layout_centerHorizontal="true"
+        android:layout_alignParentBottom="true"
+        android:background="@drawable/circletext">
+        <ImageView
+            android:id="@+id/b_del_voice"
+            android:src="@drawable/ic_voice"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:text="记一笔"
+            android:textColor="@color/red"
+            android:layout_below="@id/b_del_voice"
+            android:textSize="14sp" />
+    </RelativeLayout>
+</RelativeLayout>

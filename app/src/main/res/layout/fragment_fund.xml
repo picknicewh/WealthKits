@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="@color/red">
+
+        <ImageButton
+            android:id="@+id/ib_member_center"
+            android:layout_width="50dp"
+            android:layout_height="match_parent"
+            android:layout_centerVertical="true"
+            android:background="@color/transparent"
+            android:src="@drawable/ic_nav_hyzx"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:text="基金理财"
+            android:textColor="@color/white"
+            android:textSize="@dimen/dimens_x2sp"/>
+
+        <ImageButton
+            android:id="@+id/ib_search"
+            android:layout_width="50dp"
+            android:layout_height="match_parent"
+            android:layout_centerVertical="true"
+            android:layout_alignParentRight="true"
+            android:background="@color/transparent"
+            android:src="@drawable/ic_nav_search"/>
+    </RelativeLayout>
+
+    <in.srain.cube.views.ptr.PtrClassicFrameLayout
+        android:id="@+id/pcfl_pull_refresh"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:ptr_duration_to_close="200"
+        app:ptr_duration_to_close_header="1000"
+        app:ptr_keep_header_when_refresh="true"
+        app:ptr_pull_to_fresh="false"
+        app:ptr_ratio_of_header_height_to_refresh="1.2"
+        app:ptr_resistance="1.7">
+
+        <com.cfjn.javacf.widget.ScrollableLayout
+            android:id="@+id/sl_scroll"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+            <LinearLayout
+                android:animateLayoutChanges="true"
+                android:id="@+id/ll_advertisement"
+                android:layout_width="match_parent"
+                android:layout_height="200dp">
+
+                <com.cfjn.javacf.widget.BannerViewPager
+                    android:id="@+id/bvp_advertisement"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:flipInterval="5000"
+                    android:inAnimation="@anim/page_left_in"
+                    android:outAnimation="@anim/page_left_out"
+                    android:persistentDrawingCache="animation"
+                    android:background="@drawable/ic_ad_default" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:visibility="visible">
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal"
+                    android:background="@color/gray_x0.8"
+                    android:padding="@dimen/space">
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="2"
+                        android:text="基金名称"
+                        android:textSize="@dimen/dimens_x1.6sp"
+                        android:textColor="@color/gray_x0.5"
+                        android:layout_marginLeft="@dimen/dimens_x1dp"/>
+
+                    <View
+                        android:layout_width="0.5dp"
+                        android:layout_height="match_parent"
+                        android:background="@color/line_gray">
+                    </View>
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1.5"
+                        android:text="万份收益"
+                        android:textSize="@dimen/dimens_x1.6sp"
+                        android:textColor="@color/gray_x0.5"
+                        android:layout_marginLeft="@dimen/dimens_x1dp"/>
+
+                    <View
+                        android:layout_width="0.5dp"
+                        android:layout_height="match_parent"
+                        android:background="@color/light_gray">
+                    </View>
+
+                    <LinearLayout
+                        android:id="@+id/ll_sort"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1.5"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="七日年化"
+                            android:textSize="@dimen/dimens_x1.6sp"
+                            android:textColor="@color/gray_x0.5"
+                            android:layout_marginLeft="@dimen/dimens_x0.5dp"
+                            android:layout_marginRight="@dimen/dimens_x0.05dp"/>
+
+                        <ImageView
+                            android:id="@+id/iv_sort_type"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:src="@drawable/ic_arrow_top"
+                            android:layout_marginLeft="@dimen/dimens_x0.5dp"
+                            android:layout_gravity="center"/>
+                    </LinearLayout>
+                </LinearLayout>
+
+                <View
+                    android:layout_width="wrap_content"
+                    android:layout_height="0.5dp"
+                    android:background="@color/light_gray">
+                </View>
+
+                <in.srain.cube.views.loadmore.LoadMoreListViewContainer
+                    android:id="@+id/lmlvc_down_refresh"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                    <ListView
+                        android:focusable="false"
+                        android:id="@+id/lv_fund"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:divider="@null">
+                    </ListView>
+                </in.srain.cube.views.loadmore.LoadMoreListViewContainer>
+
+                <ImageView
+                    android:id="@+id/iv_loading"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:layout_gravity="center"
+                    android:scaleType="fitXY"
+                    android:src="@drawable/ic_red_loading">
+                </ImageView>
+            </LinearLayout>
+        </com.cfjn.javacf.widget.ScrollableLayout>
+    </in.srain.cube.views.ptr.PtrClassicFrameLayout>
+</LinearLayout>

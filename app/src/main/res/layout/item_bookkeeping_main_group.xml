@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:background="@color/gray_6"
+
+        android:paddingLeft="20dp"
+        android:paddingRight="20dp">
+        <TextView
+            android:id="@+id/b_mainadt_date"
+            android:layout_width="0dp"
+            android:layout_height="35dp"
+            android:layout_weight="2.1"
+            android:text="2015-12-27"
+            android:textColor="@color/gray_x0.5"
+            android:gravity="center_vertical" />
+
+        <TextView
+            android:id="@+id/b_mainadt_income"
+            android:layout_width="100dp"
+            android:layout_height="35dp"
+            android:singleLine="true"
+            android:text="收：0.00"
+            android:textColor="@color/green"
+            android:gravity="center_vertical|right" />
+        <TextView
+            android:id="@+id/b_mainadt_expend"
+            android:layout_width="100dp"
+            android:layout_height="35dp"
+            android:text="支：0.00"
+            android:singleLine="true"
+            android:textColor="@color/red"
+            android:gravity="center_vertical|right" />
+    </LinearLayout>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/line_gray"
+        android:background="@color/line_gray"/>
+</LinearLayout>

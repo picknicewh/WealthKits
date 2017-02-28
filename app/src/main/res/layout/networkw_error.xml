@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+    <RelativeLayout
+        android:id="@+id/b_det_nonet"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="visible">
+        <ImageView
+            android:layout_centerInParent="true"
+            android:id="@+id/img_notNetwork"
+            android:src="@drawable/ic_failed"
+            android:layout_gravity="center"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <ImageView
+            android:visibility="gone"
+            android:src="@drawable/ic_red_loading"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:id="@+id/image_footer"/>
+
+        <TextView
+            android:layout_marginTop="@dimen/space_x2.5"
+            android:id="@+id/tv_notNetwork"
+            android:textColor="@color/gray_x0.5"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/dimens_x1.6sp"
+            android:text="加载失败，点击屏幕重试！"
+            android:gravity="center"
+            android:layout_below="@+id/img_notNetwork"/>
+    </RelativeLayout>
+
+</LinearLayout>

@@ -1,0 +1,68 @@
+{
+    "banklists":[
+        {
+            "bankType" : "0001",
+            "bankName":"工行银行"
+        },
+        {
+            "bankType" : "0002",
+            "bankName":"农业银行"
+        },
+        {
+            "bankType" : "0003",
+            "bankName":"建设银行"
+        },
+        {
+            "bankType" : "0004",
+            "bankName":"中国银行"
+        },
+        {
+            "bankType" : "0005",
+            "bankName":"招商银行"
+        },
+        {
+            "bankType" : "0006",
+            "bankName":"兴业银行"
+        },
+        {
+            "bankType" : "0007",
+            "bankName":"光大银行"
+        },
+        {
+            "bankType" : "0008",
+            "bankName":"中信银行"
+        },
+        {
+            "bankType" : "0009",
+            "bankName":"浦发银行"
+        },
+        {
+            "bankType" : "0010",
+            "bankName":"交通银行"
+        },
+        {
+            "bankType" : "0011",
+            "bankName":"邮储储蓄银行"
+        },
+        {
+            "bankType" : "0012",
+            "bankName":"平安银行"
+        },
+        {
+            "bankType" : "0013",
+            "bankName":"上海银行"
+        },
+        {
+            "bankType" : "0014",
+            "bankName":"北京银行"
+        },
+        {
+            "bankType" : "0015",
+            "bankName":"广发银行"
+        },
+        {
+            "bankType" : "0016",
+            "bankName":"民生银行"
+        }
+    ]
+}

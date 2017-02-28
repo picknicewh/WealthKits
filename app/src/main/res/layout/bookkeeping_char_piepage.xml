@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:id="@+id/piepage">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+          <com.cfjn.javacf.widget.PieChartView
+           android:id="@+id/pie"
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:layout_centerVertical="true"
+           android:layout_centerHorizontal="true"/>
+        <RelativeLayout
+            android:layout_width="200dp"
+            android:layout_height="200dp"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:background="@drawable/ring_gray"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/pie_tv_type_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_above="@+id/center"
+                android:layout_centerHorizontal="true"
+                android:text="交通" />
+
+            <View
+                android:id="@+id/center"
+                android:layout_width="wrap_content"
+                android:layout_height="2dp"
+                android:layout_centerInParent="true" />
+            <TextView
+                android:id="@+id/pie_tv_type_persent"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/center"
+                android:layout_centerHorizontal="true"
+                android:text="60%" />
+        </RelativeLayout>
+    </RelativeLayout>
+
+    <LinearLayout
+        android:id="@+id/pie_detail"
+        android:layout_width="220dp"
+        android:layout_height="80dp"
+        android:layout_gravity="center"
+        android:background="@drawable/ic_dialog_bg"
+        android:orientation="horizontal">
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:paddingLeft="20dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:orientation="horizontal"
+                android:layout_marginTop="25dp"
+               >
+
+                <TextView
+                    android:id="@+id/pie_tv_type"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="公共交通"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/ts_large" />
+              <View
+                  android:layout_width="10dp"
+                  android:layout_height="10dp" />
+                <TextView
+                    android:id="@+id/pie_tv_percent"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="30%"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/ts_large" />
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/pie_tv_value"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="4000.00"
+                android:textColor="@color/green"
+                android:textSize="@dimen/ts_large" />
+        </LinearLayout>
+
+        <ImageButton
+            android:id="@+id/pie_ib_next"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+           android:layout_marginTop="40dp"
+            android:layout_marginRight="20dp"
+            android:background="@drawable/ic_arrow_right_p" />
+    </LinearLayout>
+</LinearLayout>

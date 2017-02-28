@@ -1,0 +1,673 @@
+<!DOCTYPE html>
+<html class="ui-mobile">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+            <meta name="apple-mobile-web-app-capable" content="yes" />
+            <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+            <title>
+            </title>
+            <link rel="stylesheet" href="../css/jquery.mobile-1.3.1.css"/>
+            <link rel="stylesheet" href="../css/shumi-mobile.css"/>
+            <link rel="stylesheet" href="../css/shumi-mobile2013.css" />
+            </head>
+    <body class="ui-mobile-viewport ui-overlay-c">
+        <!--头部2013_start-->
+        <header class="shumi-m-head">
+            <h2 class="t">添加银行卡</h2>
+            <div class="gotop" id="quit">取消</div>
+            <div class="backto" id="back">返回</div>
+        </header>
+        <!--头部2013_end-->
+        <div class="ui-loader ui-corner-all ui-body-a ui-loader-default" id="loading">
+            <span class="ui-icon ui-icon-loading"></span>
+        </div>
+        <div class="ui-page ui-body-c ui-page-active" tabindex="0"
+            id="set">
+            <div class="ui-content">
+                <div class="allcontent">
+                    <div data-cid="text3" class="codiqa-control">
+                        <h5>基金交易系统由<br>
+                            杭州数米基金销售有限公司 提供<a href="tel:4000766123"><span class="service-tel">4000-766-123</span></a></h5>
+                    </div>
+                    <div class="ui-info">
+                        <div class="ui-grid-a">
+                            <div id="bankcard_info">
+                                <label class="ui-input-text">新增银行</label>
+                                <div class="ui-select">
+                                    <div class="ui-btn ui-shadow ui-btn-corner-all ui-btn-icon-right ui-btn-hover-c">
+                                        <span class="ui-btn-inner ui-btn-corner-all"><span class="ui-btn-text" id="bankCardSelected">请选择新增银行
+                                        </span><span class="ui-icon-arrowdown"></span></span>
+                                        <select id="bankCards" name="bankCards" style="position: absolute"></select>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="ui-grid-a">
+                            <label class="ui-input-text">银行卡号</label>
+                            <input name="bankcard_acco" id="bankcard_acco" placeholder="请输入银行卡号" value="" class="ui-input-text ui-body-c ui-corner-all ui-shadow-inset">
+                                </div>
+                        
+                        <div class="ui-grid-a" id="select_province_div">
+                            <div id="province_info">
+                                <label class="ui-input-text">银行卡归属省份</label>
+                                <div class="ui-select">
+                                    <div class="ui-btn ui-shadow ui-btn-corner-all ui-btn-icon-right ui-btn-hover-c">
+                                        <span class="ui-btn-inner ui-btn-corner-all"><span class="ui-btn-text" id="provinceSelected">请选择银行卡归属省份
+                                        </span><span class="ui-icon-arrowdown"></span></span>
+                                        <select id="province" name="province" style="position: absolute">
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="ui-grid-a" id="select_city_div">
+                            <div id="city_info">
+                                <label class="ui-input-text">银行卡归属市</label>
+                                <div class="ui-select">
+                                    <div class="ui-btn ui-shadow ui-btn-corner-all ui-btn-icon-right ui-btn-hover-c">
+                                        <span class="ui-btn-inner ui-btn-corner-all"><span class="ui-btn-text" id="citySelected">请选择银行卡归属市
+                                        </span><span class="ui-icon-arrowdown"></span></span>
+                                        <select id="city" name="city" style="position: absolute">
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="ui-grid-a" id="select_bankBranch_div" style="display:none">
+                            <div id="branch_info">
+                                <label class="ui-input-text">银行卡支行网点</label>
+                                <div class="ui-select">
+                                    <div class="ui-btn ui-shadow ui-btn-corner-all ui-btn-icon-right ui-btn-hover-c">
+                                        <span class="ui-btn-inner ui-btn-corner-all"><span class="ui-btn-text" id="bankBranchSelected">请选择银行卡支行网点
+                                        </span><span class="ui-icon-arrowdown"></span></span>
+                                        <select id="bank_branch_network" name="bank_branch_network" style="position: absolute">
+                                        </select>
+                                    </div>
+                                    <p id="branch_notice" style="color: gray;font-size: 12px;">--</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="ui-grid-a" id="reserved_phone_div" style="display:none">
+                            <label class="ui-input-text">预留手机号</label>
+                            <input name="reserved_phone" id="reserved_phone" placeholder="请输入预留手机号码" type="text" value="" class="ui-input-text ui-body-c ui-corner-all ui-shadow-inset">
+                            <p style="color: gray;font-size: 12px;">请输入正确的预留手机号，错误的手机号将导致开户失败</p>
+                        </div>  
+                    </div>
+                    <div class="space10"></div>
+                    <div data-corners="true" data-shadow="true" data-iconshadow="true" data-iconsize="18" data-wrapperels="span" data-icon="null" data-iconpos="null" data-theme="c" class="ui-btn ui-btn-up-c ui-shadow ui-btn-corner-all ui-submit ui-btn-dianxin" aria-disabled="false" id="div_submit">
+                    	<div class="ui-btn-dianxinceng">
+                    	<span class="ui-btn-inner ui-btn-corner-all">
+                        	<span class="ui-btn-text">下一步</span>
+                        </span>
+                        <input id="btn_submit" type="button" data-cid="submitbutton1" class="codiqa-control ui-btn-hidden" aria-disabled="false">
+                        </div>
+                    </div>
+                    <div class="space10"></div>
+                </div>
+            </div>
+        </div>
+    </body>
+    <script type="text/javascript" src="../js/jquery-1.8.2.min.js"></script>
+    <script type="text/javascript" src="../js/shumi-mobile.js"></script>
+    <script type="text/javascript">
+        //全局变量[可绑定银行卡]
+        var bindableCards;
+        //请求状态
+        var loadBankCardFinished = true;
+        var loadProviceFinished = true;
+        //添加银行卡参数
+        var bindWay;
+	var bankSerial;
+	var bankCard;
+	var provinceCode;
+    	var cityCode;
+	var branchBankCode;
+	var bankmobile;
+	var capitalMode;
+        
+        $(document).ready(function(e){
+            //初始化事件
+            //绑定选择银行事件
+            $("#bankCards").change(function(){
+                $("#bankCardSelected").text($(this).children('option:selected').text());
+                if($(this).val()==-1){
+                    $("#reserved_phone_div").hide();
+                    $("#select_bankBranch_div").hide();
+                }else{
+                    var bankInfo = bindableCards[$(this).val()];
+                    //打款验证
+                    if(bankInfo.BindWay == 2){
+                        $("#reserved_phone_div").hide();
+                        bankmobile = "";
+                        if (bankInfo.BankSerial == "002") {
+                            //选择的为工行
+                            $("#select_bankBranch_div").hide();
+                            branchBankCode = "";
+                        }else{
+                            $("#select_bankBranch_div").show();
+                            if (bankInfo.BankSerial == "007") {
+                                //选择招行
+                                $("#branch_notice").text("请选择正确的支行网点，错误的支行信息将导致赎回无法及时到帐。如有疑问可咨询招行客服95555查询支行信息");
+                            }else if (bankInfo.BankSerial == "003") {
+                                //选择农行
+                                $("#branch_notice").text("请选择正确的支行网点，错误的支行信息将导致赎回无法及时到帐。如有疑问可咨询农行客服95599查询支行信息");
+                            }else{
+                                //其他银行
+                                $("#branch_notice").text("请选择正确的支行网点，错误的支行信息将导致赎回无法及时到帐");
+                            }
+                            var provinceCode = $("#province").val();
+                            var cityCode = $("#city").val();
+                            if (provinceCode!=null && cityCode!=null && provinceCode != -1 && cityCode != -1) {
+                                loadBankBranch(provinceCode,cityCode,bankInfo.BankSerial);    
+                            }
+                        }
+                    }
+                    //手机验证
+                    if(bankInfo.BindWay == 1){
+                        $("#select_bankBranch_div").hide();
+                        $("#reserved_phone_div").show();
+                    }
+                }
+            });
+            //绑定选择省份事件
+            $("#province").change(function(){
+                $("#provinceSelected").text($(this).children('option:selected').text());
+                $("#city").empty();
+                $("#citySelected").text("请选择银行卡归属市");
+                $("#bank_branch_network").empty();
+                $("#bankBranchSelected").text("请选择银行卡支行网点");
+                var provinceCode = $(this).val();
+                if(provinceCode != -1){
+                    loadCity(provinceCode);
+                }
+            });
+            //绑定选择城市事件
+            $("#city").change(function(){
+                $("#citySelected").text($(this).children('option:selected').text());
+                $("#bank_branch_network").empty();
+                $("#bankBranchSelected").text("请选择银行卡支行网点");
+                if($("#city").val() == -1){
+                    //do nothing
+                }else{
+                    //判断是否为打款验卡
+                    var currentBank = getCurrentSelectBank();
+                    if(currentBank.BindWay == 2){
+                        var currentProCode = $("#province").val();
+                        var currentCityCode = $("#city").val();
+                        loadBankBranch(currentProCode,currentCityCode,currentBank.BankSerial);
+                    }
+                }
+            });
+            //绑定选择支行事件
+            $("#bank_branch_network").change(function(){
+                $("#bankBranchSelected").text($(this).children('option:selected').text());
+            });
+            //绑定提交＋卡请求
+            $("#btn_submit").click(function(){
+                if(checkInputs()){
+                    showLoading();
+                    forbiddenSubmitBut();
+                    addNewTradeAccout();    
+                }
+            });
+            //初始化界面
+            if(sessionStorage.getItem('addBankcards.bankCard')&&sessionStorage.getItem("addBankcards.bankSerial")){
+                $("#bankcard_acco").val(sessionStorage.getItem('addBankcards.bankCard'));
+            }
+            if(sessionStorage.getItem('addBankcards.bankMobile')){
+                $("#reserved_phone").val(sessionStorage.getItem('addBankcards.bankMobile'));
+            }
+            //开始请求数据
+            loadBindableBankcards("1");
+            loadProvice();
+        });
+        
+        function setNecessaryData(json){
+            var data = toObject(json);
+	    sessionStorage.setItem("addBankcards.nextPage","addCardSuccess.html");
+        }
+        
+        //获取可绑定银行卡
+        function loadBindableBankcards(channel){
+            showLoading();
+            loadBankCardFinished = false;
+            var uri = 'trade_payment.getavailablebankcards';
+            var methodType = 'get';
+            var dataType = 'json';
+            var parameter = {channel:channel};
+            requestOpenApi(uri,methodType,dataType,parameter,
+                function(json){
+                    loadBankCardFinished = true;
+                    hideLoading();
+                    bindableCards = json;
+                    var bankCardsSelect = $("#bankCards");
+                    bankCardsSelect.empty();
+                    bankCardsSelect.append("<option value=" + -1 + ">请选择银行卡</option>");
+                    var bankSerial = sessionStorage.getItem('addBankcards.bankSerial');
+                    for(var i=0;i<bindableCards.length;i++){
+                        var bankInfo = bindableCards[i];
+                        if (bankSerial && bankSerial == bankInfo.BankSerial) {
+                            bankCardsSelect.append("<option value=" + i + " selected='selected'>" + bankInfo.BankName + "</option>");
+                            $("#bankCardSelected").text(bankInfo.BankName);
+                            //打款验证
+                            if(bankInfo.BindWay == 2){
+                                $("#reserved_phone_div").hide();
+                                bankmobile = "";
+                                if (bankInfo.BankSerial == "002") {
+                                    //选择的为工行
+                                    $("#select_bankBranch_div").hide();
+                                    branchBankCode = "";
+                                }else{
+                                    $("#select_bankBranch_div").show();
+                                    if (bankInfo.BankSerial == "007") {
+                                        //选择招行
+                                        $("#branch_notice").text("请选择正确的支行网点，错误的支行信息将导致赎回无法及时到帐。如有疑问可咨询招行客服95555查询支行信息");
+                                    }else if (bankInfo.BankSerial == "003") {
+                                        //选择农行
+                                        $("#branch_notice").text("请选择正确的支行网点，错误的支行信息将导致赎回无法及时到帐。如有疑问可咨询农行客服95599查询支行信息");
+                                    }else{
+                                        //其他银行
+                                        $("#branch_notice").text("请选择正确的支行网点，错误的支行信息将导致赎回无法及时到帐");
+                                    }
+                                    var provinceCode = $("#province").val();
+                                    var cityCode = $("#city").val();
+                                    if (provinceCode!=null && cityCode!=null && provinceCode != -1 && cityCode != -1) {
+                                        loadBankBranch(provinceCode,cityCode,bankInfo.BankSerial);    
+                                    }
+                                }
+                            }
+                            //手机验证
+                            if(bankInfo.BindWay == 1){
+                                 $("#select_bankBranch_div").hide();
+                                 $("#reserved_phone_div").show();
+                                 branchBankCode = "";
+                            }
+                            var currentProCode = $("#province").val();
+                            var currentCityCode = $("#city").val();
+                            if(currentProCode && currentCityCode){
+                                loadBankBranch(currentProCode,currentCityCode,bankInfo.BankSerial);    
+                            }
+                        }else{
+                            bankCardsSelect.append("<option value=" + i + ">" + bankInfo.BankName + "</option>");    
+                        }
+                    }
+                },
+                function(jqXHR, textStatus, errorThrown){
+                    loadBankCardFinished = true;
+                    hideLoading();
+                    restoreSubmitBut();
+                    if (!navigator.onLine) {
+                        alert('网络连接中断,请检查你的网络连接');
+                    }else{
+                        var errorResponse = eval("("+jqXHR.responseText+")");
+                       if (errorResponse.Code == 99999){
+                       loadURL('http://smbclient.localpage/maintain.html');
+                       return;
+                       }
+                        if (errorResponse.Code) {
+                            if (confirm("获取可绑定银行卡失败,[原因:"+errorResponse.Message+"],是否重新加载?")) {
+                                showLoading();
+                                loadBindableBankcards(channel);
+                            }
+                        }
+                    }
+                }
+            );
+        }
+        
+        //获取归属省份
+        function loadProvice(){
+            showLoading();
+            loadProviceFinished = false;
+            var uri = 'trade_common.getprovinces';
+            var methodType = 'get';
+            var dataType = 'json';
+            var parameter = undefined;
+            requestOpenApi(uri,methodType,dataType,parameter,
+                function(json){
+                    var provinceData = json;
+                    var provinceSelect = $("#province");
+                    provinceSelect.empty();
+                    provinceSelect.append("<option value=" + -1 + ">请选择省份</option>");
+                    var provinceCode = sessionStorage.getItem("addBankcards.provinceCode");
+                    $.each(provinceData,function(index, content){
+                        if(provinceCode && provinceCode == index){
+                            provinceSelect.append("<option value=" + index + " selected='selected'>" + content + "</option>");
+                            $("#provinceSelected").text(content);
+                            loadCity(index);
+                        }else{
+                            provinceSelect.append("<option value=" + index + ">" + content + "</option>");    
+                        }
+                    });
+                    loadProviceFinished = true;
+                    hideLoading();
+                },
+                function(jqXHR, textStatus, errorThrown){
+                    hideLoading();
+                    if (!navigator.onLine) {
+                        alert('网络连接中断,请检查你的网络连接');
+                    }else{
+                        var errorResponse = eval("("+jqXHR.responseText+")");
+                       if (errorResponse.Code == 99999){
+                       loadURL('http://smbclient.localpage/maintain.html');
+                       return;
+                       }
+                        if (errorResponse.Code) {
+                            if (confirm("获取省份失败,[原因:"+errorResponse.Message+"],是否重新加载?")) {
+                                showLoading();
+                                loadProvice();
+                            }
+                        }
+                    }
+                }
+            );
+        }
+        
+        //获取归属城市
+        function loadCity(provinceCode){
+            showLoading();
+            var uri = 'trade_common.getcities';
+            var methodType = 'get';
+            var dataType = 'json';
+            var parameter = {provinceCode:provinceCode};
+            requestOpenApi(uri,methodType,dataType,parameter,
+                function(json){
+                    var citySelect = $("#city");
+                    citySelect.empty();
+                    citySelect.append("<option value=" + -1 + ">请选择城市</option>");
+                    var cityCode = sessionStorage.getItem('addBankcards.cityCode');
+                    $.each(json,function(index, content){
+                        if(cityCode && cityCode == index){
+                            citySelect.append("<option value=" + index + " selected='selected'>" + content + "</option>");
+                            $("#citySelected").text(content);
+                            //判断是否为打款验卡
+                            var currentBank = getCurrentSelectBank();
+                            if(currentBank.BindWay == 2){
+                                var currentProCode = $("#province").val();
+                                var currentCityCode = $("#city").val();
+                                loadBankBranch(currentProCode,currentCityCode,currentBank.BankSerial);
+                            }
+                        }else{
+                            citySelect.append("<option value=" + index + ">" + content + "</option>");    
+                        }
+                    });
+                    hideLoading();
+                },
+                function(jqXHR, textStatus, errorThrown){
+                    hideLoading();
+                    if (!navigator.onLine) {
+                        alert('网络连接中断,请检查你的网络连接');
+                    }else{
+                        var errorResponse = eval("("+jqXHR.responseText+")");
+                       if (errorResponse.Code == 99999){
+                       loadURL('http://smbclient.localpage/maintain.html');
+                       return;
+                       }
+                        if (errorResponse.Code) {
+                            if (confirm("获取城市失败,[原因:"+errorResponse.Message+"],是否重新加载?")) {
+                                showLoading();
+                                loadCity(provinceCode);
+                            }
+                        }
+                    }
+                }
+            );
+        }
+        
+        //获取归属支行网点
+        function loadBankBranch(provinceCode,cityCode,bankSerial){
+            showLoading();
+            var uri = 'trade_payment.getbanksubbranchs';
+            var methodType = 'get';
+            var dataType = 'json';
+            var parameter = {
+                provinceCode:provinceCode,
+                cityCode:cityCode,
+                bankSerial:bankSerial
+            };
+            requestOpenApi(uri,methodType,dataType,parameter,
+                function(json){
+                    var bank_branch_networkSelect = $("#bank_branch_network");
+                    bank_branch_networkSelect.empty();
+                    bank_branch_networkSelect.append("<option value=" + -1 + ">请选择支行网点</option>");
+                    var branchBankCode = sessionStorage.getItem("addBankcards.branchBankCode");
+                    $.each(json,function(index, content){
+                        if(branchBankCode && branchBankCode == content.BranchCode){
+                            bank_branch_networkSelect.append("<option value=" + content.BranchCode + " selected='selected'>" + content.Name + "</option>");
+                            $("#bankBranchSelected").text(content.Name);
+                        }else{
+                            bank_branch_networkSelect.append("<option value=" + content.BranchCode + ">" + content.Name + "</option>");    
+                        }
+                    });
+                    hideLoading();
+                },
+                function(jqXHR, textStatus, errorThrown){
+                    hideLoading();
+                    if (!navigator.onLine) {
+                        alert('网络连接中断,请检查你的网络连接');
+                    }else{
+                        var errorResponse = eval("("+jqXHR.responseText+")");
+                       if (errorResponse.Code == 99999){
+                       loadURL('http://smbclient.localpage/maintain.html');
+                       return;
+                       }
+                        if (errorResponse.Code) {
+                            if (confirm("获取城市失败,[原因:"+errorResponse.Message+"],是否重新加载?")) {
+                                showLoading();
+                                loadBankBranch(provinceCode,cityCode,bankSerial);
+                            }
+                        }
+                    }
+                }
+            );
+        }
+        
+	//添加银行卡
+	function addNewTradeAccout() {
+	    var params = {
+		bindWay:bindWay,
+		bankSerial:bankSerial,
+		bankCard:bankCard,
+		provinceCode:provinceCode,
+		cityCode:cityCode,
+		branchBankCode:branchBankCode,
+		bankmobile:bankmobile,
+		capitalMode:capitalMode,
+		channel:'1'
+	    };
+	    requestOpenApi('trade_account.addaccount','post','json',params,
+		function(json){
+                    //查询签约结果
+                    querySignResult();
+		},
+		function(jqXHR, textStatus, errorThrown){
+                    hideLoading();
+                    restoreSubmitBut();
+                    if (!navigator.onLine) {
+                        alert('网络连接中断,请检查你的网络连接');
+                    }else{
+                        var errorResponse = eval("("+jqXHR.responseText+")");
+                       if (errorResponse.Code == 99999){
+                       loadURL('http://smbclient.localpage/maintain.html');
+                       return;
+                       }
+                        if (errorResponse.Code) {
+                            //记录错误反馈
+                            sessionStorage.setItem("error_message",errorResponse.Message);
+                            //跳转到失败页面
+                            loadURL('http://smbclient.localpage/fail.html');
+                        }
+                    }
+                }
+	    );
+	}
+        
+        //查询汇付签约状态
+        function querySignResult(){
+            var uri = 'trade_account.getsignresult';
+            var methodType = 'post';
+            var dataType = 'json';
+            var parameter = {
+                bankcard:bankCard
+            };
+            requestOpenApi(uri,methodType,dataType,parameter,
+                function(json){
+                    hideLoading();
+                    if(json.Status == 200){
+                        //签约成功
+                        restoreSubmitBut();
+                        // 触发加卡成功事件
+                        var params = {
+                            bankSerial:bankSerial,
+                            bankCard:bankCard
+                        };
+                        // 通知Native
+                        smbEvent('addBankCardSuccess',params,function(){});    
+                        cleanPageInfo();
+                        var nextPage = sessionStorage.getItem("addBankcards.nextPage");
+                        if(nextPage){
+                            loadURL('http://smbclient.localpage/'+nextPage);
+                        }else{
+                            loadURL('http://smbclient.localpage/addCardSuccess.html');
+                        }
+                    }else{
+                        if(json.Status == 1){
+                            hideLoading();
+                            //签约失败
+                            restoreSubmitBut();
+                            //记录错误反馈
+                            sessionStorage.setItem("error_message",json.Message);
+                            //跳转到失败页面
+                            loadURL('http://smbclient.localpage/fail.html');
+                        }else{
+                            //递归查询
+                            showLoading();
+                            querySignResult();
+                        }
+                    }
+                },
+                function(jqXHR, textStatus, errorThrown){
+                    hideLoading();
+                    restoreSubmitBut();
+                    if (!navigator.onLine) {
+                        alert('网络连接中断,请检查你的网络连接');
+                    }else{
+                        var errorResponse = eval("("+jqXHR.responseText+")");
+                       if (errorResponse.Code == 99999){
+                       loadURL('http://smbclient.localpage/maintain.html');
+                       return;
+                       }
+                        if (errorResponse.Code) {
+                            //记录错误反馈
+                            sessionStorage.setItem("error_message",errorResponse.Message);
+                            //跳转到失败页面
+                            loadURL('http://smbclient.localpage/fail.html');
+                        }
+                    }
+                }
+            );
+        }
+        
+        function getCurrentSelectBank(){
+            return bindableCards[$("#bankCards").val()];
+        }
+        
+        //保存页面数据
+        function savePageInfo(){
+            var currentBank = getCurrentSelectBank();
+            sessionStorage.setItem("addBankcards.bankSerial",currentBank.BankSerial);
+            sessionStorage.setItem("addBankcards.provinceCode",$("#province").val());
+            sessionStorage.setItem("addBankcards.cityCode",$("#city").val());
+            sessionStorage.setItem("addBankcards.branchBankCode",$("#bank_branch_network").val());
+            sessionStorage.setItem("addBankcards.bankName",$("#bankCards").find("option:selected").text());
+            sessionStorage.setItem("addBankcards.bankCard",$("#bankcard_acco").val());
+            sessionStorage.setItem("addBankcards.bankMobile",$("#reserved_phone").val());
+        }
+    
+        //清空页面数据
+        function cleanPageInfo(){
+            sessionStorage.removeItem("addBankcards.bankSerial");
+            sessionStorage.removeItem("addBankcards.provinceCode");
+            sessionStorage.removeItem("addBankcards.cityCode");
+            sessionStorage.removeItem("addBankcards.branchBankCode");
+            sessionStorage.removeItem("addBankcards.bankMobile");
+            $("#bankcard_acco").val("");
+            $("#reserved_phone").val("");
+        }
+        
+        function checkInputs(){
+            if(isNaN(parseInt($("#bankcard_acco").val()))){
+                alert('您输入的卡号有误，请输入卡号。');
+                return false;
+            }
+            if(parseInt($("#bankCards").val()) == -1) {
+                alert('请选择新增银行。');
+                return false;
+            }
+            if(parseInt($("#province").val()) == -1){
+                alert('请选择银行卡归属省份。');
+                return false;
+            }
+            if(parseInt($("#city").val()) == -1) {
+                alert('请选择银行卡归属市。');
+                return false;
+            }
+            var currentBank = getCurrentSelectBank();
+            bindWay = currentBank.BindWay;
+            bankSerial = currentBank.BankSerial;
+            capitalMode = currentBank.CapitalMode;
+            provinceCode = $("#province").val();
+            cityCode = $("#city").val();
+	    if(bindWay == 2){
+                bankmobile = "";
+                if (bankSerial == "002") {
+                    branchBankCode = "";
+                }else{
+                    if(parseInt($("#bank_branch_network").val()) == -1) {
+                        alert('请选择银行卡支行网点。');
+                        return false;
+                    }
+                    branchBankCode = $("#bank_branch_network").val();    
+                }
+            }else{
+                if(isNaN(parseInt($("#reserved_phone").val()))){
+                    alert('请输入正确的手机号码。');
+                    return false;
+                }
+                branchBankCode = "";
+                bankmobile = $("#reserved_phone").val();
+            }
+            bankCard = $("#bankcard_acco").val();
+            //保存数据
+            savePageInfo();
+            return true;
+        }
+        
+        function showLoading(){
+            $("#loading").show();
+        }
+        
+        function hideLoading(){
+            if(loadBankCardFinished&&loadProviceFinished){
+                $("#loading").hide();
+            }
+        }
+        
+        //禁用提交按钮
+        function forbiddenSubmitBut() {
+            disable_inputs("btn_submit",true);
+            $("#div_submit").addClass("ui-disabled");
+        }
+        
+        //恢复提交按钮
+        function restoreSubmitBut() {
+            disable_inputs("btn_submit",false);
+            $("#div_submit").removeClass("ui-disabled");
+        }
+    </script>
+</html>

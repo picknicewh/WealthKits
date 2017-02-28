@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <Button
+        android:id="@+id/btn_style"
+        android:layout_margin="@dimen/dimens_x1dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="下一题"
+        android:textSize="@dimen/space_x2"
+        android:textColor="@color/white"
+        android:background="@drawable/s_rounded_rectangle_red"
+        />
+</LinearLayout>

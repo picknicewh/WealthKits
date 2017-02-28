@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <com.cfjn.javacf.widget.NavigationBar
+        android:id="@+id/bt_navigationbar"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:padding="10dp"/>
+
+    <RelativeLayout
+        android:id="@+id/bt_rl"
+        android:layout_below="@+id/bt_navigationbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/gray_6"
+        android:padding="10dp">
+        <ImageButton
+            android:id="@+id/im_btleft"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="30px"
+            android:background="@drawable/ic_arrow_left_p"
+            android:layout_centerVertical="true"
+            android:layout_toLeftOf="@+id/tv_btdate"/>
+        <TextView
+            android:id="@+id/tv_btdate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="2015年07月"
+            android:textColor="@color/black"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:textSize="20sp" />
+        <ImageButton
+            android:id="@+id/im_btright"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="30px"
+            android:background="@drawable/ic_arrow_right_p"
+            android:paddingLeft="15px"
+            android:layout_centerVertical="true"
+            android:layout_toRightOf="@+id/tv_btdate"/>
+    </RelativeLayout>
+    <LinearLayout
+        android:layout_below="@+id/bt_rl"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:id="@+id/ll_totle_budge">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingRight="10dp"
+        android:paddingLeft="20dp"
+        android:background="@color/gray_6">
+        <TextView
+            android:id="@+id/tv_btprogress_label"
+            android:layout_width="55dp"
+            android:layout_height="30dp"
+            android:gravity="center_vertical"
+            android:text="总预算"
+            android:textColor="@color/black"
+            android:textSize="16sp" />
+        <View
+            android:id="@+id/v_budget_progress_bg"
+            android:layout_width="280dp"
+            android:layout_height="10dp"
+            android:background="@color/line_gray"
+            android:layout_centerVertical="true"
+            android:layout_toRightOf="@+id/tv_btprogress_label" />
+        <View
+            android:id="@+id/v_budget_progress"
+            android:layout_width="0dp"
+            android:layout_height="10dp"
+            android:background="@color/red"
+            android:layout_centerVertical="true"
+            android:layout_toRightOf="@+id/tv_btprogress_label"
+          />
+    </RelativeLayout>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:paddingRight="10dp"
+        android:background="@color/gray_6"
+        android:paddingBottom="@dimen/space"
+        android:paddingLeft="20dp">
+        <TextView
+            android:id="@+id/tv_budget_totlevalue"
+            android:layout_width="55dp"
+            android:layout_height="wrap_content"
+            android:singleLine="true"
+            android:text="0.00"
+            android:textSize="@dimen/ts_medium"
+            />
+        <TextView
+            android:id="@+id/tv_lablevalue"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="余额"
+            android:textSize="@dimen/ts_medium"
+            android:layout_toRightOf="@+id/tv_budget_totlevalue"
+            android:paddingRight="20dp"/>
+        <TextView
+            android:id="@+id/tv_budget_totlesurp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="0.00"
+            android:textSize="@dimen/ts_medium"
+            android:layout_toRightOf="@+id/tv_lablevalue" />
+    </RelativeLayout>
+    </LinearLayout>
+    <ImageView
+        android:id="@+id/b_but_loadingview"
+        android:layout_gravity="center"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:scaleType="fitXY"
+        android:src="@drawable/ic_red_loading"
+        android:layout_centerVertical="true"
+        android:layout_centerHorizontal="true" />
+    <include layout="@layout/nonetwork"
+        android:id="@+id/b_but_nonet" />
+    <ListView
+        android:layout_below="@+id/ll_totle_budge"
+        android:id="@+id/b_budge_list"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+</RelativeLayout>

@@ -1,0 +1,693 @@
+<!DOCTYPE html>
+<html class="ui-mobile">
+    <head>
+        <meta charset="utf-8">
+            <meta name="viewport" content="width=device-width, initial-scale=1">
+            <title>基金申购</title>
+            <!--CSS代码-->
+            <link rel="stylesheet" href="../css/jquery.mobile-1.3.1.css" />
+            <link rel="stylesheet" href="../css/shumi-mobile.css" />
+            <link rel="stylesheet" href="../css/shumi-mobile2013.css" />
+    </head>
+    <body class="ui-mobile-viewport ui-overlay-c">
+    	<!--头部2013_start-->
+        <header class="shumi-m-head">
+            <h2 class="t">认/申购基金</h2>
+            <div class="gotop" id="quit">取消</div>
+            <div class="backto" id="back">返回</div>
+        </header>
+        <!--头部2013_end-->
+        <div class="ui-loader ui-corner-all ui-body-a ui-loader-default" id="loading">
+            <span class="ui-icon ui-icon-loading"></span>
+        </div>
+        <div class="ui-page ui-body-c ui-page-active" tabindex="0" id="set">
+            <!-- Page1 -->
+            <div class="ui-content">
+                <div class="allcontent">
+                    <div id="normalNotice" data-cid="text3" class="codiqa-control">
+                        <h5>
+                            基金交易系统由<br>
+                            杭州数米基金销售有限公司 提供 <a href="tel:4000766123"><span class="service-tel">4000-766-123</span></a>
+                        </h5>
+                    </div>
+                    <div id="specialNotice" class="ui-info-logo">
+                        <div class="space20"></div>
+                        <div class="tongbanjie-phone">
+                            <p class="left">基金交易服务由数米基金网提供</p>
+                            <p>
+                        	<span class="l">数米基金网基金销售业务资格证号：</span>
+                                <span class="r">000000305</span>
+                            </p>
+                            <p>
+                        	<span class="l">客服电话：</span>
+                                <a href="tel:4000766123" class="r">4000-766-123</a>
+                            </p>
+                        </div>
+                    </div>
+                    <div class="space10"></div>
+                    <div class="ui-info">
+                        <div class="space10"></div>
+                        <div class="ui-grid-a">
+                            <label class="leftlabel" id="purchase_action">
+                                基金</label>
+                            <label class="rightlabel" id="fund">
+                            </label>
+                        </div>
+                    </div>
+                    <div class="space10">
+                    </div>
+                    <div class="ui-info">
+                        <div class="space10">
+                        </div>
+                        <div class="ui-grid-a">
+                            <label class="leftlabel" for="paysum" id="sum_type">认/申购金额</label>
+                            <input name="paysum" id="paysum" placeholder="" value="" class="ui-number" type="text" onfocus="this.type='number';" onblur="this.type='text';" style="color: red;">
+                            <label class="rightlabel">元</label>
+                        </div>
+                        <div class="ui-grid-a" id="div_charge">
+                            <label class="leftlabel">手续费</label>
+                            <label class="rightlabel" id="poudage"></label>
+                        </div>
+                    </div>
+                    <div class="ui-grid-a">
+                        <div class="space10"></div>
+                        <div id="bankcard_info">
+                            <label class="leftlabel" for="bankCards">银行卡</label>
+                            <div class="ui-select">
+                                <div class="ui-btn ui-shadow ui-btn-corner-all ui-btn-icon-right ui-btn-hover-c">
+                                    <span class="ui-btn-inner ui-btn-corner-all"><span class="ui-btn-text" id="bankCardSelected">
+                                    </span><span class="ui-icon-arrowdown"></span></span>
+                                    <select id="bankCards" name="bankCards" style="position: absolute">
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                    <div class="space10"></div>
+                    </div>
+                    <div style="text-align:center;">系统将默认为您的风险承受能力为保守型</div>
+                    <div class="space10"></div>
+                    <div id="risk_tip" data-role="fieldcontain" style="display:none;">
+                        <fieldset data-role="controlgroup" data-type="vertical">
+                            <input id="riskbox" name="" type="checkbox">
+                            <label for="riskbox" id="risk_message">基金<label id="fund_risk_level">有风险</label>，本人同意并接受超出本人风险承受能力<label id="personal_risk_level"></label>的投资行为</label>
+                        </fieldset>
+                        <div class="space10"></div>
+                    </div>
+                    <div aria-disabled="false" class="ui-btn ui-shadow ui-btn-corner-all ui-fullsize ui-btn-block ui-submit ui-btn-up-c ui-btn-dianxin" name="btn" id="div_submit">
+                        <div class="ui-btn-dianxinceng">
+                        <span class="ui-btn-inner ui-btn-corner-all"><span class="ui-btn-text">下一步</span></span>
+                        <button aria-disabled="false" class="ui-btn-hidden" type="submit" id="btn_submit"></button>
+                        </div>
+                    </div>
+                    <div class="space10"></div>
+                </div>
+            </div>
+        </div>
+        <!--引入jquery代码-->
+        <script type="text/javascript" src="../js/jquery-1.8.2.min.js"></script>
+        <script type="text/javascript" src="../js/shumi-mobile.js"></script>
+        <script type="text/javascript">
+            var getPurchaseLimitRequestFinished = true;//判断获取申购限制请求是否完成
+            var getUserInfoRequestFinished = true;//判断获取申购限制请求是否完成
+            var getPurchaseFeeRequestFinished = true;//判断获取申购费用请求是否完成
+            var hasAuthorised;//用户是否已经授权
+            var minPurchase;//最低申购金额
+            var maxPurchase;//最大申购金额
+            //记录购买费率
+            var fees;
+            //记录用户绑定的银行卡
+            var bankCards;
+            $(document).ready(function(){
+                initPage();
+                //金额输入框失去焦点->查询费率
+                $("#paysum").blur(function(){
+                    var paysum = parseFloat($("#paysum").val());
+                    if(isNaN(paysum)||paysum == 0){
+                        $("#paysum").val("");
+                        return;
+                    }
+                    if(hasAuthorised){
+                        showLoading();
+                        getPurchaseFeeRequestFinished = false;
+                        var buyAction = sessionStorage.getItem('operAction');
+                        if(buyAction == 'P'){
+                            //获取申购费率
+                            getPurchaseFundFees();    
+                        }
+                        if(buyAction == 'S'){
+                            //获取认购费率
+                            getSubscribeFundFees();
+                        }
+                    }
+                });
+                
+                $("#btn_submit").click(function(){
+                    if(checkInputs()){
+                        sessionStorage.setItem('doPurchase.paySum',$("#paysum").val());
+                        if(hasAuthorised){
+                            var curBank = bankCards[parseInt($("#bankCards").val())];
+                            sessionStorage.setItem('doPurchase.tradeAcco',curBank.TradeAccount);
+                            sessionStorage.setItem('doPurchase.bankName',curBank.BankName);
+                            sessionStorage.setItem('doPurchase.bankCard',curBank.No);
+                            sessionStorage.setItem('dopurchase.bankSerial',curBank.BankSerial);
+                            sessionStorage.setItem('doPurchase.poudage',$("#poudage").text());
+                            var useTempPassword = sessionStorage.getItem('temporary_trade_password');
+                            if (useTempPassword == "1") {
+                                // 使用临时密码交易,跳转设置交易密码
+                                sessionStorage.setItem("setTradePassword.nextPage",'confirmBuyInfo.html');
+                                loadURL('http://smbclient.localpage/setTradePassword.html');
+                            }else{
+                                loadURL('http://smbclient.localpage/confirmBuyInfo.html');    
+                            }    
+                        }else{
+                            loadURL('http://smbclient.localpage/authentication.html');
+                        }
+                    } 
+                });
+                $("#bankCards").change(function(){
+                    var curBank = bankCards[parseInt($("#bankCards").val())];
+                    if(fees){
+                        feeDisplay();    
+                    }
+                    $("#bankCardSelected").text(bankCardDisplay(curBank.BankName,showLost4Num(curBank.No),curBank.IsVaild)); 
+                });
+            });
+            
+            // 设置必要参数
+            function setNecessaryData(json){
+                var data = toObject(json);
+                sessionStorage.setItem('operAction',data.buyAction);
+                sessionStorage.setItem('doPurchase.fundCode',data.fundCode);
+                sessionStorage.setItem('doPurchase.fundName',data.fundName);
+                sessionStorage.setItem('doPurchase.fundType',data.fundType);
+                sessionStorage.setItem('doPurchase.fundRiskLevel',data.fundRiskLevel);
+                sessionStorage.setItem('doPurchase.shareType',data.shareType);
+                if(!initPage()){
+                    alert("无法获取基金数据");
+                }
+            }
+            
+            //获取用户开户信息
+            function getUserInfo(){
+                requestOpenApi('trade_account.getaccount','get','json',undefined,
+                    function(json){
+                        getUserInfoRequestFinished = true;
+                        hideLoading();
+                        //根据用户风险承受能力提示风险
+                        refreshRiskLevel();
+                        if(json.TempTradePassword){
+                            sessionStorage.setItem('temporary_trade_password','1');
+                        }else{
+                            sessionStorage.setItem('temporary_trade_password','0');
+                        }
+                        var openStatus = json.Status;
+                        if(openStatus == 1){
+                            //开户已绑卡
+                            //获取用户银行卡列表
+                            showLoading();
+                            getUserBindedCards();
+                        }
+                        if(openStatus == -1){
+                            //开户未绑卡
+                            //提醒用户去绑卡
+                            sessionStorage.setItem("addBankcards.nextPage","doPurchase.html");
+                            loadURL('http://smbclient.localpage/addBankcards.html');
+                        }
+                    },
+                    function(jqXHR, textStatus, errorThrown){
+                        getUserInfoRequestFinished = true;
+                        hideLoading();
+                        if (!navigator.onLine) {
+                            alert('网络连接中断,请检查你的网络连接');
+                        }else{
+                            var errorResponse = eval("("+jqXHR.responseText+")");
+                       if (errorResponse.Code == 99999){
+                       loadURL('http://smbclient.localpage/maintain.html');
+                       return;
+                       }
+                            if (errorResponse.Code) {
+                                //记录错误反馈
+                                sessionStorage.setItem("error_message",errorResponse.Message);
+                                //跳转到失败页面
+                                loadURL('http://smbclient.localpage/fail.html');
+                            }
+                        }
+                    }
+                );    
+            }
+            
+            //获取用户绑定的银行卡
+            function getUserBindedCards(){
+                requestOpenApi('trade_payment.getbindbankcards','get','json',undefined,
+                    function(json){
+                        hideLoading();
+                        bankCards = json;
+                        if(bankCards.length == 0){
+                            sessionStorage.setItem("addBankcards.nextPage","doPurchase.html");
+                            loadURL('http://smbclient.localpage/addBankcards.html');
+                            return;
+                        }
+                        //显示用户的银行卡
+                        var selectedItemIdx = 0;
+                        var itemidx = 0;
+                        var select = $("#bankCards");
+                        select.empty();
+                        $(bankCards).each(function(){
+                            // 0:正常；1:新开户；2:账号登记；5:正在销户；6:销户；A:挂失；D:冻结；F:开户失败；G:冻结且挂失；
+                            if(this.Status == '0'){
+                                //正常卡
+                                var bankName = sessionStorage.getItem('doPurchase.bankName');
+                                if(bankName && bankName == this.BankName){
+                                    selectedItemIdx = itemidx;
+                                    select.append("<option value=" + itemidx + " selected='selected'>" + bankCardDisplay(this.BankName, showLost4Num(this.No), this.IsVaild) + "</option>");
+                                }else{
+                                    select.append("<option value=" + itemidx + ">" + bankCardDisplay(this.BankName, showLost4Num(this.No), this.IsVaild) + "</option>");    
+                                }
+                            }       
+                            ++itemidx;
+                        });
+                        if (bankCards.length > 0) {
+                            $("#bankCardSelected").text(bankCardDisplay(bankCards[selectedItemIdx].BankName,showLost4Num(bankCards[selectedItemIdx].No),bankCards[selectedItemIdx].IsVaild));    
+                        }
+                        $("#bankcard_info").show();
+                    },
+                    function(jqXHR, textStatus, errorThrown){
+                        hideLoading();
+                        if (!navigator.onLine) {
+                            alert('网络连接中断,请检查你的网络连接');
+                        }else{
+                            var errorResponse = eval("("+jqXHR.responseText+")");
+                       if (errorResponse.Code == 99999){
+                       loadURL('http://smbclient.localpage/maintain.html');
+                       return;
+                       }
+                            if (errorResponse.Code) {
+                                //记录错误反馈
+                                sessionStorage.setItem("error_message",errorResponse.Message);
+                                //跳转到失败页面
+                                loadURL('http://smbclient.localpage/fail.html');
+                            }
+                        }
+                    }
+                );    
+            }
+            
+            //获取用户申购基金费用
+            function getPurchaseFundFees() {
+                var purchaseAmount = $("#paysum").val();
+                var params = {
+                    fundCode:sessionStorage.getItem('doPurchase.fundCode'),
+                    shareType:sessionStorage.getItem('doPurchase.shareType'),
+                    amount:purchaseAmount
+                };
+                requestOpenApi('trade_common.getpurchasefare','get','json',params,
+                    function(json){
+                        getPurchaseFeeRequestFinished = true;
+                        hideLoading();
+                        fees = json;
+                        //显示费率
+                        feeDisplay();
+                    },
+                    function(jqXHR, textStatus, errorThrown){
+                        getPurchaseFeeRequestFinished = true;
+                        hideLoading();
+                        if (!navigator.onLine) {
+                            alert('网络连接中断,请检查你的网络连接');
+                        }else{
+                            var errorResponse = eval("("+jqXHR.responseText+")");
+                       if (errorResponse.Code == 99999){
+                       loadURL('http://smbclient.localpage/maintain.html');
+                       return;
+                       }
+                            if (errorResponse.Code) {
+                                //记录错误反馈
+                                sessionStorage.setItem("error_message",errorResponse.Message);
+                                //跳转到失败页面
+                                loadURL('http://smbclient.localpage/fail.html');
+                            }
+                        }
+                    }
+                );
+            }
+            
+            //获取认购费率
+            function getSubscribeFundFees() {
+                var purchaseAmount = $("#paysum").val();
+                var params = {
+                    fundCode:sessionStorage.getItem('doPurchase.fundCode'),
+                    shareType:sessionStorage.getItem('doPurchase.shareType'),
+                    amount:purchaseAmount
+                };
+                requestOpenApi('trade_common.getsubscribefare','get','json',params,
+                    function(json){
+                        getPurchaseFeeRequestFinished = true;
+                        hideLoading();
+                        fees = json;
+                        //显示费率
+                        feeDisplay();
+                    },
+                    function(jqXHR, textStatus, errorThrown){
+                        getPurchaseFeeRequestFinished = true;
+                        hideLoading();
+                        if (!navigator.onLine) {
+                            alert('网络连接中断,请检查你的网络连接');
+                        }else{
+                            var errorResponse = eval("("+jqXHR.responseText+")");
+                       if (errorResponse.Code == 99999){
+                       loadURL('http://smbclient.localpage/maintain.html');
+                       return;
+                       }
+                            if (errorResponse.Code) {
+                                //记录错误反馈
+                                sessionStorage.setItem("error_message",errorResponse.Message);
+                                //跳转到失败页面
+                                loadURL('http://smbclient.localpage/fail.html');
+                            }
+                        }
+                    }
+                );
+            }
+            
+            //获取基金限制
+            function getFundPurchaseLimits(fundCode){
+                var params = {
+                        fundCode:fundCode
+                    };
+                requestOpenApi('trade_common.getavailablefund','get','json',params,
+                    function(json){
+                        getPurchaseLimitRequestFinished = true;
+                        hideLoading();
+                        if(sessionStorage.getItem('operAction') == 'P'){
+                            maxPurchase = json.PurchaseLimitMax;
+                            minPurchase = json.PurchaseLimitMin;
+                        }else{
+                            maxPurchase = json.SubscribeLimitMax;
+                            minPurchase = json.SubscribeLimitMin;
+                        }
+                        //显示申购限制
+                        if(minPurchase == 0){
+                            minPurchase = 1000;
+                            $("#paysum").attr("placeholder","≥"+minPurchase);
+                        }else{
+                            $("#paysum").attr("placeholder","≥"+minPurchase);    
+                        }
+                    },
+                    function(jqXHR, textStatus, errorThrown){
+                        getPurchaseLimitRequestFinished = true;
+                        hideLoading();
+                        if (!navigator.onLine) {
+                            alert('网络连接中断,请检查你的网络连接'); 
+                        }else{
+                            var errorResponse = eval("("+jqXHR.responseText+")");
+                       if (errorResponse.Code == 99999){
+                       loadURL('http://smbclient.localpage/maintain.html');
+                       return;
+                       }
+                            if (errorResponse.Code) {
+                                //记录错误反馈
+                                sessionStorage.setItem("error_message",errorResponse.Message);
+                                //跳转到失败页面
+                                loadURL('http://smbclient.localpage/fail.html');
+                            }
+                        }
+                    }
+                );
+            }
+            
+            //初始化界面
+            function initPage(){
+                $("#bankcard_info").hide();
+                $("#risk_tip").hide();
+                var curFee = sessionStorage.getItem('doPurchase.poudage');
+                if(curFee){
+                    $("#div_charge").show();
+                    if(parseFloat(curFee) > 0){
+                        $("#poudage").text(curFee);
+                    }else{
+                        $("#poudage").text('免手续费');   
+                    }
+                }else{
+                    $("#div_charge").hide();
+                }
+                //初始化界面
+                var buyAction = sessionStorage.getItem('operAction');
+                if(buyAction){
+                    if(buyAction == 'P'){
+                        $("#page_title").text('申购基金');
+                        $("#sum_type").text('申购金额');
+                    }
+                    if(buyAction == 'S'){
+                        $("#page_title").text('认购基金');
+                        $("#sum_type").text('认购金额');
+                    }
+                }
+                var fundCode = sessionStorage.getItem('doPurchase.fundCode');
+                var fundName = sessionStorage.getItem('doPurchase.fundName');
+                if(fundCode && fundName) {
+                    $("#fund").text(fundCode+' '+fundName);
+                    var paysum = sessionStorage.getItem('doPurchase.paySum');
+                    if(paysum){
+                        $("#paysum").val(paysum);
+                    }
+                    //查看用户是否已经授权
+                    smbClient('whetherAuthorized','POST',undefined,
+                        function(json){
+                            if(!json.isAuthorized || json.isAuthorized != "1"){
+                                //未授权
+                                hasAuthorised = false;
+                                //开启公司关联提示
+                                $("#specialNotice").show();
+                                $("#normalNotice").hide();
+                                //隐藏银行卡选择框、费率框
+                                $("#bankcard_info").hide();
+                                $("#div_charge").hide();
+                                getUserInfoRequestFinished = true;
+                            }else{
+                                //已授权
+                                hasAuthorised = true;
+                                //关闭公司关联提示
+                                $("#specialNotice").hide();
+                                $("#normalNotice").show();
+                                //获取用户开户信息
+                                showLoading();
+                                getUserInfoRequestFinished = false;
+                                getUserInfo();
+                            }
+                        },
+                        function(){}
+                    );
+                    //获取申购限制
+                    showLoading();
+                    getPurchaseLimitRequestFinished = false;
+                    getFundPurchaseLimits(fundCode);
+                    return true;
+                }else{
+                    return false;
+                }
+            }
+            
+            //展示风险
+            function refreshRiskLevel() {
+                //0:低风险 1:中风险 2:高风险
+                var fundRiskLevel = sessionStorage.getItem('doPurchase.fundRiskLevel');
+                fundRiskLevel = fundRiskLevelFromMark(fundRiskLevel);
+                var personalRiskLevel = 'L';
+                // 个人默认是保守型
+                if (!personalRiskLevel) {
+                    personalRiskLevel = 'L';
+                }
+                if (!isRiskExceed(fundRiskLevel, personalRiskLevel)) {
+                    $('#risk_tip').hide();
+                } else {
+                    $('#risk_tip').show();
+                }
+                switch (fundRiskLevel) {
+                    case 'H':
+                    case 'h':
+                    default:
+                    $('#fund_risk_level').text('风险为高风险');
+                    break;
+                    
+                    case 'M':
+                    case 'm':
+                    $('#fund_risk_level').text('风险为中风险');
+                    break;
+                    
+                    case 'L':
+                    case 'l':
+                    $('#fund_risk_level').text('风险为低风险');
+                    break;
+                }
+                switch (personal_risk_level) {
+                    case 'H':
+                    case 'h':
+                    default:
+                    $('#personal_risk_level').text('(激进型)');
+                    break;
+                    
+                    case 'M':
+                    case 'm':
+                    $('#personal_risk_level').text('(稳健型)');
+                    break;
+                    
+                    case 'L':
+                    case 'l':
+                    $('#personal_risk_level').text('(保守型)');
+                    break;
+                }
+            }
+            
+            // 基金风险和个人风险比较
+            function isRiskExceed(fundrisk, personalrisk) {
+                function r(risk) {
+                    var n = 3;
+                    switch (risk) {
+                        case 'H':
+                        case 'h':
+                            default:
+                            n = 3;
+                            break;
+                        case 'M':
+                        case 'm':
+                            n = 2;
+                            break;
+                        case 'L':
+                        case 'l':
+                            n = 1;
+                            break;
+                    }
+                    return n;
+                }
+                // 基金风险是否大于个人风险
+                return r(fundrisk) > r(personalrisk);
+            }
+            
+            //将风险标识转换
+            function fundRiskLevelFromMark(riskMark) {
+                var riskLevel = 'H';
+                switch(riskMark){
+                    case '0':
+                        riskLevel = 'L';
+                        break;
+                    case '1':
+                        riskLevel = 'M';
+                        break;
+                    case '2':
+                        riskLevel = 'H';
+                        break;
+                    default:
+                        riskLevel = 'H';
+                }
+                return riskLevel;
+            }
+                
+            //银行卡展示效果
+            function bankCardDisplay(bankName,bankCardNumber,isValid) {
+                var displayString;
+                var no = bankCardNumber;
+                if (!bankCardNumber || bankCardNumber == null) {
+                    no = "????";
+                }
+                if (no.toString().length > 4) {
+                    displayString = ''.concat(bankName, '-', no.substr(-4, 4));
+                }
+                displayString = ''.concat(bankName, '-', no);
+                if (!isValid || isValid == '0' || isValid == false) {
+                    return displayString.concat('(未验证)');
+                }
+                return displayString;
+            }
+            
+            //展示费率
+            function feeDisplay(){
+                var curBank = bankCards[parseInt($("#bankCards").val())];
+                for(var i = 0 ; i < fees.length ; i ++){
+                    var fee = fees[i];
+                    if (fee.TradeAccount == curBank.TradeAccount) {
+                        if(fee.Fare > 0){
+                            $("#poudage").text(fee.Fare);
+                        }else{
+                            $("#poudage").text('免手续费');   
+                        }
+                    }
+                }
+                $("#div_charge").show();
+            }
+            
+            function checkInputs(){
+                var purchaseMoney = parseFloat($("#paysum").val());
+                if(isNaN(purchaseMoney)){
+                    alert('金额输入有误，请输入购买金额。');
+                    return false;
+                }
+                if(purchaseMoney > maxPurchase){
+                    alert('您输入的金额过大，该基金单笔最大申购金额为'+maxPurchase+'元。');
+                    return false;
+                }
+                if(purchaseMoney < minPurchase){
+                    alert('您输入的金额过低，该基金单笔最低申购金额为'+minPurchase+'元。');
+                    return false;
+                }
+                if(hasAuthorised){
+                    //已经授权
+                    var curBank = bankCards[parseInt($("#bankCards").val())];
+                    //查看当前银行卡是否提升过额度
+                    if(curBank.IsVaild == false){
+                        var surplus = curBank.Balance;
+                        var fundType = sessionStorage.getItem('doPurchase.fundType');
+                        if(fundType != 2 || purchaseMoney > surplus){
+                            //非货币基金或超过限额度则提额度
+                            sessionStorage.setItem("needValidateCardName",curBank.BankName);
+                            sessionStorage.setItem("needValidateCardNo",curBank.No);
+                            sessionStorage.setItem("needValidateCardDescribe",curBank.LimitDescribe);
+                            if(curBank.BindWay == '1'){
+                                //快捷绑卡
+                                sessionStorage.setItem('mobileValidation.nextPage','doPurchase.html');
+                                loadURL('http://smbclient.localpage/mobileValidation.html');
+                            }
+                            if(curBank.BindWay == '2') {
+                                //小额绑卡
+                                sessionStorage.setItem('cardValidation.nextPage','doPurchase.html');
+                                loadURL('http://smbclient.localpage/cardValidation.html');
+                            }
+                            return false;
+                        }
+                    }
+                }
+                return true;
+            }
+            
+            function showLost4Num(num) {
+                var newNumber = "***";
+                if (num.length >= 4) {
+                    newNumber = newNumber+num.substr(num.length-4,4);
+                }else{
+                    newNumber = newNumber+num;
+                }
+                return newNumber;
+            }
+            
+            function showLoading(){
+                $("#loading").show();
+            }
+            
+            function hideLoading(){
+                if(getPurchaseLimitRequestFinished&&getUserInfoRequestFinished&&getPurchaseFeeRequestFinished){
+                    $("#loading").hide();
+                }
+            }
+            
+            //禁用提交按钮
+            function forbiddenSubmitBut() {
+                disable_inputs("btn_submit",true);
+                $("#div_submit").addClass("ui-disabled");
+            }
+            
+            //恢复提交按钮
+            function restoreSubmitBut() {
+                disable_inputs("btn_submit",false);
+                $("#div_submit").removeClass("ui-disabled");
+            }
+            </script> 
+    </body>
+</html>

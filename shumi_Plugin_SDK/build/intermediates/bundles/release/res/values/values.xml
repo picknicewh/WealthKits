@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="cp_idtype">
+        <item>身份证</item>
+        <item>军官证</item>
+        <item>护照</item>
+        <item>户口簿</item>
+        <item>回乡证</item>
+        <item>其他证件</item>
+    </string-array>
+    <color name="cp_light_white">#ffffff</color>
+    <color name="cp_red">#FF0000</color>
+    <string name="cp_back2shanghu">返回商户</string>
+    <string name="cp_btn_submit">提交</string>
+    <string name="cp_cancel">取消</string>
+    <string name="cp_card_info">卡信息</string>
+    <string name="cp_card_number">卡号:</string>
+    <string name="cp_card_type_0">借记卡</string>
+    <string name="cp_card_type_1">信用卡</string>
+    <string name="cp_company_info">公司介绍</string>
+    <string name="cp_cvn2_hint">CVN2</string>
+    <string name="cp_dingdan_money">订单金额:</string>
+    <string name="cp_dingdan_number">订单编号:</string>
+    <string name="cp_dingdan_time">订单时间:</string>
+    <string name="cp_email">电子邮箱:</string>
+    <string name="cp_email_hint">请输入您的邮箱(必填)</string>
+    <string name="cp_et_idNo_hint">请输入您的证件号码</string>
+    <string name="cp_et_idtype_hint">请输入您的证件类型</string>
+    <string name="cp_et_name_hint">请输入您的姓名</string>
+    <string name="cp_et_pan_hint">请输入您的卡号</string>
+    <string name="cp_faile_reason">失败原因:</string>
+    <string name="cp_loading">初始化,请稍后</string>
+    <string name="cp_money_unit">元</string>
+    <string name="cp_name">姓名:</string>
+    <string name="cp_oauth_failed">认证失败</string>
+    <string name="cp_oauth_sucess">认证成功</string>
+    <string name="cp_ok">确定</string>
+    <string name="cp_password_hint">请输入银行卡密码</string>
+    <string name="cp_pay_failed">支付失败</string>
+    <string name="cp_pay_sucess">支付成功</string>
+    <string name="cp_phone">手机号码:</string>
+    <string name="cp_phone_hint">请输入您的手机号码(必填)</string>
+    <string name="cp_reason_unknow">未知</string>
+    <string name="cp_shanghu_name">商户名称:</string>
+    <string name="cp_shangpin_name">商品描述:</string>
+    <string name="cp_shenfen_info">身份信息</string>
+    <string name="cp_shenfen_type">证件类型:</string>
+    <string name="cp_sujestion">意见反馈</string>
+    <string name="cp_sujestion_hint">请输入您的反馈意见...(500字内)</string>
+    <string name="cp_sujestion_hint_phone">请输入您的手机号码</string>
+    <string name="cp_sujestion_info_1">\t\t欢迎您提出宝贵的意见，您留下的每个字都将用来改善我们的软件。</string>
+    <string name="cp_sujestion_info_2">\t\t如有各类使用咨询请直接拨打95534-6转互联网业务。</string>
+    <string name="cp_support_bank">支持银行</string>
+    <string name="cp_support_bank_info">支持的全国性银行</string>
+    <string name="cp_tel_1">客服电话</string>
+    <string name="cp_tel_2">95534</string>
+    <string name="cp_tel_2_1">-6</string>
+    <string name="cp_tel_3">(转互联网业务)</string>
+    <string name="cp_version_2">版本号</string>
+    <string name="cp_youxiaoqi_hint">请输入有效期</string>
+    <string name="cp_zhengjian_number">证件号码:</string>
+    <string name="cpay_keyboard_clear">清除</string>
+    <string name="cpay_keyboard_letter">字母</string>
+    <string name="cpay_keyboard_number">数字</string>
+    <string name="cpay_keyboard_symbol">符号</string>
+    <style name="AppBaseTheme" parent="android:Theme.Light">
+        <!--
+            Theme customizations available in newer API levels can go in
+            res/values-vXX/styles.xml, while customizations related to
+            backward-compatibility can go here.
+        -->
+    </style>
+    <style name="AppTheme" parent="AppBaseTheme">
+        <!-- All customizations that are NOT specific to a particular API-level can go here. -->
+    </style>
+    <style name="cp_Animation" parent="android:Theme.Light">
+        <item name="android:windowAnimationStyle">@style/cp_AnimationActivity</item>
+    </style>
+    <style name="cp_AnimationActivity">
+        <item name="android:activityOpenEnterAnimation">@anim/cpay_push_left_in</item>
+        <item name="android:activityOpenExitAnimation">@anim/cpay_push_left_out</item>
+        <item name="android:activityCloseEnterAnimation">@anim/cpay_slide_up_in</item>
+        <item name="android:activityCloseExitAnimation">@anim/cpay_slide_down_out</item>
+    </style>
+    <style name="cpay_MyDialog" parent="android:Theme.Dialog">
+        <item name="android:windowFrame">@null</item>
+        <!-- 边框 -->
+        <item name="android:windowIsFloating">true</item>
+        <!-- 是否浮现在activity之上 -->
+        <item name="android:windowIsTranslucent">false</item>
+        <!-- 半透明 -->
+        <item name="android:windowNoTitle">true</item>
+        <!-- 无标题 -->
+        <item name="android:background">@android:color/transparent</item>
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <!-- 背景透明 -->
+        <item name="android:backgroundDimEnabled">true</item>
+        <!-- 模糊 -->
+    </style>
+</resources>

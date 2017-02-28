@@ -1,0 +1,186 @@
+<resources>
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+    </style>
+    <style name="tab">
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:gravity">center</item>
+        <item name="android:textSize">12sp</item>
+        <item name="android:paddingTop">8dip</item>
+        <item name="android:paddingBottom">4dip</item>
+        <item name="android:background">@color/table</item>
+        <item name="android:textColor">@drawable/text</item>
+        <item name="android:button">@null</item>
+    </style>
+    <style name="radiobutton_">
+        <item name="android:layout_height">35dp</item>
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:gravity">center</item>
+        <item name="android:layout_gravity">center</item>
+        <item name="android:textSize">17sp</item>
+        <item name="android:padding">5dip</item>
+        <item name="android:button">@null</item>
+    </style>
+    <style name="radiobutton_2">
+        <item name="android:layout_height">30dp</item>
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:gravity">center_vertical|center_horizontal</item>
+        <item name="android:layout_gravity">center_vertical|center_horizontal</item>
+        <item name="android:textSize">17sp</item>
+        <item name="android:padding">5dip</item>
+        <item name="android:button">@null</item>
+    </style>
+    <style name="radiobutton__">
+        <item name="android:layout_height">30dp</item>
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:gravity">center</item>
+        <item name="android:layout_gravity">center</item>
+        <item name="android:textSize">17sp</item>
+        <item name="android:padding">5dip</item>
+        <item name="android:button">@null</item>
+    </style>
+    <style name="rb_type">
+        <item name="android:layout_weight">1</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:textColor">@drawable/rb_textcolor</item>
+        <item name="android:textSize">18sp</item>
+        <item name="android:button">@null</item>
+        <item name="android:layout_gravity">center_vertical</item>
+        <item name="android:gravity">center</item>
+        <item name="android:padding">10dp</item>
+    </style>
+    <!--<style name="radiobutton_total">-->
+        <!--<item name="android:layout_height">wrap_content</item>-->
+        <!--<item name="android:layout_width">0dp</item>-->
+        <!--<item name="android:layout_weight">1</item>-->
+        <!--<item name="android:gravity">center</item>-->
+        <!--<item name="android:layout_gravity">center</item>-->
+        <!--<item name="android:textSize">14sp</item>-->
+        <!--<item name="android:padding">8dip</item>-->
+        <!--<item name="android:textColor">@color/radiobutton_total_text</item>-->
+        <!--<item name="android:button">@null</item>-->
+    <!--</style>-->
+    <style name="tv_load_tip">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_gravity">center</item>
+        <item name="android:layout_marginTop">30dp</item>
+        <item name="android:text">正在努力获取数据……</item>
+        <item name="android:textSize">@dimen/ts_x_large</item>
+    </style>
+    <!--<style name="rb_menu">-->
+        <!--<item name="android:textSize">@dimen/ts_small</item>-->
+        <!--<item name="android:textColor">@color/rb_menu</item>-->
+        <!--<item name="android:ellipsize">marquee</item>-->
+        <!--<item name="android:gravity">bottom|center_horizontal</item>-->
+        <!--<item name="android:layout_width">match_parent</item>-->
+        <!--<item name="android:layout_height">wrap_content</item>-->
+        <!--<item name="android:button">@null</item>-->
+        <!--<item name="android:singleLine">true</item>-->
+        <!--<item name="android:padding">@dimen/space_x0.5</item>-->
+        <!--<item name="android:layout_weight">1</item>-->
+    <!--</style>-->
+    <style name="rb_view">
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:button">@null</item>
+    </style>
+    <!-- 自定义Dialog -->
+    <style
+        name="CustomDialog">
+        <!--windowFrame框为无 -->
+        <item
+            name="android:windowFrame">@null</item>
+
+        <item
+            name="android:windowNoTitle">true</item>
+        <!-- 除去背景 -->
+        <item
+            name="android:windowBackground">@drawable/my_dialog</item>
+        <!--是否浮现在activity之上 -->
+        <item
+            name="android:windowIsFloating">true</item>
+        <!-- 是否半透明 -->
+        <item
+            name="android:windowIsTranslucent">true</item>
+        <!-- 去掉覆盖层 -->
+        <item
+            name="android:windowContentOverlay">@null</item>
+        <!-- 设置背景颜色 -->
+        <item
+            name="android:background">#00000000</item>
+    </style>
+
+    <style name="MyDialog" parent="@android:style/Theme.Dialog">
+        <item name="android:windowFrame">@null</item>
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowBackground">@drawable/ic_dialog_bg_</item>
+        <item name="android:windowIsFloating">true</item>
+        <item name="android:windowContentOverlay">@null</item>
+    </style>
+
+    <style name="myDialogTheme" parent="android:Theme.Dialog">
+        <item name="android:windowFrame">@null</item>
+        <item name="android:windowIsFloating">true</item>
+        <item name="android:windowIsTranslucent">false</item>
+        <item name="android:windowNoTitle">true</item><!--除去title-->
+        <item name="android:windowContentOverlay">@null</item>
+        <item name="android:windowBackground">@drawable/bg_loading</item><!--除去背景色-->
+    </style>
+
+    <style name="LoadingDialogTheme" parent="@android:style/Theme.Dialog">
+        <item name="android:windowFrame">@null</item><!--边框-->
+        <item name="android:windowIsFloating">true</item><!--是否浮现在activity之上-->
+        <item name="android:windowIsTranslucent">false</item><!--半透明-->
+        <item name="android:windowNoTitle">true</item><!--无标题-->
+        <item name="android:windowBackground">@color/transparent</item><!--背景透明-->
+        <item name="android:backgroundDimEnabled">false</item><!--模糊-->
+        <item name="android:backgroundDimAmount">0.6</item>
+    </style>
+
+    <!-- ChinaPay plugin begin -->
+        <style name="cp_Animation" parent="android:Theme.Light">
+        <item name="android:windowAnimationStyle">@style/cp_AnimationActivity</item>
+    </style>
+
+    <style name="cp_AnimationActivity">
+        <item name="android:activityOpenEnterAnimation">@anim/cpay_push_left_in</item>
+        <item name="android:activityOpenExitAnimation">@anim/cpay_push_left_out</item>
+        <item name="android:activityCloseEnterAnimation">@anim/cpay_slide_up_in</item>
+        <item name="android:activityCloseExitAnimation">@anim/cpay_slide_down_out</item>
+    </style>
+     <style name="cpay_MyDialog" parent="android:Theme.Dialog">
+        <item name="android:windowFrame">@null</item>
+        <!-- 边框 -->
+        <item name="android:windowIsFloating">true</item>
+        <!-- 是否浮现在activity之上 -->
+        <item name="android:windowIsTranslucent">false</item>
+        <!-- 半透明 -->
+        <item name="android:windowNoTitle">true</item>
+        <!-- 无标题 -->
+        <item name="android:background">@android:color/transparent</item>
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <!-- 背景透明 -->
+        <item name="android:backgroundDimEnabled">true</item>
+        <!-- 模糊 -->
+    </style>
+      
+    <!-- ChinaPay plugin end -->
+
+        <!--<style name="AppBaseTheme" parent="Theme.AppCompat.Light.NoActionBar" type="text/css">-->
+    <style name="CustomProgressDialog" parent="@style/CustomDialog">
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <item name="android:windowNoTitle">true</item>
+    </style>
+</resources>

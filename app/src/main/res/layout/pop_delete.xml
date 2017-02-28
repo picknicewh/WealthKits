@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:id="@+id/delete_pop"
+    android:background="@color/black_x">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/bg_my_fund"
+        android:orientation="vertical"
+        android:layout_marginLeft="@dimen/dimens_x1dp"
+        android:layout_marginRight="@dimen/dimens_x1dp"
+        android:layout_above="@+id/pop_close">
+
+<TextView
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:text="是否删除该项账目？"
+    android:padding="@dimen/dimens_x1dp"
+    android:layout_marginTop="@dimen/dimens_x1dp"
+    android:textSize="@dimen/dimens_x1.6sp"
+    android:textColor="@color/gray_x0.5"
+    android:layout_gravity="center_horizontal"/>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/line_gray"
+            android:layout_marginRight="@dimen/dimens_x2dp"
+            android:layout_marginLeft="@dimen/dimens_x2dp"
+            android:background="@color/line_gray">
+
+        </View>
+
+
+        <Button
+            android:id="@+id/pop_delete"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="删除"
+            android:textColor="@color/red"
+            android:textSize="@dimen/dimens_x2sp"
+            android:layout_marginBottom="@dimen/dimens_x1dp"
+            android:background="@color/transparent"/>
+
+    </LinearLayout>
+
+
+    <Button
+        android:id="@+id/pop_close"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="取消"
+        android:background="@drawable/my_close"
+        android:textColor="@color/white"
+        android:textSize="@dimen/dimens_x2sp"
+        android:layout_alignParentBottom="true"
+        android:layout_margin="@dimen/dimens_x1dp"/>
+
+</RelativeLayout>

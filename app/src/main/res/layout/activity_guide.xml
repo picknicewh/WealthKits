@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <com.cfjn.javacf.widget.BannerViewPager
+        android:id="@+id/bvp_guide"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/ic_guild4"
+        android:flipInterval="5000"
+        android:inAnimation="@anim/page_left_in"
+        android:outAnimation="@anim/page_left_out"
+        android:persistentDrawingCache="animation"
+        android:visibility="visible" />
+
+    <LinearLayout
+        android:layout_marginBottom="@dimen/dimens_x4dp"
+        android:id="@+id/ll_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:padding="@dimen/space_x0.5" >
+
+        <LinearLayout
+            android:id="@+id/ll_dots"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:orientation="horizontal" />
+    </LinearLayout>
+
+    <ImageButton
+        android:background="#00000000"
+        android:layout_above="@id/ll_title"
+        android:layout_marginBottom="@dimen/dimens_x1.5dp"
+        android:visibility="gone"
+        android:id="@+id/ib_goto"
+        android:layout_centerInParent="true"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_guild_button"/>
+
+</RelativeLayout>

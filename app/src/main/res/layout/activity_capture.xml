@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    >
+
+    <FrameLayout
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent" >
+
+        <SurfaceView
+            android:id="@+id/preview_view"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_centerInParent="true"
+            android:layout_gravity="center" />
+
+        <com.exidcard.view.ViewfinderView
+            android:id="@+id/viewfinder_view"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:background="@color/transparent" />
+        
+        <TextView
+            android:id="@+id/capture_textTip"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:paddingLeft="80dp"
+            android:paddingRight="130dp"
+            android:textColor="#999999"
+            android:gravity="center"
+            android:text="请将身份证四个角完全放在框内\n平放身份证，禁止手持，避免反光"
+            android:textSize="20sp" />
+        
+        <ImageView 
+            android:id="@+id/capture_imgResult"
+            android:layout_width="1dp"
+			android:layout_height="1dp"
+			android:scaleType="centerCrop"
+            />
+
+        <TextView
+            android:id="@+id/capture_txtResult"
+            android:layout_width="50dp"
+            android:layout_height="100dp"
+            android:textColor="#FFFFFF"
+            android:gravity="left|center_vertical"
+            android:paddingLeft="50dp"
+            android:background="#77000000"
+            android:textSize="20sp" />
+        
+    </FrameLayout>
+    
+    <LinearLayout 
+            android:layout_width="120dp"
+            android:layout_height="fill_parent"
+            android:orientation="vertical"
+            android:gravity="center_horizontal"
+            android:layout_marginTop="80dp"
+            android:layout_marginBottom="100dp"
+            android:layout_alignParentRight="true"
+            >
+            <TextView 
+            android:id="@+id/capture_btnCanelPic"
+            android:layout_width="fill_parent"
+            android:layout_weight="1"
+            android:layout_height="0dp"
+            android:gravity="top|center_horizontal"
+            android:textColor="#ff999999"
+            android:text="重拍"
+            android:textSize="20sp" 
+            />
+            <TextView 
+            android:id="@+id/capture_btnSurePic"
+            android:layout_width="fill_parent"
+            android:layout_weight="1"
+            android:layout_height="0dp"
+            android:gravity="bottom|center_horizontal"
+            android:textColor="#ffffffff"
+            android:text="确认"
+            android:textSize="20sp" 
+            />
+        </LinearLayout>
+        <LinearLayout 
+            android:layout_width="50dp"
+            android:layout_height="fill_parent"
+            android:orientation="vertical"
+            android:gravity="center"
+            android:layout_marginTop="30dp"
+            android:layout_marginBottom="30dp"
+            android:layout_alignParentLeft="true"
+            >
+            <ImageView 
+            android:id="@+id/capture_btnPhotoalbum"
+            android:layout_width="30dp"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:gravity="center_horizontal"
+            android:src="@drawable/scan_image1"
+            android:scaleType="fitStart"
+            android:background="#00000000"
+            />
+            <ImageView 
+            android:id="@+id/capture_btnClose"
+            android:layout_width="30dp"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:gravity="center_horizontal"
+            android:src="@drawable/scan_image2"
+            android:scaleType="fitEnd"
+            />
+        </LinearLayout>
+
+</RelativeLayout>

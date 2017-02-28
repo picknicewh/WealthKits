@@ -1,0 +1,271 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="@color/red">
+        <ImageButton
+            android:layout_marginLeft="@dimen/space_x0.5"
+            android:id="@+id/ib_member_center"
+            android:layout_width="wrap_content"
+            android:padding="@dimen/space"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:background="@color/transparent"
+            android:src="@drawable/ic_nav_hyzx"/>
+        <TextView
+            android:id="@+id/tv_tilte"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:text="昨日收益"
+            android:textColor="@color/white"
+            android:textSize="@dimen/dimens_x2sp"/>
+
+        <ImageButton
+            android:layout_marginRight="@dimen/space_x0.5"
+            android:padding="@dimen/space"
+            android:id="@+id/ib_trading_records"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_centerVertical="true"
+            android:layout_alignParentRight="true"
+            android:background="@color/transparent"
+            android:src="@drawable/ic_nav_jyjl"/>
+    </RelativeLayout>
+
+    <!--<ImageView-->
+        <!--android:visibility="gone"-->
+        <!--android:id="@+id/fund_imgview"-->
+        <!--android:src="@drawable/ic_red_loading"-->
+        <!--android:layout_gravity="center"-->
+        <!--android:layout_marginTop="50dp"-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:scaleType="fitXY">-->
+    <!--</ImageView>-->
+        <com.cfjn.javacf.widget.ScrollableLayout
+            android:id="@+id/sl_scroll"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:paddingTop="@dimen/space"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical"
+                    android:background="@color/red">
+
+                    <!--<TextView-->
+                    <!--android:layout_marginLeft="@dimen/space"-->
+                    <!--android:id="@+id/textview1"-->
+                    <!--android:layout_width="wrap_content"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:text="@string/fund_text_1"-->
+                    <!--android:textColor="@color/white"-->
+                    <!--android:textSize="@dimen/dimens_x1.6sp"/>-->
+
+                    <TextView
+                        android:id="@+id/tv_yesterday_income"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal"
+                        android:text="00.00"
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/dimens_x5sp"/>
+
+                    <TextView
+                        android:id="@+id/tv_yesterday_rate"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal"
+                        android:text="@string/fund_text_2"
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/dimens_x1.2sp"/>
+
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal"
+                        android:layout_marginTop="@dimen/dimens_x1.5dp"
+                        android:src="@drawable/ic_linebetween" />
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/dimens_x2dp">
+
+                        <TextView
+                            android:layout_marginLeft="@dimen/space_x2.5"
+                            android:id="@+id/tv_total_name"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/fund_text_6"
+                            android:textSize="@dimen/dimens_x1.6sp"
+                            android:textColor="@color/white"
+                            android:layout_centerVertical="true"/>
+
+                        <TextView
+                            android:id="@+id/tv_total_assets"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="00.00"
+                            android:layout_centerVertical="true"
+                            android:layout_marginLeft="@dimen/dimens_x0.5dp"
+                            android:textSize="@dimen/dimens_x1.6sp"
+                            android:textColor="@color/white"
+                            android:layout_toRightOf="@+id/tv_total_name"/>
+
+                        <ImageButton
+                            android:layout_marginRight="@dimen/space_x0.5"
+                            android:background="@color/transparent"
+                            android:padding="@dimen/space"
+                            android:id="@+id/ib_assets_analysis"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentRight="true"
+                            android:src="@drawable/ic__pie"/>
+                    </RelativeLayout>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_marginTop="@dimen/space"
+                    android:layout_marginBottom="@dimen/space"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <LinearLayout
+                        android:padding="@dimen/space"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_horizontal"
+                            android:text="@string/fund_text_4"
+                            android:textSize="@dimen/dimens_x1.6sp"
+                            android:textColor="@color/gray_x0.5"/>
+
+                        <TextView
+                            android:id="@+id/tv_position_gains"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_horizontal"
+                            android:text="00.00"
+                            android:textColor="@color/red"
+                            android:textSize="@dimen/dimens_x2.5sp"/>
+                    </LinearLayout>
+
+                    <View
+
+                        android:layout_width="0.3dp"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="center_vertical"
+                        android:background="@color/line_gray"></View>
+
+                    <LinearLayout
+                        android:padding="@dimen/space"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_horizontal"
+                            android:text="@string/fund_text_5"
+                            android:textSize="@dimen/dimens_x1.6sp"
+                            android:textColor="@color/gray_x0.5"/>
+
+                        <TextView
+                            android:id="@+id/tv_unpaid_income"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_horizontal"
+                            android:text="00.00"
+                            android:textColor="@color/red"
+                            android:textSize="@dimen/dimens_x2.5sp"/>
+                    </LinearLayout>
+                </LinearLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/gray_x0.8"
+                    android:orientation="vertical"
+                    android:padding="@dimen/space">
+
+                    <TextView
+                        android:textColor="@color/black"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/dimens_x1dp"
+                        android:text="@string/fund_text_7"
+                        android:textSize="@dimen/dimens_x1.6sp"
+                        android:layout_centerVertical="true"/>
+                </LinearLayout>
+
+                <ListView
+                    android:id="@+id/lv_assets"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:divider="@color/transparent"
+                    android:cacheColorHint="#00000000"
+                    android:listSelector="@color/transparent"
+                    android:visibility="gone"
+                    android:scrollbars="none">
+                </ListView>
+
+                <RelativeLayout
+                    android:visibility="gone"
+                    android:layout_marginTop="@dimen/space_x2"
+                    android:id="@+id/rl_notwork"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <ImageView
+                        android:layout_centerInParent="true"
+                        android:id="@+id/iv_notwork"
+                        android:src="@drawable/ic_failed"
+                        android:layout_centerVertical="true"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content">
+                    </ImageView>
+
+                    <TextView
+                        android:layout_marginTop="@dimen/space_x2"
+                        android:layout_below="@id/iv_notwork"
+                        android:gravity="center"
+                        android:textColor="@color/gray_x0.5"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textSize="@dimen/dimens_x1.6sp"
+                        android:text="加载失败，点击屏幕重试！"/>
+
+                </RelativeLayout>
+
+            </LinearLayout>
+
+        </com.cfjn.javacf.widget.ScrollableLayout>
+</LinearLayout>

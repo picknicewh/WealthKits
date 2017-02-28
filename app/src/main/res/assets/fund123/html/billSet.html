@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html class="ui-mobile">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
+        <meta name="apple-mobile-web-app-capable" content="yes" />
+        <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+        <title>
+        </title>
+        <link rel="stylesheet" href="../css/jquery.mobile-1.3.1.css" />
+		<link rel="stylesheet" href="../css/shumi-mobile.css" />
+        <link rel="stylesheet" href="../css/shumi-mobile2013.css" />
+        <!--<script type="text/javascript" src="../js/jquery.mobile-1.3.1.min.js"></script>-->
+    </head>
+    <body class="ui-mobile-viewport ui-overlay-c">
+    	<!--头部2013_start-->
+        <header class="shumi-m-head">
+            <h2 class="t">设置账单订阅</h2>
+            <div class="gotop" id="quit">取消</div>
+            <div class="backto" id="back">返回</div>
+        </header>
+        <!--头部2013_end-->
+        <div class="ui-page ui-body-c ui-page-active" tabindex="0" >
+            <div class="ui-content" >
+                <div data-role="content">
+                    <div class="allcontent">
+                        <div class="space10"></div><div class="space10"></div>
+                        <div class="ui-info">
+                            <div class="ui-grid-a">
+                                <label class="ui-input-text" for="tradepassword">订阅邮箱</label>
+                                <input name="email_address" id="email_address" placeholder="请输入邮箱地址" value="" class="ui-input-text ui-body-c ui-corner-all ui-shadow-inset" type="email"></div>
+                            <div class="ui-grid-a">
+                                <div>
+                                    <label class="ui-input-text" for="bill_send_way">账单寄送</label>
+                                    
+                                    <div class="ui-select">
+                                        <div class="ui-btn ui-shadow ui-btn-corner-all ui-btn-icon-right ui-btn-hover-c">
+                                            <span class="ui-btn-inner ui-btn-corner-all"><span class="ui-btn-text" id="bankCardSelected">
+                                            </span><span class="ui-icon-arrowdown"></span></span>
+                                            <select id="bill_send_way" name="bill_send_way" style="position: absolute">
+                                                <option value = "0">选择寄送方式</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="ui-grid-a">
+                                <label class="ui-input-text" for="tradepassword">交易密码</label>
+                                <input name="trade_password" id="trade_password" placeholder="请输入交易密码" value="" class="ui-input-text ui-body-c ui-corner-all ui-shadow-inset" type="password"></div>
+                        </div>
+                        <div class="space10"></div>
+                        <div aria-disabled="false" class="ui-btn ui-shadow ui-btn-corner-all ui-fullsize ui-btn-block ui-submit ui-btn-up-c ui-btn-dianxin"
+                            name="btn" id="doPurchase">
+                            <div class="ui-btn-dianxinceng">
+                            <span class="ui-btn-inner ui-btn-corner-all"><span class="ui-btn-text">确认</span></span>
+                            <button aria-disabled="false" class="ui-btn-hidden" type="submit" onClick="javascript:submitBillSetForm()">
+                            </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+    <script type="text/javascript" src="../js/shumi-mobile.js"></script>
+    <script type="text/javascript" src="../js/jquery-1.8.2.min.js"></script>
+    <script type="text/javascript">
+        //判断页面是否加载完毕
+        $(document).ready(function(e) {
+                          //加载完成获取可选择寄送方式
+                          $.mobile.showPageLoadingMsg();
+                          var parameter = {
+                          dictname:"对账单寄送方式"
+                          }
+                          $.when($.ajax({
+                                        url:"https://smbclient.fundapi/system/dict",
+                                        type:"post",
+                                        dataType:"json",
+                                        data:parameter,
+                                        success:function(json){}
+                                        }))
+                          .done(function(json){
+                                $.mobile.hidePageLoadingMsg();
+                                var results = json.results;
+                                if(results.code == "ETS-5BP0000"){
+                                var items = results.items;
+                                for(var x = 0 ; x < items.length ; x++){
+                                var itmKey = parseInt(items[x].key);
+                                var itmValue = items[x].value;
+                                var bill_select = document.getElementById("bill_send_way");
+                                bill_select.add(new Option(itmValue,itmKey));
+                                }
+                                }
+                                })
+                          .fail(function(){
+                                alert("请求提交失败，请检查网络后重试。");
+                                })
+                          })
+        
+        //提交修改账单寄送表单
+        function submitBillSetForm(){
+			$.mobile.showPageLoadingMsg();
+			var parameter = {
+				email:$("#email_address").val(),
+				reckoningsendtype:$("#bill_send_way").val(),
+				tradepassword:$("#trade_password").val()
+			}
+			$.when($.ajax({
+                          url:"https://smbclient.fundapi/account/modifyuserinfo",
+                          type:"post",
+                          dataType:"json",
+                          data:parameter,
+                          success:function(json){}
+                          }))
+			.done(function(json){
+                  $.mobile.hidePageLoadingMsg();
+                  var results = json.results;
+                  alert(results.message);
+                  })
+			.fail(function(){
+                  alert("请求提交失败，请检查网络后重试。");
+                  })
+        }
+        </script>
+</html>

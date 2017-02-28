@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:orientation="vertical" >
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="@color/red">
+
+        <ImageButton
+            android:id="@+id/ib_back"
+            android:layout_width="50dp"
+            android:layout_height="match_parent"
+            android:layout_centerVertical="true"
+            android:background="@color/transparent"
+            android:src="@drawable/ic_goback" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:text="我的推荐码"
+            android:textColor="@color/white"
+            android:textSize="@dimen/dimens_x1.8sp" />
+    </RelativeLayout>
+
+    <LinearLayout
+        android:id="@+id/ll_submit"
+        android:visibility="visible"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="20dp" >
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/space_x2"
+            android:text="请输入您的推荐码"
+            android:layout_gravity="center"
+            android:textColor="@color/black"
+            android:textSize="@dimen/ts_xx_large" />
+
+        <EditText
+            android:id="@+id/et_icode"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:padding="@dimen/dimens_x2dp"
+            android:background="@drawable/myattexpandadpter_type"
+            android:inputType="phone"
+            android:textSize="@dimen/dimens_x1.8sp" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/space_x2"
+            android:text="1. 此推荐码为您的推荐人编码，请询问您的推荐人。"
+            android:textSize="@dimen/ts_small" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="2. 推荐人填写后不能修改，请谨慎填写。"
+            android:textSize="@dimen/ts_small" />
+
+        <Button
+            android:id="@+id/b_submit"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dimens_x2dp"
+            android:background="@drawable/s_rounded_rectangle_red"
+            android:paddingBottom="5dp"
+            android:paddingLeft="60dp"
+            android:paddingRight="60dp"
+            android:paddingTop="5dp"
+            android:text="提交"
+            android:textColor="@color/white"
+            android:textSize="@dimen/ts_xx_large" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/ll_code"
+        android:visibility="gone"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="20dp" >
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/space_x2"
+            android:text="您的推荐码是"
+            android:layout_gravity="center"
+            android:textColor="@color/black"
+            android:textSize="@dimen/ts_xx_large" />
+        <TextView
+            android:id="@+id/tv_recmmde_code"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="123456"
+            android:layout_gravity="center"
+            android:textColor="@color/red"
+            android:textSize="@dimen/dimens_x5sp" />
+        <Button
+            android:id="@+id/b_code"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dimens_x2dp"
+            android:background="@drawable/s_rounded_rectangle_red"
+            android:paddingBottom="5dp"
+            android:paddingLeft="60dp"
+            android:paddingRight="60dp"
+            android:paddingTop="5dp"
+            android:text="立即体验"
+            android:textColor="@color/white"
+            android:textSize="@dimen/ts_xx_large" />
+    </LinearLayout>
+
+</LinearLayout>

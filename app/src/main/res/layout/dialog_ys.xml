@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:layout_marginLeft="@dimen/dimens_x1dp"
+    android:layout_marginRight="@dimen/dimens_x1dp"
+    android:background="@color/transparent">
+<!--<LinearLayout-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:orientation="vertical"-->
+    <!--android:background="@color/white">-->
+    <TextView
+        android:id="@+id/title_bar"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dimens_x5dp"
+        android:background="@drawable/bg_dialog"
+        android:gravity="center_vertical|center_horizontal"
+        android:text="预算测试"
+        android:textColor="#fff"
+        android:textSize="20dip" />
+    <EditText
+        android:id="@+id/dialog_ed"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/dimens_x2dp"
+        android:layout_marginLeft="@dimen/dimens_x2dp"
+        android:layout_marginRight="@dimen/dimens_x2dp"
+        android:layout_marginBottom="@dimen/dimens_x1dp"
+        android:gravity="center"
+        android:textColor="#000"
+        android:hint="请输入预算金额"
+        android:background="@drawable/bg_dialog_ed"
+        android:textColorHint="@color/line_gray"
+        android:textSize="16.0sp" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/line_gray"
+        android:background="@color/line_gray"
+        android:layout_marginLeft="@dimen/dimens_x5dp"
+        android:layout_marginRight="@dimen/dimens_x5dp">
+
+    </View>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/bg_dialog_bottom"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:layout_marginTop="@dimen/dimens_x2dp"
+        android:layout_marginRight="@dimen/dimens_x3dp"
+        android:layout_marginLeft="@dimen/dimens_x3dp"
+        android:layout_marginBottom="@dimen/dimens_x3dp">
+
+        <Button
+            android:id="@+id/dialog_close"
+            android:layout_width="0dp"
+            android:layout_height="40dip"
+            android:layout_weight="1"
+            android:layout_gravity="center_vertical"
+            android:background="@drawable/bg_dialog_button"
+            android:gravity="center_vertical|center_horizontal"
+            android:text="取消"
+            android:textColor="@color/red"
+            android:textSize="16dp" />
+
+        <View
+            android:layout_width="30dp"
+            android:layout_height="0dp"
+            android:background="@color/transparent">
+
+        </View>
+
+
+        <Button
+            android:id="@+id/dialog_affirm"
+            android:layout_width="0dp"
+            android:layout_height="40dip"
+            android:layout_weight="1"
+            android:layout_gravity="center_vertical"
+            android:background="@drawable/bg_dialog_button_"
+            android:gravity="center_vertical|center_horizontal"
+            android:text="确定"
+            android:textColor="@color/white"
+            android:textSize="16dp" />
+    </LinearLayout>
+</LinearLayout>
+<!--</LinearLayout>-->

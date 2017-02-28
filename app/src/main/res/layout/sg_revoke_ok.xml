@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/gray_x0.8">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="@color/red"
+        android:orientation="horizontal">
+
+        <ImageButton
+            android:id="@+id/ib_back"
+            android:layout_width="50dp"
+            android:layout_height="match_parent"
+            android:layout_centerVertical="true"
+            android:background="@color/transparent"
+            android:src="@drawable/ic_goback" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:textColor="@color/white"
+            android:textSize="@dimen/dimens_x2sp"
+            android:gravity="center"
+            android:singleLine="true"
+            android:text="撤单"/>
+
+    </RelativeLayout>
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_revoke_ok"
+            android:layout_gravity="center"
+            android:layout_marginTop="@dimen/dimens_x3dp" />
+        <TextView
+            android:id="@+id/tv_prompt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="撤单申请提交成功！"
+            android:textColor="@color/black"
+            android:textSize="@dimen/dimens_x1.6sp"
+            android:layout_gravity="center"
+            android:layout_marginTop="@dimen/dimens_x1dp"/>
+        <Button
+            android:id="@+id/b_confirm"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/dimens_x2dp"
+            android:layout_marginRight="@dimen/dimens_x2dp"
+            android:text="完成"
+            android:textColor="@color/white"
+            android:textSize="@dimen/dimens_x2sp"
+            android:background="@drawable/bg_dialog_button_"
+            android:paddingBottom="@dimen/dimens_x1dp"
+            android:paddingTop="@dimen/dimens_x1dp"
+            android:paddingLeft="@dimen/dimens_x5dp"
+            android:paddingRight="@dimen/dimens_x5dp"
+            android:layout_marginTop="@dimen/dimens_x2dp"
+            android:layout_gravity="center"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_alignParentBottom="true"
+        android:paddingLeft="@dimen/dimens_x1dp"
+        android:paddingRight="@dimen/dimens_x1dp"
+        android:paddingBottom="@dimen/dimens_x2dp">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/sg_guid"
+            android:gravity="center"/>
+        <TextView
+            android:layout_marginTop="@dimen/dimens_x0.5dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/sg_guid_title"
+            android:gravity="center"/>
+    </LinearLayout>
+
+</RelativeLayout>

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<!-- saved from url=(0056)http://10.57.7.80:8080/ued/demo/1.0/jkf/no-network.shtml -->
+<html>
+    <head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<title>极客理财</title>
+    <meta charset="utf-8">
+	<meta name="keywords" content="">
+	<meta name="description" content="">
+	<meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
+	<meta name="apple-mobile-web-app-capable" content="yes">
+    <link rel="stylesheet" href="index.css">
+    <link rel="stylesheet" href="common.css">
+    <script type="text/javascript" charset="utf-8">
+        var useBack = true;
+        var url = "phone_hunme/errorMessage.shtml?message=something_wrong";
+        
+        function getQueryString(name) {
+            var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)", "i");
+            var r = window.location.search.substr(1).match(reg);
+            if (r != null) return decodeURI(unescape(r[2])); return null;
+        }
+        function initAlink() {
+            var osVer = getQueryString("osVer");
+            if(osVer != null && "4.4".localeCompare(osVer) <= 0 )
+               useBack = false;
+            url = getQueryString("url");
+            if(url == null)
+               url = "phone_hunme/errorMessage.shtml?message=something_wrong";
+            var a = document.createElement('a');
+            a.innerHTML = "<i></i><p>网络未连接</p>请检查网络设置后，点击屏幕刷新";
+            a.href = "javascript:onLinkClick();";
+            document.body.appendChild(a);
+        }
+        function onLinkClick(){
+            if(useBack)
+            {
+               window.history.back();
+            }
+            else
+            {
+               window.location.replace(url);
+            }
+        }
+    </script>
+</head>
+<body class="no-network" onload="initAlink()" >
+</body></html>

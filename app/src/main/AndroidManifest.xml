@@ -1,0 +1,379 @@
+<?xml version="1.0" encoding="utf-8"?><manifest xmlns:android="http://schemas.android.com/apk/res/android"
+package="com.cfjn.javacf">
+
+    <permission android:name="com.cfjn.javacf.permission.JPUSH_MESSAGE" android:protectionLevel="signature" />
+
+    <!-- 极光推送的权限（部分重复的权限删除）。。。开始 -->
+    <!-- Required  一些系统要求的权限，如访问网络等 -->
+    <uses-permission android:name="com.cfjn.javacf.permission.JPUSH_MESSAGE" />
+    <uses-permission android:name="android.permission.RECEIVE_USER_PRESENT" />
+    <uses-permission android:name="android.permission.VIBRATE" />
+    <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
+    <!-- Optional for location -->
+    <uses-permission android:name="android.permission.ACCESS_LOCATION_EXTRA_COMMANDS" />
+    <uses-permission android:name="android.permission.CHANGE_NETWORK_STATE" />
+    <!--开机启动权限-->
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+
+    <!-- 极光推送的权限。。。。。结束 -->
+
+
+    <!-- To auto-complete the email text field in the login form with the user's emails -->
+    <uses-permission android:name="android.permission.GET_ACCOUNTS" />
+    <uses-permission android:name="android.permission.READ_PROFILE" />
+    <uses-permission android:name="android.permission.READ_CONTACTS" />
+    <uses-permission android:name="android.permission.CALL_PHONE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WRITE_CONTACTS" />
+    <uses-permission android:name="android.permission.RECORD_AUDIO" />
+    <uses-permission android:name="android.permission.WRITE_SETTINGS" />
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+    <uses-permission android:name="android.permission.CHANGE_CONFIGURATION" />
+    <!-- 这个权限用于进行网络定位 -->
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <!-- 这个权限用于访问GPS定位 -->
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <!-- 用于访问wifi网络信息，wifi信息会用于进行网络定位 -->
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <!-- 获取运营商信息，用于支持提供运营商信息相关的接口 -->
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <!-- 这个权限用于获取wifi的获取权限，wifi信息会用来进行网络定位 -->
+    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
+    <!-- 用于读取手机当前的状态 -->
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <!-- 写入扩展存储，向扩展卡写入数据，用于写入离线定位数据 -->
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <!-- 访问网络，网络定位需要上网 -->
+    <uses-permission android:name="android.permission.INTERNET" />
+    <!-- SD卡读取权限，用户写入离线定位数据 -->
+    <uses-permission android:name="android.permission.MOUNT_UNMOUNT_FILESYSTEMS" />
+    <!-- 摄像头权限 易道博识 -->
+    <uses-permission android:name="android.permission.CAMERA" />
+
+<uses-feature android:name="android.hardware.camera.autofocus" />
+
+<application android:name=".util.HunmeApplication"
+    android:allowBackup="true"
+    android:fitsSystemWindows="true"
+    android:icon="@drawable/ic_launcher"
+    android:label="@string/app_name"
+    android:supportsRtl="true"
+    android:theme="@style/AppTheme">
+    <meta-data
+        android:name="com.baidu.lbsapi.API_KEY"
+        android:value="IAgiA3Ivu9AVa0VGROP7BTiR" />
+
+        <activity android:name=".activity.MainActivity"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustPan" >
+        </activity>
+        <activity android:name=".activity.GuideActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".activity.ShowLockActivity"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustPan" />
+        <activity
+            android:name=".activity.member.PersonalSettingActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activity.member.StyleEvaluationActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activity.member.CounterMangerActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activity.member.UserManagerActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activity.member.BankMangerActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activity.member.MoreActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activity.LoginActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activity.member.CommonProblemActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activity.member.QuestionDetailsActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activity.member.UpdatephoneActivity"
+            android:screenOrientation="portrait" />
+       <activity
+            android:name=".activity.assets.AssetanalysisActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activity.assets.TransactionRecordDetailActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activity.member.AboutActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activity.member.RecommendActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activity.member.AdviceActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activity.assets.AssertDetailActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activity.fund.FundDetailActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activity.member.LockActivity"
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.NoTitleBar" />
+        <activity
+            android:name=".activity.member.LockSetupActivity"
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.NoTitleBar" />
+        <!--
+            &lt;!&ndash; <activity android:name=".Main_Activity.BookkeepingActivity" android:hardwareAccelerated="false" />
+            <activity android:name=".Main_Activity.MemberCenterActivity" />
+            <activity android:name=".activity.BookkeepingCharActivity" />
+            <activity android:name=".activity.BookkeepingClasstifyActivity" />
+            <activity android:name=".activity.BookkeepingVoiceAccountActivity" />
+            <activity android:name=".activity.BookkeepingBudgetActivity" />
+            <activity android:name=".activity.BookkeepingCharDetailActivity" />&ndash;&gt;
+            <activity android:name=".activity.Company" />
+            <activity android:name=".activity.FinshStyleActivity" />
+            <activity android:name=".activity.SearchActivity" />
+            <activity android:name=".activity.OpenAnAccount" />
+            <activity android:name=".activity.SystemMangerActivity" />
+            <activity android:name=".activity.SystemDetailsActivity" />
+            <activity android:name=".activity.MyAttenActivity" />
+            <activity android:name=".activity.PinealBuyActivity" />
+            <activity android:name=".activity.PinealBuyFinishActivity" />
+            <activity android:name=".activity.SGRegister" />
+            <activity android:name=".activity.PinealSetupPasswordActivity" />
+            <activity android:name=".activity.TFBuy" />
+            <activity android:name=".activity.TFmanger"/>
+            -->
+        <activity
+            android:name=".activity.bookkeeping.BookkeepingActivity"
+            android:hardwareAccelerated="false"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activity.member.MemberCenterActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activity.bookkeeping.ChartActivity"
+            android:fitsSystemWindows="true"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activity.bookkeeping.ClasstifyActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activity.bookkeeping.VoiceAccountActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activity.bookkeeping.BudgetActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activity.bookkeeping.ChartDetailActivity"
+            android:screenOrientation="portrait" />
+        <!-- <activity -->
+        <!-- android:name=".activity.Company" -->
+        <!-- android:screenOrientation="portrait" /> -->
+        <activity
+            android:name=".activity.member.StyleActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activity.member.SearchActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activity.member.SystemInfoActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activity.member.SystemDetailsActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activity.member.MyAttenActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activity.fund.SgBuyActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activity.fund.SgBuySuccessActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activity.fund.SgRevokeSuccessActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activity.fund.SgRevokeActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activity.member.PinealSetupPasswordActivity"
+            android:screenOrientation="portrait" />
+        <activity android:name=".activity.assets.TransactionRecordActivity"/>
+        <!-- shumisdk 1.5银行卡 -->
+        <activity
+            android:name=".shumi.MyShumiSdkTradingActivity"
+            android:screenOrientation="portrait" />
+
+    <!-- 数米相关 -->
+    <!-- 数米SDK的商户标识 -->
+    <meta-data android:name="SHUMI_SDK_PLUGIN_KEY" android:value="9904903391FE04F220B161CF36642961" />
+    <!-- 银联支付插件 ChinaPay plugin begin -->
+    <activity android:name="com.hxcr.chinapay.activity.Initialize" android:screenOrientation="portrait"
+        android:theme="@style/cp_Animation" />
+    <activity android:name="com.hxcr.chinapay.activity.InfoMain" android:screenOrientation="portrait"
+        android:theme="@style/cp_Animation" android:windowSoftInputMode="adjustUnspecified|stateHidden" />
+    <activity android:name="com.hxcr.chinapay.activity.ResultInfo" android:screenOrientation="portrait"
+        android:theme="@style/cp_Animation" android:windowSoftInputMode="adjustUnspecified|stateHidden" />
+    <activity android:name="com.hxcr.chinapay.activity.HelpMain" android:screenOrientation="portrait"
+        android:theme="@style/cp_Animation" android:windowSoftInputMode="adjustUnspecified|stateHidden" />
+    <activity android:name="com.hxcr.chinapay.activity.SustainBankList" android:screenOrientation="portrait"
+        android:theme="@style/cp_Animation" android:windowSoftInputMode="adjustUnspecified|stateHidden" />
+    <activity android:name="com.hxcr.chinapay.activity.SubmitSujestion" android:screenOrientation="portrait"
+        android:theme="@style/cp_Animation" android:windowSoftInputMode="adjustUnspecified|stateHidden" />
+    <!-- ChinaPay plugin end -->
+    <!-- ChinaPay auth plugin begin -->
+    <activity android:name="com.chinapay.authplugin.activity.Initialize" android:excludeFromRecents="true"
+        android:launchMode="standard" android:screenOrientation="portrait" android:theme="@style/cp_Animation" />
+    <activity android:name="com.chinapay.authplugin.activity.InputBankCard"
+        android:excludeFromRecents="true" android:screenOrientation="portrait" android:theme="@style/cp_Animation"
+        android:windowSoftInputMode="adjustResize|stateHidden" />
+    <!--
+             <activity
+            android:name="com.chinapay.authplugin.activity.InfoMain"
+            android:excludeFromRecents="true"
+            android:screenOrientation="portrait"
+            android:theme="@style/cp_Animation"
+            android:windowSoftInputMode="adjustResize|stateHidden" />
+        -->
+    <activity android:name="com.chinapay.authplugin.activity.ResultInfo" android:excludeFromRecents="true"
+        android:screenOrientation="portrait" android:theme="@style/cp_Animation"
+        android:windowSoftInputMode="adjustUnspecified|stateHidden" />
+    <activity android:name="com.chinapay.authplugin.activity.HelpMain" android:excludeFromRecents="true"
+        android:screenOrientation="portrait" android:theme="@style/cp_Animation"
+        android:windowSoftInputMode="adjustUnspecified|stateHidden" />
+    <activity android:name="com.chinapay.authplugin.activity.SustainBankList"
+        android:excludeFromRecents="true" android:screenOrientation="portrait" android:theme="@style/cp_Animation"
+        android:windowSoftInputMode="adjustUnspecified|stateHidden" />
+    <activity android:name="com.chinapay.authplugin.activity.SubmitSujestion"
+        android:excludeFromRecents="true" android:screenOrientation="portrait" android:theme="@style/cp_Animation"
+        android:windowSoftInputMode="adjustResize|stateHidden" />
+    <activity android:name="com.chinapay.authplugin.activity.DebitCardAuth"
+        android:excludeFromRecents="true" android:screenOrientation="portrait" android:theme="@style/cp_Animation"
+        android:windowSoftInputMode="adjustResize|stateHidden" />
+    <!-- ChinaPay auth plugin end -->
+
+    <activity android:name=".activity.CaptureActivity" android:configChanges="orientation|keyboardHidden"
+        android:screenOrientation="landscape" android:theme="@android:style/Theme.NoTitleBar.Fullscreen"
+        android:windowSoftInputMode="stateAlwaysHidden" />
+
+    <!-- 百度定位 -->
+    <service android:name="com.baidu.location.f" android:enabled="true" android:process=":remote" />
+
+    <activity android:name=".activity.WebViewActivity" android:screenOrientation="portrait" />
+    <activity android:name="com.openhunme.cordova.activity.HMDroidGap" android:screenOrientation="portrait" />
+    <activity android:name=".activity.fund.FundSupmakActivity" />
+    <activity android:name=".activity.assets.MyAssetsActivity" />
+
+
+
+    <!-- 一下代码均为极光推送的配置文件 -->
+
+    <!-- Rich push 核心功能 since 2.0.6-->
+    <activity
+        android:name="cn.jpush.android.ui.PopWinActivity"
+        android:theme="@style/MyDialogStyle"
+        android:exported="false">
+    </activity>
+    <!-- Required SDK核心功能-->
+    <activity
+        android:name="cn.jpush.android.ui.PushActivity"
+        android:configChanges="orientation|keyboardHidden"
+        android:theme="@android:style/Theme.NoTitleBar"
+        android:exported="false">
+        <intent-filter>
+            <action android:name="cn.jpush.android.ui.PushActivity" />
+            <category android:name="android.intent.category.DEFAULT" />
+            <category android:name="com.cfjn.javacf" />
+        </intent-filter>
+    </activity>
+    <!-- Required  SDK核心功能-->
+    <service
+        android:name="cn.jpush.android.service.DownloadService"
+        android:enabled="true"
+        android:exported="false" >
+    </service>
+    <!-- Required SDK 核心功能-->
+    <!-- 可配置android:process参数将PushService放在其他进程中 -->
+    <service
+        android:name="cn.jpush.android.service.PushService"
+        android:enabled="true"
+        android:exported="false">
+        <intent-filter>
+            <action android:name="cn.jpush.android.intent.REGISTER" />
+            <action android:name="cn.jpush.android.intent.REPORT" />
+            <action android:name="cn.jpush.android.intent.PushService" />
+            <action android:name="cn.jpush.android.intent.PUSH_TIME" />
+        </intent-filter>
+    </service>
+    <!-- since 1.8.0 option 可选项。用于同一设备中不同应用的JPush服务相互拉起的功能。 -->
+    <!-- 若不启用该功能可删除该组件，将不拉起其他应用也不能被其他应用拉起 -->
+    <service
+        android:name="cn.jpush.android.service.DaemonService"
+        android:enabled="true"
+        android:exported="true">
+        <intent-filter>
+            <action android:name="cn.jpush.android.intent.DaemonService" />
+            <category android:name="com.cfjn.javacf" />
+        </intent-filter>
+    </service>
+    <!-- Required SDK核心功能-->
+    <receiver
+        android:name="cn.jpush.android.service.PushReceiver"
+        android:enabled="true"
+        android:exported="false">
+        <intent-filter android:priority="1000">
+            <action android:name="cn.jpush.android.intent.NOTIFICATION_RECEIVED_PROXY" />   <!--Required  显示通知栏 -->
+            <category android:name="com.cfjn.javacf" />
+        </intent-filter>
+        <intent-filter>
+            <action android:name="android.intent.action.USER_PRESENT" />
+            <action android:name="android.net.conn.CONNECTIVITY_CHANGE" />
+        </intent-filter>
+        <!-- Optional -->
+        <intent-filter>
+            <action android:name="android.intent.action.PACKAGE_ADDED" />
+            <action android:name="android.intent.action.PACKAGE_REMOVED" />
+            <data android:scheme="package" />
+        </intent-filter>
+
+    </receiver>
+    <!-- Required SDK核心功能-->
+    <receiver android:name="cn.jpush.android.service.AlarmReceiver" android:exported="false"/>
+    <!-- User defined.  For test only  用户自定义的广播接收器-->
+    <receiver
+        android:name=".JPush.MyJPushReceiver"
+        android:exported="false"
+        android:enabled="true">
+        <intent-filter>
+            <action android:name="cn.jpush.android.intent.REGISTRATION" /> <!--Required  用户注册SDK的intent-->
+            <action android:name="cn.jpush.android.intent.UNREGISTRATION" /><!--Required  用户注销SDK的intent-->
+            <action android:name="cn.jpush.android.intent.MESSAGE_RECEIVED" /> <!--Required  用户接收SDK消息的intent-->
+            <action android:name="cn.jpush.android.intent.NOTIFICATION_RECEIVED" /> <!--Required  用户接收SDK通知栏信息的intent-->
+            <action android:name="cn.jpush.android.intent.NOTIFICATION_OPENED" /> <!--Required  用户打开自定义通知栏的intent-->
+            <action android:name="cn.jpush.android.intent.ACTION_RICHPUSH_CALLBACK" /> <!--Optional 用户接受Rich Push Javascript 回调函数的intent-->
+            <action android:name="cn.jpush.android.intent.CONNECTION" /><!-- 接收网络变化 连接/断开 since 1.6.3 -->
+            <category android:name="com.cfjn.javacf" />
+        </intent-filter>
+    </receiver>
+    <!-- Required  . Enable it you can get statistics data with channel -->
+    <meta-data android:name="JPUSH_CHANNEL" android:value="developer-default"/>
+    <meta-data android:name="JPUSH_APPKEY" android:value="65cd01b973a8b133d27fc95f" /> <!--  </>值来自开发者平台取得的AppKey-->
+</application>
+</manifest>

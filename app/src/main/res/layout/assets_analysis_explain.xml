@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="horizontal"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="@dimen/space">
+    <View
+        android:id="@+id/v_color"
+        android:background="@color/red"
+        android:layout_width="@dimen/space"
+        android:layout_height="@dimen/space"
+        android:layout_gravity="center"/>
+    <TextView
+        android:id="@+id/tv_fund_name"
+        android:layout_marginLeft="@dimen/space"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="123"
+       android:textSize="@dimen/dimens_x1.8sp"
+        />
+</LinearLayout>

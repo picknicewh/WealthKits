@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html class="ui-mobile">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>赎回基金</title>
+        <!--CSS代码-->
+        <link rel="stylesheet" href="../css/jquery.mobile-1.3.1.css" />
+        <link rel="stylesheet" href="../css/shumi-mobile.css" />
+        <link rel="stylesheet" href="../css/shumi-mobile2013.css" />
+    </head>
+    
+    <body class="ui-mobile-viewport ui-overlay-c">
+    	<!--头部2013_start-->
+        <header class="shumi-m-head">
+            <h2 class="t">赎回基金</h2>
+            <div class="gotop" id="quit">取消</div>
+            <div class="backto" id="back">返回</div>
+        </header>
+        <!--头部2013_end-->
+        <!-- Loading标记 -->
+        <div class="ui-loader ui-corner-all ui-body-a ui-loader-default" id="loading">
+            <span class="ui-icon ui-icon-loading"></span>
+        </div>
+        <div class="ui-page ui-body-c ui-page-active" tabindex="0">
+            <div class="ui-content">
+                <div class="allcontent">
+                    <div data-cid="text3" class="codiqa-control">
+                        <h5>
+                            基金交易系统由<br> 杭州数米基金销售有限公司 提供<a href="tel:4000766123"><span class="service-tel">4000-766-123</span></a>
+                        </h5>
+                    </div>
+		    <div class="ui-info">
+			<div class="space10"></div>
+			<div class="ui-grid-a">
+			    <label class="leftlabel">基金:</label>
+			    <label class="rightlabel" id="fund"></label>
+			</div>
+		    </div>
+		    <div class="space10"></div>
+		    <div class="ui-info">
+			<div class="space10"></div>
+			<div class="ui-grid-a">
+			    <label class="leftlabel">银行卡:</label>
+			    <label class="rightlabel" id="bankcard"></label>
+			</div>
+			<div class="ui-grid-a">
+			    <label class="leftlabel" for="applysum">份额:</label>
+			    <input name="applysum" id="applysum" placeholder="" value="" class="ui-number red" type="text" onfocus="this.type='number';" onblur="this.type='text';">
+			    <a id="redeemAll" class="shu" href="javascript:void(0);" target="_blank">全部</a>
+			    <p style="padding-top:10px;font-size:12px;color:red;">温馨提示: 全部赎回后收益将于本金同时赎回</p>
+                        </div>
+		    </div>
+                    <div class="space10"></div>
+		    <div aria-disabled="false" class="ui-btn ui-shadow ui-btn-corner-all ui-fullsize ui-btn-block ui-submit ui-btn-up-c ui-btn-dianxin" name="btn">
+            <div class="ui-btn-dianxinceng">
+			<span class="ui-btn-inner ui-btn-corner-all">
+			    <span class="ui-btn-text">下一步</span>
+			</span>
+			<input id="btn_submit" type="submit" data-cid="submitbutton1" class="codiqa-control ui-btn-hidden" aria-disabled="false">
+            </div>
+                    </div>
+                    <div class="space10"></div>
+                    <div class="space10"></div>
+                </div>
+            </div>
+        </div>
+    </body>
+    <!--引入jquery代码-->
+    <script type="text/javascript" src="../js/jquery-1.8.2.min.js"></script>
+    <script type="text/javascript" src="../js/shumi-mobile.js"></script>
+    <script type="text/javascript">
+	var applysum;
+	
+        $(document).ready(function(){
+	    initPage();
+	    initEvent();
+        });
+        
+	//页面默认初始化函数
+	function initPage() {
+	    if (sessionStorage.getItem("redeemFund.fundCode") && sessionStorage.getItem("redeemFund.fundName")) {
+		var fundcode = sessionStorage.getItem("redeemFund.fundCode");
+		var fundname = sessionStorage.getItem("redeemFund.fundName");
+		$("#fund").text(fundcode+" "+fundname);
+	    }
+	    if (sessionStorage.getItem("redeemFund.bankName") && sessionStorage.getItem("redeemFund.bankAcco")) {
+		var bankname = sessionStorage.getItem("redeemFund.bankName");
+		var bankacco = sessionStorage.getItem("redeemFund.bankAcco");
+		$("#bankcard").text(bankname+"(****"+bankacco+")");
+	    }
+	    if (sessionStorage.getItem("redeemFund.applySum")) {
+		var applySum = sessionStorage.getItem("redeemFund.applySum");
+		$("#applysum").val(applySum);
+	    }else{
+		if (sessionStorage.getItem("redeemFund.usableRemainShare")) {
+		    var useableShares = sessionStorage.getItem("redeemFund.usableRemainShare");
+		    $("#applysum").attr("placeholder","最多赎回"+useableShares+"份");
+		}
+	    }
+	}
+	
+	function initEvent() {
+	    $("#btn_submit").click(function(){
+		nextToConfirm();
+            });
+	    $("#redeemAll").click(function(){
+		if (sessionStorage.getItem("redeemFund.usableRemainShare")) {
+		    var useableShares = sessionStorage.getItem("redeemFund.usableRemainShare");
+		    $("#applysum").val(useableShares);
+		}
+	    });
+	}
+	
+	//页面设置函数
+        function setNecessaryData(json){
+            var data = toObject(json);
+            //保存数据
+            sessionStorage.setItem("redeemFund.fundCode",data.fundCode);
+            sessionStorage.setItem("redeemFund.fundName",data.fundName);
+            sessionStorage.setItem("redeemFund.usableRemainShare",data.usableRemainShare.toFixed(2));
+            sessionStorage.setItem("redeemFund.shareType",data.shareType);
+            sessionStorage.setItem("redeemFund.bankName",data.bankName);
+            sessionStorage.setItem("redeemFund.bankAcco",data.bankAcco);
+            sessionStorage.setItem("redeemFund.tradeAcco",data.tradeAcco);
+            sessionStorage.setItem("operAction","R");
+	    initPage();
+        }
+    
+	//跳转至下一步
+        function nextToConfirm() {
+            var maxSum = parseFloat(sessionStorage.getItem("redeemFund.usableRemainShare"));
+            applysum = parseFloat($("#applysum").val());
+            if (isNaN(applysum) || applysum == 0) {
+                alert("份额输入有误，请输入赎回份额。");
+		$("#applysum").val("");
+            }else if(applysum > maxSum){
+                alert("您输入的份额数过大，您最多可以赎回"+maxSum+"份。");
+            }else if(applysum != maxSum && maxSum - applysum < 1000){
+		if(confirm("因赎回后的剩余份额低于需保留的最低份额，所以无法部分赎回，您可以调整赎回份额或全部赎回。是否全部赎回？")){
+		    $("#applysum").val(maxSum);
+		    applysum = $("#applysum").val();
+		    showLoading();
+		    goNext();
+		}else{
+		    $("#applysum").val("");
+		}
+	    }else{
+                showLoading();
+		goNext();
+            }
+        }
+	
+	function goNext() {
+	    //获取用户开户信息
+	    requestOpenApi('trade_account.getaccount','get','json',undefined,
+                function(json){
+                    hideLoading();
+                    if(json.TempTradePassword){
+                        // 使用临时密码交易,跳转设置交易密码
+			sessionStorage.setItem("setTradePassword.nextPage",'confirmRedeemInfo.html');
+                        loadURL('http://smbclient.localpage/setTradePassword.html');
+                    }else{
+			sessionStorage.setItem("redeemFund.quickRedeem","false");
+                        sessionStorage.setItem("redeemFund.applySum",applysum);
+			loadURL('http://smbclient.localpage/confirmRedeemInfo.html');
+                    }
+                },
+                function(jqXHR, textStatus, errorThrown){
+                    hideLoading();
+                    if (!navigator.onLine) {
+                        alert('网络连接中断,请检查你的网络连接');
+                    }else{
+			var errorResponse = eval("("+jqXHR.responseText+")");
+			if (errorResponse.Code == 99999){
+			   loadURL('http://smbclient.localpage/maintain.html');
+			   return;
+			}
+			if (errorResponse.Code) {
+			    //记录错误反馈
+			    sessionStorage.setItem("error_message",errorResponse.Message);
+			    //跳转到失败页面
+			    loadURL('http://smbclient.localpage/fail.html');
+			}
+		    }
+                }
+            );
+	}
+	
+	function showLoading(){
+            $("#loading").show();
+        }
+            
+        function hideLoading(){
+            $("#loading").hide();
+        }
+        </script>
+</html>

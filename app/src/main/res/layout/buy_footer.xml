@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <Button
+        android:id="@+id/b_footer_ok"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="认购"
+        android:background="@drawable/bg_sg_password"
+        android:textSize="@dimen/dimens_x2sp"
+        android:textColor="@color/white"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="@dimen/dimens_x1dp"
+        android:layout_marginBottom="@dimen/dimens_x1dp"
+        android:paddingLeft="@dimen/dimens_x4dp"
+        android:paddingRight="@dimen/dimens_x4dp"/>
+</LinearLayout>

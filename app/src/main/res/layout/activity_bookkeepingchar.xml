@@ -1,0 +1,235 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:id="@+id/b_char_main"
+    android:background="@color/white">
+
+    <com.cfjn.javacf.widget.NavigationBar
+        android:id="@+id/navigetionBar"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:padding="10dp" />
+
+    <RadioGroup
+        android:layout_below="@id/navigetionBar"
+        android:id="@+id/rg_char_value"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/gray_6"
+        android:orientation="horizontal">
+        <RadioButton
+            android:id="@+id/rb_char_expend"
+            style="@style/rb_type"
+            android:checked="true"
+            android:text="@string/expend" />
+        <View
+            android:background="@color/line_gray"
+            android:layout_width="1dp"
+            android:layout_height="match_parent" />
+
+        <RadioButton
+            android:id="@+id/rb_char_income"
+            style="@style/rb_type"
+            android:text="@string/income" />
+    </RadioGroup>
+
+
+    <LinearLayout
+        android:id="@+id/ll_line"
+        android:layout_below="@id/rg_char_value"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="3dp"
+        android:layout_marginBottom="15dp"
+        android:layout_marginTop="-3dp">
+        <View
+            android:id="@+id/v_line1"
+            android:layout_weight="1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/space_x2"
+            android:layout_marginRight="@dimen/space_x2"
+            android:background="@color/red" />
+        <View
+            android:id="@+id/v_line2"
+            android:layout_weight="1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@color/red"
+            android:layout_marginLeft="@dimen/space_x2"
+            android:layout_marginRight="@dimen/space_x2" />
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_below="@id/ll_line"
+        android:id="@+id/b_char_rl"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp"
+        android:orientation="horizontal">
+
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="2.5"
+            android:orientation="horizontal"
+            android:layout_gravity="center"
+            android:gravity="center">
+            <ImageButton
+                android:id="@+id/ib_char_up"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:background="@drawable/ic_arrow_left_p" />
+            <TextView
+                android:id="@+id/tv_char_date"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="2015年07月"
+                android:textColor="@color/black"
+                android:layout_marginLeft="8dp"
+                android:layout_marginRight="8dp"
+                android:textSize="20sp" />
+            <ImageButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/ic_arrow_right_p"
+                android:layout_gravity="center_vertical"
+                android:id="@+id/ib_char_down" />
+        </LinearLayout>
+
+        <RadioGroup
+            android:id="@+id/rg_char_chart"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.9"
+            android:orientation="horizontal">
+            <RadioButton
+                android:id="@+id/rb_char_pie"
+                style="@style/rb_view"
+                android:checked="true"
+                android:background="@drawable/b_char_pie" />
+            <RadioButton
+                android:id="@+id/rb_char_column"
+                style="@style/rb_view"
+                android:background="@drawable/b_char_list" />
+        </RadioGroup>
+
+    </LinearLayout>
+
+
+    <!--  <LinearLayout
+          android:id="@+id/ll_totle_value"
+          android:layout_below="@id/b_char_rl"
+          android:layout_width="match_parent"
+          android:layout_height="30dp"
+          android:orientation="horizontal"
+          android:paddingLeft="10dp"
+          android:paddingRight="10dp"
+          android:layout_marginBottom="@dimen/space">
+
+          <TextView
+              android:id="@+id/tv_char_lable"
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:layout_weight="1"
+              android:layout_gravity="center_vertical"
+              android:text="总支出"
+              android:textColor="@color/black"
+              android:textSize="18sp" />
+
+          <TextView
+              android:id="@+id/tv_char_value"
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:layout_gravity="center_vertical"
+              android:layout_weight="1"
+              android:gravity="right"
+              android:text="0.00"
+              android:textColor="@color/red"
+              android:textSize="18sp"
+              />
+      </LinearLayout>
+      -->
+
+    <View
+        android:id="@+id/v_lin3"
+        android:layout_below="@id/b_char_rl"
+        android:layout_height="@dimen/line_gray"
+        android:background="@color/line_gray"
+        android:layout_width="match_parent" />
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <RelativeLayout
+            android:layout_below="@id/v_lin3"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="8"
+            android:layout_marginTop="@dimen/space"
+            android:orientation="vertical">
+            <TextView
+                android:gravity="center"
+                android:id="@+id/tv_char_nodata"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="18sp"
+                android:layout_centerInParent="true"
+                android:visibility="gone"
+                android:text="当前月份没有记账哦..."/>
+
+            <include layout="@layout/bookkeeping_char_piepage"
+                android:id="@+id/in_piepage"/>
+
+            <include layout="@layout/bookkeeping_char_columnpage"
+                android:id="@+id/in_columnpage" />
+            <!--<include layout="@layout/nonetwork"-->
+            <!--android:id="@+id/in_nonet" />-->
+        </RelativeLayout>
+
+        <View
+            android:background="@color/line_gray"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/line_gray"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:orientation="vertical"
+            android:layout_weight="1"
+            android:background="@color/white"
+            android:gravity="bottom|center_vertical"
+            android:layout_marginLeft="@dimen/space">
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:orientation="horizontal"
+                android:layout_gravity="center_vertical"
+                android:gravity="center_vertical">
+                <TextView
+                    android:id="@+id/tv_char_lable"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="总支出"
+                    android:textColor="@color/black"
+                    android:textSize="18sp"
+                    android:layout_marginRight="@dimen/space"/>
+                <TextView
+                    android:id="@+id/tv_char_value"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:text="0.00"
+                    android:textColor="@color/red"
+                    android:textSize="18sp" />
+            </LinearLayout>
+        </LinearLayout>
+    </LinearLayout>
+</LinearLayout>

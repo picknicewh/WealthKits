@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:paddingTop="@dimen/space"
+            android:paddingBottom="@dimen/space"
+            android:orientation="vertical">
+            <TextView
+                android:id="@+id/tv_fund_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:text="大成丰财宝货币A"
+                android:textColor="@color/black"
+                android:singleLine="true"
+                android:textSize="@dimen/dimens_x1.8sp" />
+            <TextView
+                android:id="@+id/tv_fund_code"
+                android:layout_marginTop="@dimen/dimens_x0.5dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:text="626003"
+                android:textSize="@dimen/dimens_x1.6sp" />
+        </LinearLayout>
+
+        <ImageView
+            android:padding="@dimen/dimens_x2dp"
+            android:id="@+id/iv_fund_type"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:scaleType="centerCrop"
+            android:src="@drawable/ic_attention_off"
+            android:layout_gravity="center"
+            />
+    </LinearLayout>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/line_gray"
+        android:background="@color/line_gray">
+
+    </View>
+
+</LinearLayout>

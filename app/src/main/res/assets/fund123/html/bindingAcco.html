@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html class="ui-mobile">
+    <head>
+        <meta charset="utf-8">
+            <meta name="viewport" content="width=device-width, minimum-scale=1, maximum-scale=1">
+                <title></title>
+                <link rel="stylesheet" href="../css/jquery.mobile-1.3.1.css" />
+                <link rel="stylesheet" href="../css/shumi-mobile.css" />
+                <link rel="stylesheet" href="../css/shumi-mobile2013.css" />
+    </head>
+    <body class="ui-mobile-viewport edit ui-overlay-c preview">
+    	<!--头部2013_start-->
+        <header class="shumi-m-head">
+            <h2 class="t">账号授权</h2>
+            <div class="gotop" id="quit">取消</div>
+            <div class="backto" id="back">返回</div>
+        </header>
+        <!--头部2013_end-->
+        <div class="ui-loader ui-corner-all ui-body-a ui-loader-default" id="loading" > <span class="ui-icon ui-icon-loading"></span> </div>
+        <div data-role="page" id="page1" data-cid="page1" class="codiqa-control codiqa-container ui-page ui-body-c ui-page-active" tabindex="0" data-url="page1" data-theme="c">
+            <div data-role="content" data-cid="pagecontent1" class="codiqa-control codiqa-container ui-sortable ui-content ui-sortable-disabled" role="main">
+                <div class="allcontent">
+                    <div data-cid="text3" class="codiqa-control">
+                        <h5>基金交易系统由<br>
+                            杭州数米基金销售有限公司 提供<a href="tel:4000-766-123"><span class="service-tel">4000-766-123</span></a></h5>
+                    </div>
+                        <div class="ui-info">
+                            <div data-cid="text1" class="ui-info-title"> 根据您提供的信息，我们在数米网检测到如下交易账号 </div>
+                            <div class="ui-grid-a">
+                                <div class="ui-block-a">账 号：</div>
+                                <div class="ui-block-b" id="div_username">N/A</div>
+                            </div>
+                            <div class="ui-grid-a">
+                                <div class="ui-block-a">姓 名：</div>
+                                <div class="ui-block-b" id="div_realname">N/A</div>
+                            </div>
+                            <div class="ui-grid-a">
+                                <div class="ui-block-a">身份证：</div>
+                                <div class="ui-block-b" id="div_idnumber">N/A</div>
+                            </div>
+                        </div>
+                        <div data-cid="text1" class="ui-info-title2"> 我们需要您授权进行账号绑定，并同时允许在当前应用进行基金交易和查询。 </div>
+                        <div data-role="fieldcontain" data-cid="textinput2" class="codiqa-control ui-field-contain ui-body" style="">
+                            <!-- <label for="textinput3" class="ui-input-text">请输入数米网交易密码</label>-->
+                            <div class="ui-btn">
+                            <input name="" id="trade_password" placeholder="请输入数米网交易密码" value="" type="password" class="ui-input-text ui-body-c ui-corner-all ui-shadow-inset">
+                            </div>
+                            </div>
+                        <div class="fieldcontain">
+                            <input id="chkbox_agree" name="" type="checkbox" checked="checked">
+                                <label for="chkbox_agree" style="font-size: small">同意《<a id="protocol" href="javascript:void(0)">移动客户终端基金交易插件三方协议</a>》</label>
+                        </div>
+                        <div class="space10"></div>
+                        <div id="div_submit" data-corners="true" data-shadow="true" data-iconshadow="true" data-iconsize="18" data-wrapperels="span" data-icon="null" data-iconpos="null" data-theme="c" class="ui-btn ui-btn-up-c ui-shadow ui-btn-corner-all ui-submit ui-disabled ui-btn-dianxin" aria-disabled="false">
+                        	<div class="ui-btn-dianxinceng">
+                            <span class="ui-btn-inner ui-btn-corner-all"> <span class="ui-btn-text">同意授权</span> </span>
+                            <input id="btn_submit" type="submit" value="同意授权" data-cid="submitbutton1" class="codiqa-control ui-btn-hidden" aria-disabled="false">
+                            </div>
+                        </div>
+                        <div class="space10"></div>
+                        <div class="space10"></div>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>
+<!--引入jquery代码-->
+<script type="text/javascript" src="../js/jquery-1.8.2.min.js"></script>
+<script type="text/javascript" src="../js/shumi-mobile.js"></script>
+<!-- js代码 -->
+<script type="text/javascript">
+    $(document).ready(function() {
+        var check_box = $("#chkbox_agree");
+        if(check_box.length == 0 || check_box.attr("checked") == "checked"){
+            restoreSubmitBut();
+        } else {
+            forbiddenSubmitBut();
+        }
+        $("#btn_submit").click(function(){
+            if (check_all_inputs()) {
+                showLoading();
+                forbiddenSubmitBut();
+                doSubmitAndGoNextPage();
+            }
+        });
+        $("#chkbox_agree").click(function(){
+            var check_box = $("#chkbox_agree");
+            if(check_box.length == 0 || check_box.attr("checked") == "checked"){
+                restoreSubmitBut();
+            } else {
+                forbiddenSubmitBut();
+            }
+        });
+        $("#protocol").click(function(){
+            loadURL('http://smbclient.localpage/authProtocol.html');    
+        });
+        if (sessionStorage.getItem("authentication.username"))
+            $("#div_username").html(sessionStorage.getItem("authentication.username"));
+        if (sessionStorage.getItem("authentication.realname"))
+            $("#div_realname").html(sessionStorage.getItem("authentication.realname"));
+        if (sessionStorage.getItem("authentication.idnumber"))
+            $("#div_idnumber").html(hideSomeNumber(sessionStorage.getItem("authentication.idnumber")));
+    });
+    
+    function hideSomeNumber(num) {
+        var newNumber = "";
+        for (var i = 0; i < num.length; ++i) {
+            if (i < 6 || i >= 14) {
+                newNumber += num[i];
+            } else {
+                newNumber += '*';
+            }
+        }
+        return newNumber;
+    }
+    
+    function check_all_inputs() {
+        var pw1 = $("#trade_password").val();
+        if (pw1.length == 0) {
+            alert("请输入交易密码。");
+            return false;
+        }
+        return true;
+    }
+    
+    function doSubmitAndGoNextPage() {
+        var idnumber = sessionStorage.getItem("authentication.idnumber");
+        // 提交“授权”请求
+        var pw1 = $("#trade_password").val();
+        var params = {
+            username: idnumber,
+            password: pw1
+        };
+        var uri = 'Quick-Oauth.aspx';
+        var methodType = 'post';
+        requestOauthApi(uri,methodType,undefined,params,
+            function(formString){
+                var oauthToken = (/oauth_token=([0-9a-f]+)/).exec(formString)[1];
+                var oauthSecret = (/oauth_token_secret=([0-9a-f]+)/).exec(formString)[1];
+                if (!oauthToken || oauthToken.length == 0 || !oauthSecret || oauthSecret.length == 0) {
+                    hideLoading();
+                    restoreSubmitBut();
+                    alert("无法处理服务器返回的响应数据。错误信息：" + e.description);
+                    return;
+                }
+                // 触发“用户已授权”事件
+                var params = {
+                    newAccount:false,
+                    realName:sessionStorage.getItem("authentication.realname"),
+                    idNumber:idnumber,
+                    authorizedToken: oauthToken,
+                    tokenSecret: oauthSecret,
+                    bankSerial:null,
+                    bankCard:null
+                };
+                // 通知Native
+                smbEvent('hasAuthorized',params,
+                    function() {
+                        hideLoading();
+                        restoreSubmitBut();
+                        goNextPage();
+                    }
+                );
+            },
+            function(jqXHR, textStatus, errorThrown){
+                hideLoading();
+                restoreSubmitBut();
+                if (!navigator.onLine) {
+                    alert('网络连接中断,请检查你的网络连接');
+                }else{
+                    hideLoading();
+                    sessionStorage.setItem("error_message","交易密码不正确。");
+                    loadURL("http://smbclient.localpage/fail.html");
+                }
+            }
+        );
+    }
+    
+    function goNextPage() {
+        // 下一个页面判断逻辑：
+        // 开户状态,0:未开户;1:已开户;-1开户未绑卡
+        var openAccoStatus = sessionStorage.getItem("authentication.status");
+        if(!sessionStorage.getItem("doPurchase.fundCode")){
+            //说明非购买过程中授权
+            if(openAccoStatus == 0){
+                //未开户 －>支付开户
+                loadURL('http://smbclient.localpage/PayMoney.html');
+            }else{
+                //退出授权界面
+                smbEvent('quitSDk', undefined, function(){});
+            }
+        }else{
+            //购买过程中授权
+            // 如果用户当前状态是“开户已邦卡”则跳转到认/申购表单页面，否则跳转到绑定银行卡页面。
+            if (openAccoStatus == 1) {
+                //开户已经绑卡 -> 返回认/申购
+                loadURL('http://smbclient.localpage/doPurchase.html');
+            }else if(openAccoStatus == -1){
+                //开户未绑卡 －> 添加银行卡
+                //设置加卡成功后跳转到认申购页面
+                sessionStorage.setItem('addBankcards.nextPage','doPurchase.html');
+                loadURL('http://smbclient.localpage/addBankcards.html');
+            }else {
+                //未开户 －>支付开户
+                loadURL('http://smbclient.localpage/PayMoney.html');
+            }    
+        }
+    }
+    
+    function showLoading(){
+        $("#loading").show();
+    }
+    
+    function hideLoading(){
+        $("#loading").hide();
+    }
+    
+    //禁用提交按钮
+    function forbiddenSubmitBut() {
+        disable_inputs("btn_submit",true);
+        $("#div_submit").addClass("ui-disabled");
+    }
+        
+    //恢复提交按钮
+    function restoreSubmitBut() {
+        disable_inputs("btn_submit",false);
+        $("#div_submit").removeClass("ui-disabled");
+    }
+    
+    </script>

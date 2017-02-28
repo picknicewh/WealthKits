@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html class="ui-mobile">
+    <head>
+        <meta charset="utf-8">
+            <meta name="viewport" content="width=device-width, initial-scale=1">
+                <title>数米基金宝</title>
+                <!--CSS代码-->
+                <link rel="stylesheet" href="../css/jquery.mobile-1.3.1.css" />
+                <link rel="stylesheet" href="../css/shumi-mobile.css" />
+                <link rel="stylesheet" href="../css/shumi-mobile2013.css" />
+                </head>
+    <body class="ui-mobile-viewport edit ui-overlay-c preview">
+    	<!--头部2013_start-->
+        <header class="shumi-m-head">
+            <h2 class="t">身份验证</h2>
+            <div class="gotop" id="quit">取消</div>
+            <div class="backto" id="back">返回</div>
+        </header>
+        <!--头部2013_end-->
+        <div class="ui-loader ui-corner-all ui-body-a ui-loader-default" id="loading" > <span class="ui-icon ui-icon-loading"></span> </div>
+        <div id="page1" data-cid="page1" class="codiqa-control codiqa-container ui-page ui-body-c ui-page-active" tabindex="0" >
+            <div  data-cid="pagecontent1" class="codiqa-control codiqa-container ui-sortable ui-content ui-sortable-disabled" role="main">
+                <div class="allcontent">
+                    <div data-cid="text3" class="codiqa-control">
+                        <h5>基金交易系统由<br>
+                            杭州数米基金销售有限公司 提供<a href="tel:4000766123"><span class="service-tel">4000-766-123</span></a></h5>
+                    </div>
+                    <div data-role="fieldcontain" data-cid="textinput1" class="codiqa-control ui-field-contain ui-body">
+                        <label for="reg_name" class="ui-input-text">姓名</label>
+                        <input name="" id="reg_name" placeholder="请输入您的真实姓名" value=""  class="ui-input-text ui-body-c ui-corner-all ui-shadow-inset">
+                            </div>
+                    <div data-role="fieldcontain" data-cid="textinput2" class="codiqa-control ui-field-contain ui-body">
+                        <label for="reg_id" class="ui-input-text">身份证号</label>
+                        <input name="" id="reg_id" placeholder="请输入您的真实身份证号" value=""  class="ui-input-text ui-body-c ui-corner-all ui-shadow-inset">
+                            </div>
+                    <div data-role="fieldcontain" data-cid="textinput2" class="codiqa-control ui-field-contain ui-body">
+                        <label for="reg_mail" class="ui-input-text">邮箱</label>
+                        <input name="" id="reg_mail" placeholder="请输入您的常用邮箱" value="" class="ui-input-text ui-body-c ui-corner-all ui-shadow-inset">
+                            </div>
+                    <div data-role="fieldcontain" data-cid="textinput2" class="codiqa-control ui-field-contain ui-body">
+                        <label for="reg_mobile" class="ui-input-text">手机号码</label>
+                        <input name="" id="reg_mobile" placeholder="请输入您的手机号码" value="" class="ui-input-text ui-body-c ui-corner-all ui-shadow-inset">
+                            <div data-cid="text1" class="ui-info-title2">务必填写真实手机号码，此号码将用于接收交易通知和找回密码。</div>
+                            </div>
+                    
+                    <div class="space10"></div>
+                    <div id="div_submit" data-corners="true" data-shadow="true" data-iconshadow="true" data-iconsize="18" data-wrapperels="span" data-icon="null" data-iconpos="null" data-theme="c" class="ui-btn ui-btn-up-c ui-shadow ui-btn-corner-all ui-submit ui-btn-dianxin" aria-disabled="false"> <div class="ui-btn-dianxinceng"><span class="ui-btn-inner ui-btn-corner-all"> <span class="ui-btn-text">下一步</span> </span>
+                        <input id="btn_submit" type="submit" value="下一步" data-cid="submitbutton1" class="codiqa-control ui-btn-hidden" aria-disabled="false">
+                        </div>
+                            </div>
+                    <div class="space10"></div>
+                    <div class="space10"></div>
+                </div>
+            </div>
+        </div>
+    </body>
+    <!--引入jquery代码-->
+    <script type="text/javascript" src="../js/jquery-1.8.2.min.js"></script>
+    <script type="text/javascript" src="../js/shumi-mobile.js"></script>
+    <!-- js代码 -->
+    <script type="text/javascript">
+        //version=20121030000010
+        //定义全局变量
+        var realname ;
+        var idnumber ;
+        var mobilenumber;
+        var username ;
+        var email;
+        var status;
+        var isTemporaryPassword;
+        
+        $(document).ready(function(){
+            showLoading();
+            forbiddenSubmitBut();
+            smbClient("hasProvidedUserInfo", 'post', undefined,
+                function(json) {
+                    hideLoading();
+                    restoreSubmitBut();
+                    //保存第三方提供信息
+                    sessionStorage.setItem("providedUserInfo_realName",json.realName);
+                    sessionStorage.setItem("providedUserInfo_idNumber",json.idNumber);
+                    sessionStorage.setItem("providedUserInfo_emailAddr",json.emailAddr);
+                    sessionStorage.setItem("providedUserInfo_phoneNum",json.phoneNum);
+                    sessionStorage.setItem("providedUserInfo_bankSerial",json.bankSerial);
+                    sessionStorage.setItem("providedUserInfo_bankCard",json.bankCard);
+                    //显示第三方提供信息
+                    if (json.realName && json.idNumber) {
+                        //第三方提供真实姓名和身份证件
+                        var nameField = $("#reg_name");
+                        nameField.val(json.realName);
+                        nameField.attr("disabled",true);
+                        var idField = $("#reg_id");
+                        idField.val(json.idNumber);
+                        idField.attr("disabled",true);
+                    }
+                    if (json.emailAddr) {
+                        $("#reg_mail").val(json.emailAddr);
+                    }
+                    if (json.phoneNum) {
+                        $("#reg_mobile").val(json.phoneNum);
+                    }
+                },
+                function(){}
+            );
+            
+            $("#btn_submit").click(function(){
+                realname = $("#reg_name").val();
+                idnumber = $("#reg_id").val();
+                mobilenumber = $("#reg_mobile").val();
+                email = $("#reg_mail").val();
+                if (validateForm()){
+                    showLoading();
+                    forbiddenSubmitBut();
+                    doSubmit();
+                }
+            });
+        });
+        
+        function doSubmit() {
+            // 提交获取用户开户信息请求
+            var params = {
+                certificatenumber:idnumber,
+                certificatetype:'0'
+            };
+            var uri = 'trade_account.checkaccountstatuswithcertificate';
+            var methodType = 'post';
+            var dataType = 'json';
+            requestOpenApi(uri,methodType,dataType,params,
+                function(json){
+                    hideLoading();
+                    restoreSubmitBut();
+                    // 判断用户是否已开户
+                    username = json.UserName;
+                    status = json.Status;
+                    isTemporaryPassword = json.IsTemporaryPassword;
+                    sessionStorage.setItem("authentication.status",status);
+                    sessionStorage.setItem("authentication.username",username);
+                    sessionStorage.setItem("authentication.realname",realname);
+                    sessionStorage.setItem("authentication.idnumber",idnumber);
+                    sessionStorage.setItem("authentication.mobilenumber",mobilenumber);
+                    sessionStorage.setItem("authentication.email",email);
+                    if(json.Status != 0 && json.RealName != $("#reg_name").val()){
+                        alert('您输入的身份证件与真实姓名不匹配，请重新输入。');
+                    }else{
+                        // 跳转到下一个页面
+                        goNextPage();    
+                    }
+                },
+                function(jqXHR, textStatus, errorThrown){
+                    hideLoading();
+                    restoreSubmitBut();
+                    if (!navigator.onLine) {
+                        alert('网络连接中断,请检查你的网络连接');
+                    }else{
+                        var errorResponse = eval("("+jqXHR.responseText+")");
+                       if (errorResponse.Code == 99999){
+                       loadURL('http://smbclient.localpage/maintain.html');
+                       return;
+                       }
+                        if (errorResponse.Code) {
+                            //记录错误反馈
+                            sessionStorage.setItem("error_message",errorResponse.Message);
+                            //跳转到失败页面
+                            loadURL('http://smbclient.localpage/fail.html');
+                        }
+                    }
+                }
+            );
+        }
+        
+        function goNextPage() {
+            if(status == 0){
+                sessionStorage.setItem("authentication.openacco","1");
+                loadURL('http://smbclient.localpage/payMoney.html');
+            }else {
+                if(isTemporaryPassword){
+                    sessionStorage.setItem("setTradePassword.nextPage","bindingAcco.html");
+                    loadURL('http://smbclient.localpage/setTradePassword.html');
+                }else{
+                    loadURL('http://smbclient.localpage/bindingAcco.html');
+                }
+            }
+        }
+        
+        function validateForm() {
+            var in1 = $("#reg_name").val();
+            if (in1 == "") {
+                alert("请输入姓名。");
+                return false;
+            }
+            
+            var in2 = $("#reg_id").val();
+            if (in2 == "") {
+                alert("请输入身份证号。");
+                return false;
+            }
+            
+            var in3 = $("#reg_mobile").val();
+            if (in3 == "") {
+                alert("请输入手机号。");
+                return false;
+            }
+            
+            var in4 = $("#reg_mail").val();
+            if (in4 == "") {
+                alert("请输入邮箱。");
+                return false;
+            }
+            
+            if (in2.length < 18 || in2.length > 18 ) {
+                alert("请输入正确的身份证号，仅支持18位身份证号。")
+                return false;
+            }
+            
+            if (!validEmail($("#reg_mail").val())) {
+                alert("邮箱格式不正确，请输入正确的邮箱。")
+                return false;
+            }
+            
+            if (in3.length < 10 || in3.length > 12 ) {
+                alert("请输入正确的手机号。")
+                return false;
+            }
+            
+            return true;
+        }
+        
+        function validEmail(v) {
+            var r = new RegExp("[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?");
+            return (v.match(r) == null) ? false : true;
+        }
+        
+        function showLoading(){
+            $("#loading").show();
+        }
+        
+        function hideLoading(){
+            $("#loading").hide();
+        }
+        
+        //禁用提交按钮
+        function forbiddenSubmitBut() {
+            disable_inputs("btn_submit",true);
+            $("#div_submit").addClass("ui-disabled");
+        }
+        
+        //恢复提交按钮
+        function restoreSubmitBut() {
+            disable_inputs("btn_submit",false);
+            $("#div_submit").removeClass("ui-disabled");
+        }
+        </script>
+</html>

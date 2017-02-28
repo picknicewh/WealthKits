@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="@color/red">
+
+        <ImageButton
+            android:id="@+id/fund_go_back"
+            android:layout_width="50dp"
+            android:layout_height="match_parent"
+            android:layout_centerVertical="true"
+            android:background="@color/transparent"
+            android:src="@drawable/ic_goback" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:text="增值服务"
+            android:textColor="@color/white"
+            android:textSize="@dimen/dimens_x2sp" />
+    </RelativeLayout>
+
+    <ImageView
+        android:id="@+id/iv_service_desc"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:scaleType="fitXY"
+        android:visibility="gone"
+        />
+
+
+    <ImageView
+        android:id="@+id/iv_service_ad"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:scaleType="fitXY" />
+
+    <ImageView
+        android:layout_marginTop="@dimen/dimens_x10dp"
+        android:id="@+id/imgview"
+        android:src="@drawable/ic_red_loading"
+        android:layout_gravity="center"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:scaleType="fitXY">
+    </ImageView>
+
+    <RelativeLayout
+        android:visibility="gone"
+        android:id="@+id/ll_notNetwork"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <ImageView
+            android:layout_above="@+id/tv_notNetwork"
+            android:layout_centerInParent="true"
+            android:id="@+id/img_notNetwork"
+            android:src="@drawable/ic_failed"
+            android:layout_gravity="center"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:scaleType="fitXY">
+        </ImageView>
+
+        <TextView
+            android:id="@+id/tv_notNetwork"
+            android:layout_marginTop="@dimen/dimens_x2dp"
+            android:layout_centerInParent="true"
+            android:gravity="center"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/dimens_x1.6sp"
+            android:text="加载失败，请检查网络！"/>
+
+    </RelativeLayout>
+
+    <ExpandableListView
+        android:visibility="visible"
+        android:id="@+id/elv_services"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginBottom="10dp"
+        android:cacheColorHint="@color/transparent"
+        android:childDivider="@color/silver"
+        android:divider="@color/line_gray"
+        android:dividerHeight="@dimen/line_gray"
+        android:groupIndicator="@null"
+        android:scrollbars="none">
+
+    </ExpandableListView>
+
+    <!-- <TextView
+        android:id="@+id/tv_load_tip"
+        style="@style/tv_load_tip" /> -->
+</LinearLayout>

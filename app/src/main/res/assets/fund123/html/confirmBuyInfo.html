@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html class="ui-mobile">
+    <head>
+        <meta charset="utf-8">
+            <meta name="viewport" content="width=device-width, minimum-scale=1, maximum-scale=1">
+                <title></title>
+                <link rel="stylesheet" href="../css/jquery.mobile-1.3.1.css" />
+                <link rel="stylesheet" href="../css/shumi-mobile.css" />
+                <link rel="stylesheet" href="../css/shumi-mobile2013.css" />
+    </head>
+    <body class="ui-mobile-viewport edit ui-overlay-c preview">
+    	<!--头部2013_start-->
+        <header class="shumi-m-head">
+            <h2 class="t">确认订单信息</h2>
+            <div class="gotop" id="quit">取消</div>
+            <div class="backto" id="back">返回</div>
+        </header>
+        <!--头部2013_end-->
+        <div class="ui-loader ui-corner-all ui-body-a ui-loader-default" id="loading" > <span class="ui-icon ui-icon-loading"></span> </div>
+        <div data-role="page" id="page1" data-cid="page1" class="codiqa-control codiqa-container ui-page ui-body-c ui-page-active" tabindex="0" data-url="page1" data-theme="c">
+            <div data-role="content" data-cid="pagecontent1" class="codiqa-control codiqa-container ui-sortable ui-content ui-sortable-disabled" role="main">
+                <div class="allcontent">
+                    <div data-cid="text3" class="codiqa-control">
+                        <h5>基金交易系统由<br>
+                            杭州数米基金销售有限公司 提供<a href="tel:4000-766-123"><span class="service-tel">4000-766-123</span></a></h5>
+                    </div>
+                    <div class="ui-info">
+                        <div class="space10"></div>
+                        <div class="ui-grid-a">
+                            <div class="ui-block-a">操作类型</div>
+                            <div class="ui-block-b" id="div_optType"></div>
+                        </div>
+                        <div class="ui-grid-a">
+                            <div class="ui-block-a">基金</div>
+                            <div class="ui-block-b" id="div_fund"></div>
+                        </div>
+                        <div class="ui-grid-a">
+                            <div class="ui-block-a">金额</div>
+                            <div class="ui-block-b" id="div_money" style="color: red;"></div>
+                        </div>
+                        <div class="ui-grid-a">
+                            <div class="ui-block-a">手续费</div>
+                            <div class="ui-block-b" id="div_fee"></div>
+                        </div>
+                        <div class="ui-grid-a">
+                            <div class="ui-block-a">银行卡</div>
+                            <div class="ui-block-b" id="div_bankAcco"></div>
+                        </div>
+                    </div>
+                    <div data-cid="text1" class="ui-info-title2" id="div_tips_password">请输入交易密码（非银行卡交易密码）确认操作。</div>
+                    <div data-role="fieldcontain" data-cid="textinput2" class="codiqa-control ui-field-contain ui-body" id="div_input_password">
+                        <input name="" id="trade_password" placeholder="请输入交易密码" value="" type="password" class="ui-input-text ui-body-c ui-corner-all ui-shadow-inset">
+                    </div>
+                    <div>
+                        <div class="space10"></div>
+                        <p>温馨提示：订单确认提交后，将对您的银行卡进行扣款操作，请确认申购金额并确保卡内资金充足。</p>
+                    </div>
+                    <div class="space10"></div>
+                    <div id="div_submit" data-corners="true" data-shadow="true" data-iconshadow="true" data-iconsize="18" data-wrapperels="span" data-icon="null" data-iconpos="null" data-theme="c" class="ui-btn ui-btn-up-c ui-shadow ui-btn-corner-all ui-submit ui-btn-dianxin" aria-disabled="false">
+                    	<div class="ui-btn-dianxinceng">
+                        <span class="ui-btn-inner ui-btn-corner-all"> <span class="ui-btn-text">下一步</span> </span>
+                        <input id="btn_submit" type="submit" value="下一步" data-cid="submitbutton1" class="codiqa-control ui-btn-hidden" aria-disabled="false">
+                        </div>
+                    </div>
+                    <div class="space10"></div>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>
+<!--引入jquery代码-->
+<script type="text/javascript" src="../js/jquery-1.8.2.min.js"></script>
+<script type="text/javascript" src="../js/shumi-mobile.js"></script>
+<!-- js代码 -->
+<script type="text/javascript">
+    $(document).ready(function() {
+        restoreSubmitBut();
+        var optType = "申购";
+        if (sessionStorage.getItem("operAction") == 'S')
+            optType = "认购";
+        $("#pageTitle").html("确认" + optType + "信息");
+        $("#div_optType").html(optType);
+        var fundCode = sessionStorage.getItem("doPurchase.fundCode");
+        var fundName = sessionStorage.getItem("doPurchase.fundName");
+        $("#div_fund").html(fundCode + " " + fundName);
+        var buyMoney = parseFloat(sessionStorage.getItem("doPurchase.paySum"));
+        $("#div_money").html(buyMoney + "元");
+        var fee = parseFloat(sessionStorage.getItem("doPurchase.poudage"));
+        if (fee)
+            $("#div_fee").html(fee + "元");
+        else
+            $("#div_fee").html("免手续费");
+        var bankName = sessionStorage.getItem("doPurchase.bankName");
+        var bankAcco = sessionStorage.getItem("doPurchase.bankCard");
+        $("#div_bankAcco").html(bankName + "(" + showLost4Num(bankAcco) + ")");
+        var useTempPassword = sessionStorage.getItem('temporary_trade_password');
+        if (useTempPassword == "1") {
+            // 说明实用零时交易密码
+            $("#div_tips_password").hide();
+            $("#div_input_password").hide();
+        }else{
+            // 已设置交易密码，则要求输入交易密码
+            $("#div_tips_password").show();
+            $("#div_input_password").show();
+        }
+        $("#btn_submit").click(function(){
+            if(check_all_inputs()) {
+                showLoading();
+                forbiddenSubmitBut();
+                doSubmitAndGoNextPage();
+            }
+        });
+    });
+    
+    function showLost4Num(num) {
+        var newNumber = "***";
+        if (num.length >= 4) {
+            newNumber = newNumber+num.substr(num.length-4,4);
+        }else{
+            newNumber = newNumber+num;
+        }
+        return newNumber;
+    }
+    
+    function check_all_inputs() {
+        var useTempPassword = sessionStorage.getItem('temporary_trade_password');
+        if (useTempPassword == "1") {
+            // 使用临时密码交易，跳过检查
+            return true;
+        }
+        var pw1 = $("#trade_password").val();
+        if (pw1.length == 0) {
+            alert("请输入交易密码。");
+            return false;
+        }
+        return true;
+    }
+    
+    function doSubmitAndGoNextPage() {
+        var fundTradeCode = sessionStorage["doPurchase.fundCode"];
+        var tradeAcco = sessionStorage["doPurchase.tradeAcco"];
+        // 提交“申购”请求
+        var pw1 = $("#trade_password").val();
+        var params = {
+            fundCode: fundTradeCode,
+            shareType: sessionStorage["doPurchase.shareType"],
+            tradeAccount: tradeAcco,
+            applySum: sessionStorage["doPurchase.paySum"],
+            tradePassword: pw1
+        };
+        var tradeMethod = 'trade_foundation.purchasefunds';
+        if (sessionStorage.getItem("operAction") == 'S'){
+            tradeMethod = 'trade_foundation.subscribefund';
+        }
+        requestOpenApi(tradeMethod, "post", "json", params,
+            function(json) {
+                //提交申购申请成功，查看支付结果
+                queryPayResult(json.Result);
+            },
+            function(jqXHR, textStatus, errorThrown){
+                hideLoading();
+                restoreSubmitBut();
+                if (!navigator.onLine) {
+                    alert('网络连接中断,请检查你的网络连接');
+                }else{
+                    var errorResponse = eval("("+jqXHR.responseText+")");
+                       if (errorResponse.Code == 99999){
+                       loadURL('http://smbclient.localpage/maintain.html');
+                       return;
+                       }
+                    if (errorResponse.Code) {
+                        //记录错误反馈
+                        sessionStorage.setItem("error_message",errorResponse.Message);
+                        //跳转到失败页面
+                        loadURL('http://smbclient.localpage/fail.html');
+                    }
+                }
+            }
+        );
+    }
+    
+    //查询支付结果
+    function queryPayResult(applySerial){
+        var queryMethod = "trade_foundation.getpayresult";
+        var params = {
+            applySerial:applySerial
+        };
+        requestOpenApi(queryMethod,"post","json",params,
+            function(json){
+                if(json.Result == 200){
+                    hideLoading();
+                    //支付成功，将认申购数据返回第三方
+                    var dataSend = {
+                        applySerial:applySerial,
+                        fundCode:sessionStorage.getItem("doPurchase.fundCode"),
+                        fundName:sessionStorage.getItem("doPurchase.fundName"),
+                        bankName:sessionStorage.getItem("doPurchase.bankName"),
+                        bankAcco:sessionStorage.getItem("doPurchase.bankCard"),
+                        bankSerial:sessionStorage.getItem("doPurchase.bankSerial"),
+                        applySum:sessionStorage.getItem("doPurchase.paySum"),
+                        dateTime:json.DateTime
+                    };
+                    //通知Native
+                    smbEvent('purchaseFundSuccess',dataSend,function(){});
+                    //支付成功,跳转到成功页面
+                    loadURL("http://smbclient.localpage/success.html");
+                }else if(json.Result == 101){
+                    hideLoading();
+                    restoreSubmitBut();
+                    //支付失败
+                    //记录错误反馈
+                    sessionStorage.setItem("error_message",json.Message);
+                    //跳转到失败页面
+                    loadURL('http://smbclient.localpage/fail.html');
+                }else{
+                    //支付中
+                    showLoading();
+                    queryPayResult(applySerial);
+                }
+            },
+            function(jqXHR, textStatus, errorThrown){
+                hideLoading();
+                restoreSubmitBut();
+                if (!navigator.onLine) {
+                    alert('网络连接中断,请检查你的网络连接');
+                }else{
+                    var errorResponse = eval("("+jqXHR.responseText+")");
+                       if (errorResponse.Code == 99999){
+                       loadURL('http://smbclient.localpage/maintain.html');
+                       return;
+                       }
+                    if (errorResponse.Code) {
+                        //记录错误反馈
+                        sessionStorage.setItem("error_message",errorResponse.Message);
+                        //跳转到失败页面
+                        loadURL('http://smbclient.localpage/fail.html');
+                    }
+                }
+            }
+        );
+    }
+    
+    function showLoading(){
+        $("#loading").show();
+    }
+        
+    function hideLoading(){
+        $("#loading").hide();
+    }
+        
+    //禁用提交按钮
+    function forbiddenSubmitBut() {
+        disable_inputs("btn_submit",true);
+        $("#div_submit").addClass("ui-disabled");
+    }
+        
+    //恢复提交按钮
+    function restoreSubmitBut() {
+        disable_inputs("btn_submit",false);
+        $("#div_submit").removeClass("ui-disabled");
+    }
+</script>

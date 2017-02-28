@@ -1,0 +1,503 @@
+.leftlabel {
+	display: inline-block;
+	padding-right: 10px;
+	color: #999;
+}
+.rightlabel {
+	display: inline-block;
+	color: #999;
+}
+.red {
+	color: #e01b01;
+	font-weight: bold;
+}
+input.ui-number {
+	width: 60%;
+	font-size: 14px;
+	line-height: 1.4em;
+	display: inline-block;
+	border: none;
+}
+.ui-select .ui-btn-text {
+	font-size:14px;
+}
+.ui-bank-no {
+	color:#ff9c00
+}
+.ui-bank-btn {
+	background: -webkit-gradient(linear, left top, left bottom, from(#f7f7f7), to(#ffffff));
+	-webkit-border-radius: 5px;
+	border: 1px solid #c4c4c4;
+	display: inline-block;
+	padding: 5px 10px;
+	color: #333;
+	text-decoration: none;
+}
+.ui-bank-btn2 {
+	background: -webkit-gradient(linear, left top, left bottom, from(#ff9c00), to(#ff6700));
+	-webkit-border-radius: 5px;
+	border: 1px solid #c4c4c4;
+	display: inline-block;
+	padding: 3px 10px;
+	color: #fff;
+	text-decoration: none;
+	margin-left:10px;
+}
+.ui-bank-title {
+	line-height:20px;
+	padding:10px 20px;
+}
+.ui-bank-title p {
+	color:#999;
+	padding-top:10px;
+}
+.ui-radio-on {
+	border: 1px solid #c4c4c4;
+	background-color: #FFF;
+	float: left;
+	-webkit-border-top-left-radius: 10px;
+	-webkit-border-bottom-left-radius: 10px;
+	width: 49%;
+	height: 40px;
+	line-height: 40px;
+	text-align: center;
+	background: -webkit-gradient(linear, left top, left bottom, from(#f7f7f7), to(#fff));
+}
+.ui-radio-off {
+	border: 1px solid #c4c4c4;
+	float: left;
+	-webkit-border-top-right-radius: 10px;
+	-webkit-border-bottom-right-radius: 10px;
+	width: 49%;
+	border-left: none;
+	height: 40px;
+	line-height: 40px;
+	text-align: center;
+	background: -webkit-gradient(linear, left top, left bottom, from(#f7f7f7), to(#ececed));
+}
+.ui-radio-off1 {
+	border: 1px solid #c4c4c4;
+	float: left;
+	-webkit-border-top-left-radius: 10px;
+	-webkit-border-bottom-left-radius: 10px;
+	width: 49%;
+	height: 40px;
+	line-height: 40px;
+	text-align: center;
+	background: -webkit-gradient(linear, left top, left bottom, from(#f7f7f7), to(#ececed));
+}
+.ui-radio-on1 {
+	border: 1px solid #c4c4c4;
+	background-color: #FFF;
+	float: left;
+	-webkit-border-top-right-radius: 10px;
+	-webkit-border-bottom-right-radius: 10px;
+	width: 49%;
+	border-left: none;
+	height: 40px;
+	line-height: 40px;
+	text-align: center;
+	background: -webkit-gradient(linear, left top, left bottom, from(#f7f7f7), to(#fff));
+}
+.hinttext {
+	display: inline-block;
+	width: 100%;
+	letter-spacing: 1px;
+	line-height: 22px;
+}
+.imgbutton {
+	text-align: center;
+	position: relative;
+	width: 80%;
+	left: 10%;
+}
+.holder {
+	display: table;
+	position: relative;
+	margin: 35% auto;
+	text-align: center;
+}
+.ui-checkbox-on .ui-icon, .ui-radio-on .ui-icon {
+	background-color: #941010 /*{global-active-background-color}*/; /* NOTE: this hex should match the active state color. It's repeated here for cascade */
+}
+/*最新增加*/
+.allcontent {
+	margin-top:35px;
+	padding: 0 20px;
+}
+.codiqa-control h2 {
+	color: #d76400;
+	font-size: 24px;
+	text-align: center;
+	border-bottom: 7px solid #ff7400;
+	-webkit-box-shadow: 0 1px 0px rgba(0, 0, 0, .2);
+	padding: 5px 0;
+}
+.codiqa-control h5 {
+	font-weight: normal;
+	padding: 20px 0 10px;
+	color: #2c3340;
+}
+.codiqa-control .service-tel {
+	border: 1px solid #c4c4c4;
+	-webkit-border-radius: 10px;
+	background: url(images/ui-tel.png) no-repeat 5px 0 #FFF;
+	background-size: contain;
+	padding: 0 5px 0 20px;
+	margin-left: 5px;
+	font-family:'SimSun';
+	-webkit-text-size-adjust:11px;
+}
+.codiqa-control h5 a, .codiqa-control .service-tel:hover {
+	color: #494949;
+	text-decoration:none;
+}
+.ui-info {
+	border: 1px solid #c4c4c4;
+	-webkit-border-radius: 15px;
+	background-color: #FFF;
+	padding-bottom: 10px;
+}
+.ui-info .ui-info-title {
+	padding: 10px;
+	padding-left: 20px;
+	background: -webkit-gradient(linear, left top, left bottom, from(#ececed), to(#f7f7f7));
+	border-bottom: 1px solid #d7d7d7;
+	margin-bottom: 10px;
+	margin-top: 1px;
+	-webkit-border-top-left-radius: 15px;
+	-webkit-border-top-right-radius: 15px;
+	color: #666;
+}
+.ui-info .ui-grid-a {
+	padding: 5px 20px;
+}
+.ui-info .ui-grid-a .ui-block-a {
+	width: 30%;
+	color: #999;
+}
+.ui-info-title2 {
+	color: #7d8086;
+	padding-top: 20px;
+}
+.ui-btn-fixed {
+	position: absolute;
+	z-index:9999;
+	top: 8px;
+	width:50px;
+	height:32px;
+	border-top: 1px solid #d7d7d7;
+	border-right: 1px solid #d7d7d7;
+	border-bottom: 1px solid #d7d7d7;
+	-webkit-border-top-right-radius: 5px;
+	-webkit-border-bottom-right-radius: 5px;
+	background: url(images/ui-allbg.png) no-repeat 10px 0px, -webkit-gradient(linear, left top, left bottom, from(#f7f7f7), to(#ececed));
+	-webkit-box-shadow: 0 1px 1px rgba(0, 0, 0, .2), inset 0px -1px 1px #fff;
+	background-size:contain;
+}
+.ui-info .bank-right {
+	text-align:right;
+	border-bottom:none;
+	border-top: 1px solid #c4c4c4;
+	-webkit-border-radius:0;
+	-webkit-border-bottom-left-radius: 15px;
+	-webkit-border-bottom-right-radius: 15px;
+	margin-bottom:0;
+}
+.codiqa-control-head {
+	top: 0px;
+	left: 0px;
+	position: absolute;
+	top:0px;
+	left:0px;
+	z-index: 9999;
+	width: 100%;
+	height:47px;
+}
+.ui-btn-deled {
+	position:absolute;
+	top: 8px;
+	right:0px;
+	width:50px;
+	height:32px;
+	border-top: 1px solid #d7d7d7;
+	border-left: 1px solid #d7d7d7;
+	border-bottom: 1px solid #d7d7d7;
+	-webkit-border-top-left-radius: 5px;
+	-webkit-border-bottom-left-radius: 5px;
+	background: url(images/ui-deletebg.png) no-repeat 10px 0px, -webkit-gradient(linear, left top, left bottom, from(#f7f7f7), to(#ececed));
+	-webkit-box-shadow: 0 1px 1px rgba(0, 0, 0, .2), inset 0px -1px 1px #fff;
+	background-size:contain;
+}
+.ui-icon-arrowdown {
+	position: absolute;
+	top: 50%;
+	right: 15px;
+	margin-top: -4px;
+	-webkit-border-left: 7px solid transparent;
+	-webkit-border-right: 7px solid transparent;
+	-webkit-border-top: 8px solid #888888;
+	border-left: 7px solid transparent;
+	border-right: 7px solid transparent;
+	border-top: 8px solid #888888;
+}
+.ui-news-article {
+	clear:both;
+	padding:15px 0px;
+}
+.ui-news-article p {
+	padding-top:15px;
+	text-indent:2em;
+	font:normal 14px/1.5 "Microsoft YaHei";
+	color:#333;
+}
+.ui-grid-a .ui-btn-input {
+	margin-left: 6px;
+	margin-right: 6px;
+}
+.codiqa-control h2 {
+	border-bottom: 5px solid #ff7400;
+	line-height: 44px;
+}
+.form-section {
+	margin-bottom:20px;
+	background-color:#FFF;
+	border:1px solid #c4c4c4;
+	border-radius:10px;
+	font-size:14px;
+	overflow:hidden;
+}
+.form-section .text-line {
+	position:relative;
+}
+.form-section .text-line, .data-form .text-line {
+	height:45px;
+	line-height:45px;
+	border-bottom:1px solid #CAD3D8;
+	-webkit-box-sizing:border-box;
+	box-sizing:border-box;
+	overflow:hidden;
+}
+.form-section .form-label {
+	position:absolute;
+	top:0;
+	left:20px;
+	color:#999;
+	font-size:14px;
+}
+.form-section .form-label-right {
+	left:62px;
+}
+.form-section .form-label+* {
+	position:relative;
+	padding-left:110px;
+	z-index:1;
+	line-height:45px;
+}
+.form-section .form-label+.select-wrap .select {
+	border:none;
+	background-color:transparent;
+	-webkit-appearance:none;
+	font-size:14px;
+	color:#2c3340;
+}
+.form-section .text-line:last-child {
+	border-bottom:0;
+}
+.select-wrap {
+	height: 100%;
+	position: relative;
+}
+.select-wrap:after, .form-select li>a:after {
+	background:url(images/wacai_icon_bg.png);
+	display:inline-block;
+	overflow:hidden;
+}
+.select-wrap:after {
+	background-position: -737px -20px;
+	content: "";
+	zoom:.7;
+	height: 16px;
+	position: absolute;
+	right: 22px;
+	top: 24px;
+	width: 26px;
+}
+.form-section .f-lightgray {
+	color: #cccccc;
+}
+.form-section .js-arrival-time {
+	color: #999999;
+}
+.ui-body-c .ui-btn-shadow {
+	-webkit-border-radius: 5em;
+	border-radius: 5em;
+	border:3px solid #f8e2c5;
+}
+.ui-body-c .ui-btn-shadow .ui-btn {
+	margin: 0px;
+}
+.space20 {
+	clear:both;
+	height:20px;
+	overflow:hidden;
+}
+.ui-zhihang-text { 
+	clear:both; 
+	padding:10px 20px; 
+}
+.ui-zhihang-text p { 
+	line-height:24px; 
+	color:#636871; 
+	font-size:14px; 
+}	
+.ui-shuhui-btn { 
+	clear:both; 
+	width:100%; 
+}
+.ui-shuhui-box { 
+	margin-bottom:20px;
+	background-color:#FFF;
+	border:1px solid #c4c4c4;
+	border-radius:10px;
+	font-size:14px;
+	line-height:45px;
+	overflow:hidden;
+	position:relative; 
+	text-align:center;  
+}
+.ui-shuhui-box-on { 
+	float:left; 
+	width:50%; 
+	left:0px;
+	margin-bottom:0px; 
+}
+.ui-shuhui-box-off { 
+	float:right; 
+	width:50%; 
+	left:0px; 
+	top:-47px; 
+	margin-bottom:-47px; 
+	background-image:-webkit-gradient(linear, left top, left bottom, from(#fefefe), to(#dcdcdc));
+}
+.ui-shuhui-btn-one .ui-shuhui-box-on {
+	border-top-right-radius: 0px; 
+	border-bottom-right-radius: 0px; 
+} 
+.ui-shuhui-btn-one .ui-shuhui-box-off { 
+	border-top-left-radius: 0px; 
+	border-bottom-left-radius: 0px; 
+
+}
+.ui-shuhui-btn-two .ui-shuhui-box-on {
+	float:right;
+	border-top-left-radius: 0px; 
+	border-bottom-left-radius: 0px; 
+} 
+.ui-shuhui-btn-two .ui-shuhui-box-off { 
+	float:left;
+	border-top-right-radius: 0px; 
+	border-bottom-right-radius: 0px; 
+}
+.ui-shuhui-box a { 
+	text-decoration:none; 
+}
+.ui-shuhui-box-on a,
+.ui-shuhui-box-on a:hover { 
+	color:#2c3340; 
+}
+.ui-shuhui-box-off a,
+.ui-shuhui-box-off a:hover { 
+	color:#545b66; 
+}
+.codiqa-control-text {
+	padding:20px 0px 10px; 
+	margin-bottom:10px;
+}
+.codiqa-control-text .left {
+	float:left; 
+	font-size:12px;
+}
+.codiqa-control-text .right {
+	float:right; 
+	text-decoration:none; 
+	color:#555555; 
+	font-size:11px;  
+	margin-top:8px;
+}
+.codiqa-control-text .right span {
+	padding:0px 5px 0px 15px;
+}
+.ui-info-logo { 
+	clear:both;
+	height:130px;
+	text-align:center;
+}
+.ui-info-logo .logo-tongbanjie {
+	margin-top: 35px;
+	display:inline-block;
+	width:114px;
+	height:114px;
+	zoom:.6;
+	background:url(images/logo_114.png);
+}
+.ui-info-logo .line-goback { 
+	display:inline-block;
+	width:82px;
+	height:60px;
+	margin:0px 20px;
+	zoom:.6;
+	background:url(images/arrow-goback.png);
+}
+.ui-info-logo .logo-shumi { 
+	display:inline-block;
+	width:185px;
+	height:52px;
+	zoom:.6;
+	background:url(images/shumi-logo.png);
+}
+.ui-info-logo .tongbanjie-phone { 
+	clear:both; 
+}
+.ui-info-logo .tongbanjie-phone p { 
+	clear:both; 
+	line-height:24px; 
+	padding:0px 8px; 
+	font-size:12px; 
+	color:#2c3340; 
+}
+.ui-info-logo .tongbanjie-phone p.left {
+	text-align:left;
+}
+.ui-info-logo .tongbanjie-phone p .l { 
+	float:left; 
+}
+.ui-info-logo .tongbanjie-phone p .r { 
+	float:right;
+	color:#2c3340;
+	cursor:default;
+	text-decoration:none;
+}
+.shumi-maintain {
+	clear:both;
+	width:629px;
+	height:830px;
+	zoom:.5;
+	margin:auto; 
+	background:url(images/maintain-bg.jpg);
+}
+.ui-btn-dianxin {
+	-webkit-box-shadow:1px 1px 1px #bfbfbf;
+	-moz-box-shadow:1px 1px 1px #bfbfbf;
+	box-shadow:1px 1px 1px #bfbfbf;
+}
+.ui-btn-dianxinceng {
+	margin:0px;				
+	-webkit-box-shadow:0px 0px 3px #efdbaf inset;
+	-moz-box-shadow:0px 0px 3px #efdbaf inset;
+	box-shadow:0px 0px 3px #efdbaf inset; 
+	-webkit-border-radius:0.5em;
+	-moz-border-radius:0.5em;
+	border-radius:0.5em;
+	background-image:none;
+}

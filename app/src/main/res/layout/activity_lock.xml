@@ -1,0 +1,61 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/ic_bg_lock"
+    android:gravity="center"
+    android:orientation="vertical"
+    tools:context=".activity.member.LockActivity" >
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/space"
+        android:background="@drawable/ic_logo" />
+
+    <TextView
+        android:id="@+id/tv_tips"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/space"
+        android:text="请绘制手势密码！"
+        android:textColor="@color/silver"
+        android:textSize="@dimen/ts_medium" />
+
+    <com.cfjn.javacf.widget.LockPatternView
+        android:id="@+id/lock_pattern"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <TextView
+            android:onClick="forgetPassword"
+            android:id="@+id/tv_goto_bank"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/space"
+            android:gravity="left"
+            android:text="取消"
+            android:textColor="@color/silver"
+            android:textSize="@dimen/ts_x_large" />
+
+        <TextView
+            android:onClick="forgetPassword"
+            android:id="@+id/tv_forget_password"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/space"
+            android:gravity="right"
+            android:text="忘记密码"
+            android:textColor="@color/silver"
+            android:textSize="@dimen/ts_x_large" />
+    </LinearLayout>
+
+
+</LinearLayout>

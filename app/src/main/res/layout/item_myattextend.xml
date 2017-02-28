@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <RelativeLayout
+        android:visibility="gone"
+        android:id="@+id/ll_notNetwork"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <ImageView
+            android:layout_above="@+id/tv_notNetwork"
+            android:layout_centerInParent="true"
+            android:id="@+id/img_notNetwork"
+            android:src="@drawable/ic_failed"
+            android:layout_gravity="center"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:scaleType="fitXY">
+        </ImageView>
+
+        <TextView
+            android:id="@+id/tv_notNetwork"
+            android:layout_marginTop="@dimen/dimens_x2dp"
+            android:layout_centerInParent="true"
+            android:gravity="center"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/dimens_x1.6sp"
+            android:text="加载失败，请点击重试！"/>
+    </RelativeLayout>
+
+    <com.baoyz.swipemenulistview.SwipeMenuListView
+        android:visibility="gone"
+        android:background="@drawable/myattexpandadpter_type"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/dimens_x1dp"
+        android:layout_marginTop="@dimen/dimens_x1dp"
+        android:layout_marginRight="@dimen/dimens_x1dp"
+        android:id="@+id/swipeMenulist"
+        />
+
+    <LinearLayout
+        android:layout_marginTop="@dimen/dimens_x10dp"
+        android:id="@+id/ll_linearlayout"
+        android:visibility="gone"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:src="@drawable/ic_mammon"
+            android:layout_marginTop="@dimen/dimens_x1dp"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="@dimen/dimens_x1dp"
+            android:text="您还没有关注任何基金，赶快去关注吧！"
+            android:textSize="@dimen/dimens_x1.6sp"/>
+    </LinearLayout>
+</LinearLayout>

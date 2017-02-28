@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/tv_dialog"
+        android:padding="@dimen/dimens_x1dp"
+        android:layout_marginTop="@dimen/dimens_x2dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="您的账号已在新设备上登录，请重新登录"
+        android:textSize="@dimen/dimens_x1.6sp"
+        android:textColor="@color/black"
+        android:layout_gravity="center"/>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_marginTop="@dimen/dimens_x2dp"
+        android:layout_height="@dimen/dimens_x0.05dp"
+        android:background="@color/gray_x0.9"></View>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/btn_qx"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:text="取消"
+            android:textSize="@dimen/dimens_x1.6sp"
+            android:background="@color/transparent"/>
+        <View
+            android:layout_width="@dimen/dimens_x0.05dp"
+            android:layout_height="match_parent"
+            android:background="@color/gray_x0.9"></View>
+        <Button
+            android:id="@+id/btn_restart"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:text="重新登录"
+            android:textColor="@color/red"
+            android:textSize="@dimen/dimens_x1.6sp"
+            android:background="@color/transparent"/>
+    </LinearLayout>
+</LinearLayout>

@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/red">
+
+        <com.cfjn.javacf.widget.RadiobuttonUtil
+            android:id="@+id/segment_text"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_centerInParent="true"
+            android:layout_marginRight="@dimen/dimens_x5dp"
+            android:layout_marginLeft="@dimen/dimens_x5dp"
+            android:orientation="horizontal">
+
+            <RadioButton
+                android:id="@+id/button_my"
+                style="@style/radiobutton_"
+                android:background="@drawable/rb_left"
+                android:text="@string/radio_fund_1"
+                android:textAppearance="?android:attr/textAppearanceSmall" />
+
+            <RadioButton
+                android:id="@+id/button_fund"
+                style="@style/radiobutton_"
+                android:background="@drawable/rb_right"
+                android:text="@string/radio_fund_2"
+                android:textAppearance="?android:attr/textAppearanceSmall" />
+        </com.cfjn.javacf.widget.RadiobuttonUtil>
+    </RelativeLayout>
+
+<!--<FrameLayout-->
+    <!--android:id="@+id/id_content"-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="match_parent">-->
+
+<!--</FrameLayout>-->
+
+    <com.cfjn.javacf.widget.NoScrollViewpager
+        android:id="@+id/viewpager"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/white">
+
+    </com.cfjn.javacf.widget.NoScrollViewpager>
+
+</LinearLayout>

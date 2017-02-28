@@ -1,0 +1,646 @@
+@charset "utf-8";
+/* CSS Document */
+/**************** common style  ****************/
+.shumi-m-body {
+	border:0px;
+	padding-bottom:200px;
+	background:url(images/body-tile-bg.png) repeat;
+}
+.shumi-m-main {
+	height:100%;
+	padding:0px 10px;
+}
+.space00 {
+	clear:both;
+	height:0px;
+	overflow:hidden;
+}
+.space05 {
+	clear:both;
+	height:5px;
+	overflow:hidden;
+}
+.space08 {
+	clear:both;
+	height:8px;
+	overflow:hidden;
+}
+.space10 {
+	clear:both;
+	height:10px;
+	overflow:hidden;
+}
+.space13 {
+	clear:both;
+	height:13px;
+	overflow:hidden;
+}
+.space15 {
+	clear:both;
+	height:15px;
+	overflow:hidden;
+}
+.space20 {
+	clear:both;
+	height:20px;
+	overflow:hidden;
+}
+.space35 {
+	clear:both;
+	height:35px;
+	overflow:hidden;
+}
+.space55 {
+	clear:both;
+	height:55px;
+	overflow:hidden;
+}
+.space60 {
+	clear:both;
+	height:60px;
+	overflow:hidden;
+}
+.space70 {
+	clear:both;
+	height:70px;
+	overflow:hidden;
+}
+a:-webkit-any-link {
+	text-decoration:none;
+}
+
+/**************** shumi-m-head style  ****************/
+.shumi-m-head {
+	position:fixed;
+	top:0px;
+	left:0px;
+	z-index:10000;
+	width:100%;
+	height:44px;
+	background-image:-webkit-gradient(linear, left top, left bottom, from(#27abfe), to(#0481d1));
+	background-image:-moz-linear-gradient(#27abfe, #0481d1);
+	background-image:linear-gradient(#27abfe, #0481d1);
+	border-bottom:1px solid #004d85;
+}
+.shumi-m-head .t {
+	clear:both;
+	text-shadow:0px 0px 0px #ffffff;
+	-moz-text-shadow:0px 0px 0px #ffffff;
+	-webkit-text-shadow:0px 0px 0px #ffffff;
+	font:normal 20px/44px 'Microsoft YaHei';
+	color:#ffffff;
+	text-align:center;
+}
+.shumi-m-head .backto {
+	position:absolute;
+	top:15px;
+	left:10px;
+	zoom:.5;
+	width:90px;
+	height:60px;
+	font:normal 28px/60px 'Microsoft YaHei';
+	color:#ffffff;
+	text-shadow:-1px 0px 1px #000000;
+	-moz-text-shadow:-1px 0px 1px #000000;
+	-webkit-text-shadow:-1px 0px 1px #000000;
+	background:url(images/return-btn-bg.png) no-repeat;
+	cursor:pointer;
+	text-align:center;
+}
+.shumi-m-head .gotop {
+	position:absolute;
+	top:15px;
+	right:10px;
+	zoom:.5;
+	width:90px;
+	height:60px;
+	font:normal 28px/60px 'Microsoft YaHei';
+	color:#ffffff;
+	text-shadow:-1px 0px 1px #000000;
+	-moz-text-shadow:-1px 0px 1px #000000;
+	-webkit-text-shadow:-1px 0px 1px #000000;
+	background:url(images/return-btn-bg.png) no-repeat;
+	cursor:pointer;
+	text-align:center;
+}
+/**************** shumi-text-desc style  ****************/
+.shumi-text-desc {
+	clear:both;
+}
+.shumi-text-desc .t {
+	font:normal 14px/22px 'Microsoft YaHei';
+	color:#333333;
+}
+.shumi-text-desc .t .b {
+	color:#ff7000;
+}
+
+/**************** yanzheng-success-box style  ****************/
+.yanzheng-success-box { 
+	clear:both; 
+	text-align:center; 
+}
+.yanzheng-success-box .icon { 
+	display:inline-block; 
+	width:32px; 
+	height:32px; 
+}
+.yanzheng-success-box .txt {
+	clear:both; 
+	display:block; 
+	font:normal 18px/22px 'Microsoft YaHei';
+}
+
+/**************** shumi-tip-text style  ****************/
+.shumi-tip-text { 
+	clear:both; 
+	height:auto; 
+	overflow:hidden;
+	padding:12px 0px 12px 12px;
+	border-radius:10px; 
+	-moz-border-radius:10px; 
+	-webkit-border-radius:10px; 
+	background-color:#fffbe3; 
+	border:1px solid #f7db92; 
+}
+.shumi-tip-text .icon { 
+	float:left; 
+	width:18px; 
+	height:18px; 
+}
+.shumi-tip-text .txt { 
+	float:left; 
+	width:260px; 
+	padding-left:8px; 
+	font:normal 14px/18px 'Microsoft YaHei'; 
+	color:#666666; 
+}
+		
+/**************** shumi-input-single style  ****************/
+.shumi-input-single {
+	clear:both;
+	height:43px;
+	line-height:43px;
+	border-radius:10px;
+	border:1px solid #bfbfbf;
+	background-color:#ffffff;
+}
+.shumi-input-single .input-t {
+	float:left;
+	height:40px;
+	margin-left:15px;
+	display:inline;
+	font:normal 16px/40px 'Microsoft YaHei';
+	color:#bfbfbf;
+}
+.shumi-input-single .input-val {
+	float:left;
+	height:30px;
+	margin:5px 0px 0px 15px;
+	display:inline;
+	font:normal 16px/30px 'Microsoft YaHei';
+	border:0px;
+	color:#333333;
+}
+.shumi-input-single .input-tel {
+	width:110px;
+}
+.shumi-input-single .input-gray {
+	color: #cccccc; 
+}
+/**************** shumi-input-multi style  ****************/
+.shumi-input-multi {
+	clear:both;
+	display:block;
+	overflow:hidden;
+	border-radius:10px;
+	border:1px solid #bfbfbf;
+	background-color:#ffffff;
+}
+.shumi-input-multi .input-t {
+	float:left;
+	height:40px;
+	margin-left:15px;
+	display:inline;
+	font:normal 16px/40px 'Microsoft YaHei';
+	color:#bfbfbf;
+}
+.shumi-input-multi .input-val {
+	float:left;
+	height:30px;
+	margin:5px 0px 0px 15px;
+	display:inline;
+	font:normal 16px/30px 'Microsoft YaHei';
+	border:0px;
+	color:#333333;
+}
+.shumi-input-multi .input-tel {
+	width:110px;
+}
+.input-multi-ceng {
+	clear:both;
+	height:43px;
+	position:relative;
+	border-bottom:1px solid #cfcfcf;
+}
+.shumi-input-multi .reg-user { 
+	float:left; 
+	width:17px; 
+	height:17px; 
+	margin:11px 0px 0px 10px; 
+	display:inline; 
+}
+.shumi-input-multi .reg-password { 
+	float:left; 
+	width:12px; 
+	height:16px; 
+	margin:11px 2px 0px 13px; 
+	display:inline; 
+}
+.input-multi-clear {
+	border-bottom:0px;
+}
+/**************** shumi-select-single style  ****************/
+.shumi-select-single {
+	clear:both;
+	position:relative;
+	height:43px;
+	line-height:43px;
+	border-radius:10px;
+	border:1px solid #bfbfbf;
+	background-color:#ffffff;
+}
+.shumi-select-single .input-t {
+	float:left;
+	height:40px;
+	margin-left:15px;
+	display:inline;
+	font:normal 16px/40px 'Microsoft YaHei';
+	color:#bfbfbf;
+}
+.shumi-select-single .input-val {
+	float:left;
+	height:30px;
+	margin:6px 0px 0px 15px;
+	display:inline;
+	font:normal 16px/30px 'Microsoft YaHei';
+	border:0px;
+	color:#bfbfbf;
+}
+.select-single-left {
+	clear:none;
+	float:left;
+	width:48%;
+}
+.select-single-right {
+	clear:none;
+	float:right;
+	width:48%;
+}
+/**************** shumi-select-multi style  ****************/
+.shumi-select-multi {
+	clear:both;
+	display:block;
+	overflow:hidden;
+	border-radius:10px;
+	border:1px solid #bfbfbf;
+	background-color:#ffffff;
+}
+.select-multi-value {
+	float:left;
+	height:30px;
+	margin:4px 0px 0px 15px;
+	display:inline;
+	-webkit-appearance:none;
+	border:0px;
+	color:#333333;
+	background-color:transparent;
+	font:normal 16px/30px 'Microsoft YaHei';
+}
+.select-single-value {
+	color:#333333;
+}
+.shumi-select-multi .input-t {
+	float:left;
+	height:40px;
+	margin-left:15px;
+	display:inline;
+	font:normal 16px/40px 'Microsoft YaHei';
+	color:#bfbfbf;
+}
+.shumi-select-multi .input-val {
+	float:left;
+	height:30px;
+	margin:5px 0px 0px 15px;
+	display:inline;
+	font:normal 16px/30px 'Microsoft YaHei';
+	border:0px;
+	color:#333333;
+}
+.select-multi-ceng {
+	clear:both;
+	height:43px;
+	position:relative;
+	border-bottom:1px solid #cfcfcf;
+}
+.select-multi-clear {
+	clear:both;
+	border-bottom:0px;
+}
+.select-down {
+	position:absolute;
+	top:16px;
+	right:14px;
+	width:13px;
+	height:8px;
+}
+.select-left {
+	float:left;
+	margin-left:15px;
+	display:inline;
+	text-align:left;
+}
+.select-right {
+	float:right;
+	margin-right:35px;
+	display:inline;
+	text-align:right;
+}
+/**************** shumi-btn-able style  ****************/
+.shumi-btn-able {
+	clear:both;
+}
+.shumi-btn-able a {
+	width:100%;
+	height:42px;
+	display:block;
+	background-color:#941010;
+	border-radius:10px;
+	-moz-border-radius:10px;
+	-webkit-border-radius:10px;
+	text-shadow:1px 1px 3px #941010;
+	-moz-text-shadow:1px 1px 3px #941010;
+	-webkit-text-shadow:1px 1px 3px #941010;
+	font:normal 20px/42px 'Microsoft YaHei';
+	color:#ffffff;
+	text-align:center;
+}
+.shumi-btn-able .btn-gray {
+	color:#666666;
+	text-shadow:none;
+	border:1px solid #aaaaaa;
+	background-image:-webkit-gradient(linear, left top, left bottom, from(#f8f9f9), to(#e8e9ea));
+	background-image:-moz-linear-gradient(#f8f9f9, #e8e9ea);
+	background-image:linear-gradient(#f8f9f9, #e8e9ea);
+}
+.shumi-btn-able .btn-reg-ceng {
+	height:42px;
+	display:block;
+	border:1px solid #fcbb3d;
+	border-radius:10px;
+	-moz-border-radius:10px;
+	-webkit-border-radius:10px;
+}
+.shumi-btn-able .btn-reg {
+	width:auto;
+	height:40px;
+	line-height:40px;
+	color:#333333;
+	text-shadow:none;
+	border:1px solid #ffe291;
+	background-color:#ffce47;
+	background-image:-moz-linear-gradient(#ffd252, #fec229);
+	background-image:linear-gradient(#ffd252, #fec229);
+	background-image:-webkit-linear-gradient(top, #ffd252 2%, #fec229 100%);
+}
+/**************** shumi-btn-disable style  ****************/
+.shumi-btn-disable {
+	clear:both;
+}
+.shumi-btn-disable a {
+	width:100%;
+	height:42px;
+	display:block;
+	background-color:#cccccc;
+	border-radius:10px;
+	-moz-border-radius:10px;
+	-webkit-border-radius:10px;
+	text-shadow:0px 0px 0px #888888;
+	-moz-text-shadow:0px 0px 0px #888888;
+	-webkit-text-shadow:0px 0px 0px #888888;
+	font:normal 20px/42px 'Microsoft YaHei';
+	color:#888888;
+	text-align:center;
+}
+/**************** other style  ****************/
+.shumi-box-ceng {
+	clear:both;
+}
+.input-single-left {
+	clear:none;
+	float:left;
+	width:50%;
+	box-sizing:border-box;
+}
+.input-single-right {
+	clear:none;
+	float:right;
+	width:50%;
+	box-sizing:border-box;
+}
+.btn-left {
+	clear:none;
+	float:left;
+	width:48%;
+}
+.btn-right {
+	clear:none;
+	float:right;
+	width:48%;
+}
+/**************** isagree-checkbox style  ****************/
+.isagree-checkbox {
+	clear:both;
+	height:22px;
+	padding-left:10px;
+	text-align:left;
+}
+.isagree-checkbox .chk, .isagree-checkbox .chked {
+	float:left;
+	width:22px;
+	height:22px;
+}
+.isagree-checkbox span {
+	float:left;
+	margin:0px 0px 0px 8px;
+	display:inline;
+	font:normal 14px/22px 'Microsoft YaHei';
+}
+.isagree-checkbox a {
+	padding:0px 5px;
+	font:normal 14px/22px 'Microsoft YaHei';
+	color:#2277bb;
+	text-decoration:none;
+}
+.isagree-checkbox a:hover {
+	text-decoration:none;
+}
+
+/**************** huikuan-box-ceng style  ****************/
+.huikuan-box-ceng { 
+	clear:both; 
+}
+.huikuan-t { 
+	float:left; 
+	width:80px; 
+	font:normal 16px/43px 'Microsoft YaHei'; 
+	color:#333333; 
+}
+.huikuan-value { 
+	float:left; 
+	width:222x; 
+}
+.huikuan-input-box {
+	position:relative;
+	width:160px;
+	height:43px;
+	padding-left:8px;
+	border-radius:8px;
+	-moz-border-radius:8px;
+	-webkit-border-radius:8px;
+	border:1px solid #bfbfbf;
+	background-color:#ffffff;
+}
+.huikuan-value input {
+	float:left;
+	width:130px;
+	height:28px;
+	margin-top:7px;
+	padding-left:8px;
+	border:0px;
+	background-color:#ffffff;
+	font:normal 18px/28px Arial, Helvetica, sans-serif;
+	color:#333333;
+}
+.huikuan-value .yuan { 
+	position:absolute; 
+	right:-25px; 
+	font:normal 16px/42px 'Microsoft YaHei'; 
+	color:#333333; 
+}
+.huikuan-tip { 
+	clear:both; 
+	margin-top:5px; 
+}
+.huikuan-tip img { 
+	float:left; 
+	width:11px; 
+	height:16px; 
+	margin:2px 5px 0px 0px; 
+	display:inline; 
+}
+.huikuan-tip span { 
+	float:left; 
+	font:normal 12px/24px 'Microsoft YaHei'; 
+	color:#333333; 
+}
+.huikuan-tip .b { 
+	color:#ff7000; 
+}
+.yanzheng-tip-ceng .huikuan-tip span {
+	float:none;
+	font-size:14px;
+}
+/**************** banks-box-ceng style  ****************/
+.banks-box-ceng { 
+	clear:both; 
+	height:43px; 
+	border-radius:10px; 
+	-moz-border-radius:10px; 
+	-webkit-border-radius:10px; 
+	background-color:#f8f8f8; 
+	border:1px solid #dadada; 
+}
+.banks-box-ceng span { 
+	float:left; 
+	margin:10px 0px 0px 5px; 
+	display:inline; 
+	font:18px 'Microsoft YaHei'; 
+}
+.banks-box-ceng .icon { 
+	float:left; 
+	width:22px; 
+	height:22px; 
+	margin:10px 0px 0px 15px; 
+	display:inline; 
+}
+.banks-box-ceng .name { 
+	color:#333333; 
+}
+.banks-box-ceng .weihao { 
+	color:#888888; 
+}
+
+/**************** shumi-logo-big style  ****************/
+.shumi-logo-big { 
+	clear:both; 
+	text-align:center; 
+}
+.shumi-logo-big .sm { 
+	display:inline-block; 
+	width:136px; 
+	height:59px; 
+}
+
+/**************** reg-tab-ceng style  ****************/
+.reg-tab-ceng { 
+	clear:both; 
+	height:24px; 
+	text-align:center; 
+}
+.reg-tab-ceng a { 
+	display:inline-block; 
+	font:normal 18px/24px 'Microsoft YaHei'; 
+	color:#aaaaaa; 
+}
+.reg-tab-ceng .on { 
+	color:#333333; 
+}
+.reg-tab-ceng span { 
+	position:relative; 
+	top:-5px; 
+	width:1px; 
+	height:24px; 
+	overflow:hidden; 
+	display:inline-block; 
+	margin:0px 20px;
+	background-color:#bfbfbf; 
+	border-right:1px solid #ffffff; 
+}
+
+/**************** shumi-m-foot style  ****************/
+.shumi-m-foot {
+	position:fixed;
+	bottom:0px;
+	left:0px;
+	z-index:10000;
+	width:100%;
+	height:30px;
+	padding-top:8px;
+	box-shadow:0px -3px 6px #dddddd;
+	-moz-box-shadow:0px -3px 6px #dddddd;
+	-webkit-box-shadow:0px -3px 6px #dddddd;
+	border-top:1px solid #b15454;
+	background-color:#ffffff;
+	text-align:center;
+	display:inline-block;
+}
+.shumi-m-foot .phone {
+	display:inline-block;
+	width:396px;
+	height:40px;
+	zoom:.5;
+	background-sizing:contain;
+	background:url(images/shumi-phone-bg.png) no-repeat;
+}
+

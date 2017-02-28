@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no"/>
+    <title>已开通</title>
+    <link rel="stylesheet" href="../css/main.css"/>
+    <script src="../../lib/cordova/cordova.js"></script>
+    <script type="text/javascript" src="../js/jquery.min.js"></script>
+    <script type="text/javascript" src="../js/check.js"></script>
+    <script type="text/javascript" src="../js/account_accredit.js"></script>
+</head>
+<body>
+<!-- 
+
+<div class="top">
+    <span class="go_back_home">
+        <img src="WEB-INF/images/back.png"/>
+    </span>
+    <span class="top_title">账号授权</span>
+    <span class="ic_close">取消</span>
+</div> -->
+<script type="text/javascript">
+//    window.onload = function(){
+//            hidephone('15988151552')
+//    };
+    function hidephone(phone){
+        var oldPhone = phone;
+        var x = '*****';
+        var phoneStart = oldPhone.substring(0,3);
+       // alert(phoneStart);
+        var phoneEnd = oldPhone.substring(8);
+        //alert(phoneEnd);
+        return phoneStart+x+phoneEnd;
+    }
+
+    $(function(){
+        var val = hidephone('15988152653');
+        $('.customer_id').html(val);
+        $('#newPhoneVal').html(val);
+
+        $("#closePage").click(function(){
+            Messenger.send('close');
+        })
+    })
+
+</script>
+<div class="neck">
+    <span>基金交易服务由松果互联网金融提供</span>
+    <span>
+        <div class="neck_img"><img src="../images/tel.png" /></div>
+        400-6677-333
+    </span>
+</div>
+<div class="inner">
+    <div class="account_info">
+        <div class="account_info_head">检测到你已开通松果账号</div>
+        <div class="account_info_body">
+           <span class="account_info_body_s">
+                 <span>原手机号</span><span class='customer_id'></span>
+                 <div class="clear"></div>
+            </span>
+            <span  class="account_info_body_s">
+                <span>姓名</span><span class='customer_name'>郭德纲</span>
+                <div class="clear"></div>
+            </span>
+            <span  class="account_info_body_s">
+                <span>身份证</span><span class='customer_peopleid'>33090909080909989</span>
+                <div class="clear"></div>
+            </span>
+            <div class="clear"></div>
+        </div>
+    </div>
+
+    <!--<div class="info_title2">输入此账号的基金交易密码授权</div>-->
+    <!--<div class="info">-->
+        <!--<div class="info_1">-->
+            <!--<label for="password">交易密码</label>-->
+            <!--<input type="password" placeholder="请输入交易密码" id="password" onKeypress="javascript:if(event.keyCode == 32)event.returnValue = false;">-->
+        <!--</div>-->
+    <!--</div>-->
+    <!--<div class="agree">-->
+        <!--<div class="agree_btn default_agree">-->
+            <!--✔-->
+        <!--</div>-->
+        <!--<span style="color:#898989;">同意</span><span style="color: #FF3B2F;">《用户协议》</span>-->
+    <!--</div>-->
+
+    <div style="border: 0px solid #ff0000;height: auto;width: 97%;margin-left: 3%;font-size: 17px;font-family: '微软雅黑';margin-top: 20px;">
+        若需将此号码的绑定手机号修改为</br><span id="newPhoneVal">15988151552</span>，请联系客服400-688-3506，谢谢你的支持与厚爱！
+    </div>
+    <button class="btn" id="closePage" style="background:#FF3B2F;margin: 20px 3% 0 3%;">完成</button>
+</div>
+
+
+</body>
+</html>

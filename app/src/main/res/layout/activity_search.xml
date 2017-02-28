@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:orientation="horizontal"
+        android:padding="@dimen/dimens_x0.8dp"
+        android:background="@color/red">
+        <LinearLayout
+            android:padding="@dimen/dimens_x0.8dp"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="horizontal"
+            android:layout_gravity="center_vertical"
+            android:background="@drawable/bg_my_search">
+
+            <ImageView
+                android:layout_width="15dp"
+                android:layout_height="15dp"
+                android:scaleType="fitXY"
+                android:layout_gravity="center"
+                android:src="@drawable/ic_seek" />
+
+            <EditText
+                android:id="@+id/et_value"
+                android:layout_width="0dp"
+                android:layout_height="50dp"
+                android:layout_weight="1"
+                android:layout_gravity="center"
+                android:gravity="center_vertical"
+                android:layout_marginLeft="@dimen/dimens_x1dp"
+                android:hint="搜索您要查找的基金(简拼/代码)"
+                android:singleLine="true"
+                android:textSize="@dimen/dimens_x1.4sp"
+                android:background="@drawable/bg_my_search_edittext"/>
+
+            <ImageButton
+                android:id="@+id/ib_empty"
+                android:layout_width="15dp"
+                android:layout_height="15dp"
+                android:src="@drawable/ic_close"
+                android:scaleType="fitXY"
+                android:background="@color/transparent"
+                android:layout_gravity="center_vertical"
+                android:layout_marginRight="@dimen/dimens_x0.5dp"/>
+        </LinearLayout>
+
+        <Button
+            android:layout_marginLeft="@dimen/dimens_x1dp"
+            android:id="@+id/b_cancel"
+            android:layout_width="40dp"
+            android:layout_height="wrap_content"
+            android:text="取消"
+            android:textSize="@dimen/dimens_x1.8sp"
+            android:textColor="@color/white"
+            android:layout_gravity="center_vertical"
+            android:background="#00000000"/>
+    </LinearLayout>
+
+
+    <RelativeLayout
+        android:visibility="gone"
+        android:id="@+id/ll_notNetwork"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <ImageView
+            android:layout_above="@+id/tv_notNetwork"
+            android:layout_centerInParent="true"
+            android:id="@+id/img_notNetwork"
+            android:src="@drawable/ic_failed"
+            android:layout_gravity="center"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:scaleType="fitXY">
+        </ImageView>
+
+        <TextView
+            android:id="@+id/tv_notNetwork"
+            android:layout_marginTop="@dimen/dimens_x2dp"
+            android:layout_centerInParent="true"
+            android:gravity="center"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/dimens_x1.6sp"
+            android:text="加载失败，请点击重试！"/>
+    </RelativeLayout>
+
+    <!--<com.cfjn.javacf.util.XListView-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="match_parent"-->
+    <!--android:id="@+id/search_listview"-->
+    <!--android:divider="@null"-->
+    <!--android:paddingLeft="@dimen/dimens_x1.5dp"-->
+    <!--android:paddingRight="@dimen/dimens_x1.5dp">-->
+    <!--</com.cfjn.javacf.util.XListView>-->
+
+    <in.srain.cube.views.loadmore.LoadMoreListViewContainer
+        android:id="@+id/lmlvc_down_refresh"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <ListView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/lv_search"
+            android:divider="@null"
+            android:padding="@dimen/space" >
+        </ListView>
+    </in.srain.cube.views.loadmore.LoadMoreListViewContainer>
+
+</LinearLayout>

@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+    <LinearLayout
+        android:layout_marginTop="@dimen/space"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:visibility="invisible"
+            android:layout_marginLeft="@dimen/space_x0.5"
+            android:layout_marginRight="@dimen/space_x0.5"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:src="@drawable/ic_unread"
+            android:id="@+id/iv_dol"/>
+        <TextView
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/dimens_x2sp"
+            android:text="数米公告"
+            android:id="@+id/tv_title"/>
+
+        <TextView
+            android:layout_marginRight="@dimen/dimens_x1dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/dimens_x1.8sp"
+            android:text="12月30日"
+            android:id="@+id/tv_time"/>
+    </LinearLayout>
+
+    <TextView
+        android:layout_marginLeft="@dimen/dimens_x2dp"
+        android:layout_marginTop="@dimen/space_x0.5"
+        android:layout_marginBottom="@dimen/space"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/tv_content"
+        android:ellipsize="end"
+        android:textSize="@dimen/dimens_x1.8sp"
+        android:maxLines="2" />
+ <View
+     android:layout_marginLeft="@dimen/space_x2"
+     android:layout_width="match_parent"
+     android:layout_height="@dimen/line_gray"
+     android:background="@color/line_gray"/>
+</LinearLayout>

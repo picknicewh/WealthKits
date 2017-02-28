@@ -1,0 +1,2 @@
+include ':app', ':CordovaLib'
+include ':shumi_Plugin_SDK'

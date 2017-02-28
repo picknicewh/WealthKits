@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html class="ui-mobile">
+    <head>
+        <meta charset="utf-8">
+            <meta name="viewport" content="width=device-width, initial-scale=1">
+                <title>操作成功</title>
+                <!--CSS代码-->
+                <link rel="stylesheet" href="../css/jquery.mobile-1.3.1.css" />
+                <link rel="stylesheet" href="../css/shumi-mobile.css" />
+                <link rel="stylesheet" href="../css/shumi-mobile2013.css" />
+    </head>
+    <body class="ui-mobile-viewport ui-overlay-c">
+    	<!--头部2013_start-->
+        <header class="shumi-m-head">
+            <h2 class="t">操作成功</h2>
+            <div class="gotop" id="quit">取消</div>
+            <div class="backto" id="back">返回</div>
+        </header>
+        <!--头部2013_end-->
+        <div class="ui-page ui-body-c ui-page-active" tabindex="0">
+            <div class="ui-content">
+                <div class="allcontent">
+                    <div data-cid="text3" class="codiqa-control">
+                        <h5>基金交易系统由<br>
+                            杭州数米基金销售有限公司 提供<a href="tel:4000766123"><span class="service-tel">4000-766-123</span></a></h5>
+                    </div>
+                    <div data-cid="text3" class="codiqa-control">
+                    </div>
+                        <div class="ui-info">
+                            <div class="space10"></div>
+                            <div class="ui-grid-a">
+                                <label class="leftlabel">操作类型:</label> <label class="rightlabel"
+                                    id="operationtype"></label>
+                            </div>
+                            <div class="ui-grid-a">
+                                <label class="leftlabel">基金:</label> <label class="rightlabel"
+                                    id="fundname"></label>
+                            </div>
+                            
+                            <div class="ui-grid-a">
+                                <label class="leftlabel" id="moneyLabel">金额:</label> <label class="rightlabel red"
+                                    id="money"></label>
+                            </div>
+                            
+                            <div class="ui-grid-a">
+                                <label class="leftlabel">手续费:</label> <label class="rightlabel"
+                                    id="auxiliaryexpenses"></label>
+                            </div>
+                            
+                            <div class="ui-grid-a">
+                                <label class="leftlabel">银行卡:</label> <label class="rightlabel"
+                                    id="bankcard"></label>
+                            </div>
+                        </div>
+                        <div class="space10"></div>
+                        <div id="setPassWordNotice">
+                            <p style="color: red">扣款成功，但您尚未设置基金交易密码（非银行卡交易密码），请设置交易密码以确保账户安全，下次交易时凭此密码直接购买。</p>
+                            <div aria-disabled="false" class="ui-btn ui-shadow ui-btn-corner-all ui-fullsize ui-btn-block ui-submit ui-btn-up-c"
+                        name="btn" id="div_submit">
+                                <span class="ui-btn-inner ui-btn-corner-all"><span class="ui-btn-text">设置交易密码</span></span>
+                                <input id="btn_confirm" type="button" data-cid="submitbutton1" class="codiqa-control ui-btn-hidden" aria-disabled="false">
+                            </div>
+                        </div>
+                        <div id="tradeSuccessNotice">
+                            <p id="tradeSuccessNoticeContent">扣款成功，交易正在处理。</p>
+                            <div aria-disabled="false" class="ui-btn ui-shadow ui-btn-corner-all ui-fullsize ui-btn-block ui-submit ui-btn-up-c ui-btn-dianxin"
+                        name="btn">
+                        		<div class="ui-btn-dianxinceng">
+                                <span class="ui-btn-inner ui-btn-corner-all"><span class="ui-btn-text">确定</span></span>
+                                <input type="button" data-cid="submitbutton1" class="codiqa-control ui-btn-hidden" aria-disabled="false">
+                                </div>
+                            </div>
+                        </div>
+                </div>
+            </div>
+        </div>
+    </body>
+    <!--引入jquery代码-->
+    <script type="text/javascript" src="../js/jquery-1.8.2.min.js"></script>
+    <script type="text/javascript" src="../js/shumi-mobile.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function(){
+            var setPasswordNoticeDiv = $("#setPassWordNotice");
+            var tradeSuccessNoticeDiv = $("#tradeSuccessNotice");
+            setPasswordNoticeDiv.click(function(){
+                sessionStorage.setItem('setTradePassword.nextPage','setTradePasswordSuccess.html');
+                loadURL('http://smbclient.localpage/setTradePassword.html');
+            });
+            tradeSuccessNoticeDiv.click(function(){
+                smbEvent('quitSDk', undefined, function(){});    
+            });
+            setPasswordNoticeDiv.hide();
+            var isTempPassword = getSessionStorageValue('temporary_trade_password');
+            if (isTempPassword == 1) {
+                //说明实用的是临时交易密码
+                setPasswordNoticeDiv.show();
+                tradeSuccessNoticeDiv.hide();
+            }
+            var operTp = getSessionStorageValue('operAction');
+            //认购成功
+            if(operTp=='S'){
+                $("#selftitle").text("扣款成功");
+                $("#tradeSuccessNoticeContent").text("扣款成功，交易正在处理。");
+                $("#operationtype").html('认购');
+                var fundCode = getSessionStorageValue('doPurchase.fundCode');
+                var fundName = getSessionStorageValue('doPurchase.fundName');
+                $("#fundname").html(fundCode + " " + fundName)
+                var buyMoney = parseFloat(getSessionStorageValue('doPurchase.paySum'));
+                $("#money").html(buyMoney + "元");
+                var fee = parseFloat(getSessionStorageValue('doPurchase.poudage'));
+                if(fee){
+                    $("#auxiliaryexpenses").html(fee + "元");
+                }else{
+                    $("#auxiliaryexpenses").html("免手续费");
+                }
+                var bankName = getSessionStorageValue('doPurchase.bankName');
+                var bankAcco = getSessionStorageValue('doPurchase.bankCard');
+                $("#bankcard").html(bankName + "(" + showLost4Num(bankAcco) + ")");
+            //申购成功
+            }else if(operTp=='P'){
+                $("#selftitle").text("扣款成功");
+                $("#tradeSuccessNoticeContent").text("申购资金将在第二个工作日进行确认，下一工作日开始计算收益。注：15:00后申购会顺延1个工作日确认。双休日及节假日将不进行申购确认。");
+                $("#operationtype").html('申购');
+                var fundCode = getSessionStorageValue('doPurchase.fundCode');
+                var fundName = getSessionStorageValue('doPurchase.fundName');
+                $("#fundname").html(fundCode + " " + fundName)
+                var buyMoney = parseFloat(getSessionStorageValue('doPurchase.paySum'));
+                $("#money").html(buyMoney + "元");
+                var fee = parseFloat(getSessionStorageValue('doPurchase.poudage'));
+                if(fee){
+                    $("#auxiliaryexpenses").html(fee + "元");
+                }else{
+                    $("#auxiliaryexpenses").html("免手续费");
+                }
+                var bankName = getSessionStorageValue('doPurchase.bankName');
+                var bankAcco = getSessionStorageValue('doPurchase.bankCard');
+                $("#bankcard").html(bankName + "(" + showLost4Num(bankAcco) + ")");
+            //赎回成功
+            }else if(operTp=='R'){
+                $("#selftitle").text("赎回申请成功");
+                if (sessionStorage.getItem("redeemFund.quickRedeem") == 'true'){
+                    //为快速赎回
+                    $("#operationtype").html('快速赎回');
+                    $("#tradeSuccessNoticeContent").text("温馨提示：快速赎回申请成功，资金打款处理中。");
+                }else{
+                    //为普通赎回
+                    $("#operationtype").html('普通赎回');
+                    $("#tradeSuccessNoticeContent").text("温馨提示：普通赎回资金将在第二个工作日进行确认，下一工作日资金会返回原卡。注：15:00后赎回顺延1个工作日确认。双休日及节假日将不进行赎回确认。");
+                }
+                $("#moneyLabel").text("份额");
+                var fundname = getSessionStorageValue("redeemFund.fundName");
+                var fundcode = getSessionStorageValue("redeemFund.fundCode");
+                var bankname = getSessionStorageValue("redeemFund.bankName");
+                var bankacco = getSessionStorageValue("redeemFund.bankAcco");
+                var applySum = parseFloat(getSessionStorageValue("redeemFund.applySum"));
+                $("#fundname").html(fundcode + " " + fundname);
+                $("#money").html(applySum + "份");
+                var fee = parseFloat(getSessionStorageValue('purchase.poudage'));
+                if(fee){
+                    $("#auxiliaryexpenses").html(fee + "元");
+                }else{
+                    $("#auxiliaryexpenses").html("免手续费");
+                }
+                $("#bankcard").html(bankname + "(" + showLost4Num(bankacco) + ")");
+            }             
+        });
+        
+        function showLost4Num(num) {
+            var newNumber = "***";
+            if (num.length >= 4) {
+                newNumber = newNumber+num.substr(num.length-4,4);
+            }else{
+                newNumber = newNumber+num;
+            }
+            return newNumber;
+        }
+        </script>
+</html>

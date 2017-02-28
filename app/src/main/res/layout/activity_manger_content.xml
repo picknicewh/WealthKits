@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <LinearLayout
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        tools:context=".activity.member.SystemDetailsActivity">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:background="@color/red">
+            <ImageButton
+                android:id="@+id/ib_back"
+                android:layout_width="50dp"
+                android:layout_height="match_parent"
+                android:layout_centerVertical="true"
+                android:background="@color/transparent"
+                android:src="@drawable/ic_goback"/>
+            <TextView
+                android:id="@+id/tv_tilte"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:text="天风公告"
+                android:textColor="@color/white"
+                android:textSize="@dimen/dimens_x2sp"/>
+        </RelativeLayout>
+
+        <TextView
+            android:id="@+id/tv_them"
+            android:layout_margin="@dimen/space"
+            android:layout_gravity="center"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/dimens_x2.5sp"
+            android:textColor="@color/black"
+            android:text="关于修复新年套外泄bug"
+            />
+
+        <TextView
+            android:id="@+id/tv_content"
+            android:layout_margin="@dimen/space"
+            android:layout_gravity="center"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/dimens_x1.8sp"
+            android:textColor="@color/black"
+            />
+
+        <TextView
+            android:id="@+id/tv_address"
+            android:layout_marginTop="@dimen/dimens_x4dp"
+            android:layout_marginRight="@dimen/space"
+            android:layout_width="wrap_content"
+            android:layout_gravity="right"
+            android:layout_height="wrap_content"
+            android:textColor="@color/black"
+            android:text="杭州恒镁科技有限公司"
+            android:textSize="@dimen/dimens_x1.8dp"/>
+
+        <TextView
+            android:id="@+id/tv_time"
+            android:layout_marginRight="@dimen/space"
+            android:layout_width="wrap_content"
+            android:layout_gravity="right"
+            android:textColor="@color/black"
+            android:layout_height="wrap_content"
+            android:text="2015-12-13"
+            android:textSize="@dimen/dimens_x1.6dp"/>
+    </LinearLayout>
+
+</ScrollView>

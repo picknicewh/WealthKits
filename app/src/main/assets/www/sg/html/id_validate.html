@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/html">
+<head lang="en">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no, width=device-width" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="format-detection" content="telephone=no,email=no" />
+    <title>身份验证</title>
+    <link rel="stylesheet" href="../css/main.css"/>
+    <link rel="stylesheet" href="../css/new_alert.css"/>
+    <script src="../../lib/cordova/cordova.js"></script>
+    <script type="text/javascript" src="../js/jquery.min.js"></script>
+
+    <script type="text/javascript" src="../js/jquery.md5.js"></script>
+    <!--<script type="text/javascript" src="../js/base.js"></script>-->
+    <script type="text/javascript" src="../js/check.js"></script>
+</head>
+<body scroll=no style='overflow:"hidden"'>
+
+<div class="top">
+    <span class="go_back_home close" onclick="CloseWebPage()">
+        <img src="../images/back.png"/>
+    </span>
+    <span class="top_title">身份验证</span>
+    <span class="close" onclick="CloseWebPage()">取消</span>
+</div>
+<div class="neck">
+    <span>基金交易服务由松果互联网金融提供</span>
+    <span>
+        <div class="neck_img"><img src="../images/tel.png" /></div>
+        400-6677-333
+    </span>
+</div>
+<div class="inner">
+    <div class="plan_bar">
+        <div class="plan_line">
+            <div>
+                <div class="plan_num now">1
+                    <div>身份验证</div>
+                </div>
+                <div class="plan_s_line"></div>
+                <div class="plan_num">2
+                    <div>银行卡确认</div>
+                </div>
+                <div class="plan_s_line"></div>
+                <div class="plan_num">3
+                    <div class="long">设置交易密码</div>
+                </div>
+                <div class="plan_s_line"></div>
+                <div class="plan_num">4
+                    <div>开户成功</div>
+                </div>
+            </div>
+        </div>
+        <div class="plan_text">
+            <!--<div>身份验证
+            if(!preg_match('/^[\x80-\xff]{4,8}$/',$name)){//匹配2到四个汉字
+.......error;
+}
+            </div>
+            <div class="not_fl">银行卡确认</div>
+            <div class="not_fl">设置交易密码</div>
+            <div>开户成功</div>-->
+        </div>
+    </div>
+    <div class="info_title">请确保以下信息真实有效</div>
+    <form action="bank_card_validate.html" method="post">
+    <div class="info">
+        <div class="info_1 has_line">
+            <label for="name">姓名</label>
+            <input type="text" placeholder="请输入真实姓名" id="name" name="username">
+        </div>
+        <div class="info_1 has_line">
+            <label for="id_card">身份证</label>
+            <input type="text" placeholder="请输入身份证号" id="id_card" name="id" />
+        </div>
+        <div class="info_1">
+            <label for="email_num">邮箱</label>
+            <input type="text" placeholder="请输入邮箱号" id="email_num" name="email_num">
+        </div>
+    </div>
+    <button class="btn" type="button" onclick="loadpage('id_validate')">下一步</button>
+    </form>
+  <!--   <div class="bottom">
+        基金交易服务由上海长量基金销售投资顾问有限公司提供</br>
+        资格证书编号：000000306
+    </div> -->
+</div>
+<!--<div style="width: 20%;height: 12%;position: absolute;z-index: 4;top: 40%;left: 40%;border-radius: 10px;">-->
+<!--<img src="../images/red-loading.png" style="width: 100%;height: 100%;;border-radius: 10px;" id="loadingPic" />-->
+    <!--<span style="color: #ff0000;">加载中...</span>-->
+<!--</div>-->
+</body>
+</html>

@@ -1,0 +1,193 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:id="@+id/pop_layout"
+    android:background="@color/black_x">
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:layout_alignParentBottom="true"
+    android:background="@color/white">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="@color/red"
+        android:orientation="horizontal">
+
+
+        <TextView
+            android:id="@+id/particular_text_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:text="测算收益"
+            android:textColor="@color/white"
+            android:textSize="@dimen/dimens_x2sp" />
+
+        <ImageButton
+            android:id="@+id/popup_image"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="@dimen/dimens_x1dp"
+            android:background="@drawable/ic_shut_down" />
+
+    </RelativeLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/dimens_x1dp"
+        android:layout_marginRight="@dimen/dimens_x1dp"
+        android:layout_marginTop="@dimen/dimens_x1dp"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:background="@drawable/ic_purchase" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/dimens_x1dp"
+            android:text="申购金额"
+            android:textColor="@color/black"
+            android:textSize="@dimen/dimens_x1.8sp"
+            android:layout_gravity="center"/>
+
+        <EditText
+            android:id="@+id/financial_period_ed1"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/dimens_x2dp"
+            android:layout_weight="1.5"
+            android:background="@drawable/bg_popwindow"
+            android:gravity="right"
+            android:hint="请输入投资金额"
+            android:phoneNumber="true"
+            android:padding="@dimen/dimens_x0.5dp"
+            android:textColorHint="@color/line_gray" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/dimens_x0.5dp"
+            android:text="元"
+            android:textSize="@dimen/dimens_x1.8sp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/dimens_x1dp"
+        android:layout_marginRight="@dimen/dimens_x1dp"
+        android:layout_marginTop="@dimen/dimens_x1dp"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:background="@drawable/ic_financial_period" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/dimens_x1dp"
+            android:text="理财期限"
+            android:textColor="@color/black"
+            android:textSize="@dimen/dimens_x1.8sp"
+            android:layout_gravity="center"/>
+
+        <EditText
+            android:id="@+id/financial_period_ed2"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/dimens_x2dp"
+            android:layout_weight="1.5"
+            android:background="@drawable/bg_popwindow"
+            android:gravity="right"
+            android:hint="请输入天数"
+            android:phoneNumber="true"
+            android:padding="@dimen/dimens_x0.5dp"
+            android:textColorHint="@color/line_gray" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/dimens_x0.5dp"
+            android:text="天"
+            android:textSize="@dimen/dimens_x1.8sp" />
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/btn_financial_period"
+        android:layout_width="wrap_content"
+        android:layout_height="40dp"
+        android:layout_gravity="center_horizontal"
+        android:gravity="center"
+        android:layout_marginTop="@dimen/dimens_x2dp"
+        android:background="@drawable/bg_financial_period"
+        android:text="计算收益"
+        android:paddingRight="@dimen/dimens_x2dp"
+        android:paddingLeft="@dimen/dimens_x2dp"
+        android:textSize="@dimen/dimens_x2sp"
+        android:textColor="@color/red" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginTop="@dimen/dimens_x2dp"
+        android:background="@color/line_gray">
+
+    </View>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/space">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="产品预期收益(元)"
+            android:textSize="@dimen/dimens_x1.8sp" />
+
+        <TextView
+            android:id="@+id/financial_period_text1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:text="0.00"
+            android:textColor="@color/red"
+            android:textSize="@dimen/dimens_x1.8sp" />
+    </RelativeLayout>
+
+    <!--<RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/dimens_x1dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="银行活期利息(元)"
+            android:textSize="@dimen/dimens_x1.8sp" />
+
+        <TextView
+            android:id="@+id/financial_period_text2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:text="0.00"
+            android:textColor="@color/gree_xx"
+            android:textSize="@dimen/dimens_x1.8sp" />
+    </RelativeLayout>-->
+</LinearLayout>
+</RelativeLayout>
